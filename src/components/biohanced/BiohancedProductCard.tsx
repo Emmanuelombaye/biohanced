@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import {
   CATALOG_CATEGORIES,
   catalogImage,
@@ -32,21 +33,43 @@ function PurityBadge({ purity }: { purity: string }) {
 
 function CardActions({ productId, productName }: { productId: string; productName: string }) {
   const { addProduct } = useCart();
+  const [added, setAdded] = useState(false);
 
-  const handleAdd = () => {
+  const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const product = getCatalogProduct(productId);
     const variants = getVariantsForProduct(productId);
     const first = variants[0];
-    if (!first) return;
-    addProduct(productId, productName, first.label, first.price);
+
+    if (first) {
+      addProduct(productId, productName, first.label, first.price);
+    } else if (product) {
+      addProduct(productId, productName, "1 vial", product.priceFrom);
+    } else {
+      return;
+    }
+
+    setAdded(true);
+    window.setTimeout(() => setAdded(false), 2000);
   };
 
   return (
     <div className="mt-4 grid grid-cols-2 gap-2">
-      <Link href={medicationHref(productId)} className="bio-btn-view text-center text-[12px] sm:text-[13px]">
+      <Link
+        href={medicationHref(productId)}
+        className="bio-btn-view z-10 text-center text-[12px] sm:text-[13px]"
+      >
         View
       </Link>
-      <button type="button" onClick={handleAdd} className="bio-btn-cart text-[12px] sm:text-[13px]">
-        Add to cart
+      <button
+        type="button"
+        onClick={handleAdd}
+        className={`bio-btn-cart z-10 text-[12px] sm:text-[13px] ${added ? "brightness-95" : ""}`}
+        aria-label={`Add ${productName} to cart`}
+      >
+        {added ? "Added ✓" : "Add to cart"}
       </button>
     </div>
   );

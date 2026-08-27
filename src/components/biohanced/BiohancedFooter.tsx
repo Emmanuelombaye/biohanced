@@ -113,11 +113,11 @@ export function BiohancedFooter() {
   return (
     <footer id="contact" className="relative overflow-hidden bg-[#0A0B0E] text-white">
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden items-end justify-center overflow-hidden sm:flex"
         aria-hidden
       >
         <span
-          className="translate-y-[18%] font-[Archivo,sans-serif] text-[clamp(120px,22vw,280px)] font-black tracking-[-0.04em] text-white/[0.04] select-none"
+          className="translate-y-[28%] font-[Archivo,sans-serif] text-[clamp(100px,18vw,240px)] font-black tracking-[-0.04em] text-white/[0.035] select-none"
         >
           BIOHANCED
         </span>
@@ -174,13 +174,16 @@ export function BiohancedFooter() {
           <LegalRow links={LEGAL_ROW_2} />
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-[#1C1F27] pt-8 md:flex-row">
-          <p className="font-[Space_Grotesk,sans-serif] text-[12px] text-[#9AA0A8]">
+        <div className="relative z-20 mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#1C1F27] bg-[#0A0B0E] pt-8 md:flex-row md:gap-6">
+          <p className="font-[Space_Grotesk,sans-serif] text-center text-[12px] text-[#9AA0A8] md:text-left">
             © {new Date().getFullYear()} Biohanced Labs · For research use only · Not for human
             consumption
           </p>
-          <p className="font-[Space_Grotesk,sans-serif] text-[13px] text-[#9AA0A8]">
-            <a href={BIOHENCED_LINKS.email} className="text-[#C9CCD2] hover:text-white">
+          <p className="font-[Space_Grotesk,sans-serif] text-[13px]">
+            <a
+              href={BIOHENCED_LINKS.email}
+              className="inline-flex min-h-[44px] items-center rounded-full border border-[#262932] bg-[#14161A] px-5 py-2 text-[#C9CCD2] hover:text-white"
+            >
               research@biohancedlabs.com
             </a>
           </p>
