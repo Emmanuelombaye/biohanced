@@ -183,7 +183,11 @@ export function BiohancedProductCardGrid({
         ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
-  const useRail = mobileRail && compact;
+  const useRail = mobileRail;
+
+  const railItemWidth = compact
+    ? "w-[min(240px,72vw)]"
+    : "w-[min(280px,82vw)]";
 
   const cardProps = { size, showActions };
 
@@ -196,7 +200,7 @@ export function BiohancedProductCardGrid({
           {productIds.map((id) => (
             <div
               key={id}
-              className="w-[min(240px,72vw)] shrink-0 snap-center md:w-auto md:shrink md:h-auto"
+              className={`${railItemWidth} shrink-0 snap-center md:w-auto md:shrink`}
             >
               <BiohancedProductCard productId={id} {...cardProps} className="h-full" />
             </div>

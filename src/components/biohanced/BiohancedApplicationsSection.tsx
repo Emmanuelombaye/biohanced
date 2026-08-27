@@ -33,6 +33,7 @@ export function BiohancedApplicationsSection() {
           columns={3}
           className="mt-10"
           showActions
+          mobileRail
         />
       </div>
     </BiohancedSection>

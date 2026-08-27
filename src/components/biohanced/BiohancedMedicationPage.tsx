@@ -18,6 +18,7 @@ import {
   variantSavePercent,
 } from "@/lib/biohanced-price-tiers";
 import { useCart } from "@/lib/biohanced-cart-context";
+import { BiohancedAddBundleButton } from "./BiohancedAddBundleButton";
 import { BiohancedCtaBand } from "./BiohancedPageChrome";
 import { BiohancedCatalogGrid } from "./BiohancedCatalogGrid";
 import { BiohancedVialStage } from "./BiohancedVialStage";
@@ -198,7 +199,7 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
   const [tab, setTab] = useState<TabId>("description");
   const [variantIndex, setVariantIndex] = useState(0);
   const [added, setAdded] = useState(false);
-  const { addProduct, addBundle } = useCart();
+  const { addProduct } = useCart();
 
   if (!product) return null;
 
@@ -417,13 +418,12 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
                         ${bundle.regular}
                       </span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => addBundle(bundle.id, names, bundle.price)}
+                    <BiohancedAddBundleButton
+                      bundleId={bundle.id}
+                      name={names}
+                      price={bundle.price}
                       className="bio-btn-dark mt-4 w-full text-[14px]"
-                    >
-                      Add bundle to cart
-                    </button>
+                    />
                   </article>
                 );
               })}

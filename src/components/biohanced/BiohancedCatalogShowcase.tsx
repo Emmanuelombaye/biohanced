@@ -36,6 +36,7 @@ export function BiohancedCatalogShowcase() {
           columns={3}
           className="mt-12"
           showActions
+          mobileRail
         />
 
         <div className="mt-12 grid gap-4 rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 md:grid-cols-3 md:gap-8 md:p-8">

@@ -57,7 +57,7 @@ export function BiohancedMedicare() {
             productIds={MEDICARE_PRODUCTS}
             columns={3}
             className="mt-6"
-            mobileRail={false}
+            mobileRail
             showActions
           />
         </div>

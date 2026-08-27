@@ -11,7 +11,6 @@ import {
   type CatalogCategory,
 } from "@/lib/biohanced-catalog";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
-import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedContactForm } from "./BiohancedContactForm";
 import { BiohancedProductCardGrid } from "./BiohancedProductCard";
 import { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";
@@ -22,6 +21,8 @@ import { BiohancedProductMarquee } from "./BiohancedProductMarquee";
 import { BiohancedMedicare } from "./BiohancedMedicare";
 import { BiohancedCatalogShowcase } from "./BiohancedCatalogShowcase";
 import { BiohancedHowItWorks } from "./BiohancedHowItWorks";
+import { BiohancedAddBundleButton } from "./BiohancedAddBundleButton";
+import { BiohancedMobileRail, BiohancedMobileRailItem } from "./BiohancedMobileRail";
 
 const CATEGORY_ORDER: CatalogCategory[] = [
   "recovery",
@@ -42,33 +43,41 @@ function CategoryGrid() {
           description="Six application categories — recovery, GH secretagogues, metabolic, longevity, specialty, and essentials."
           action={{ label: "Full catalog", href: BIOHENCED_LINKS.catalog }}
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <BiohancedMobileRail
+          className="mt-10"
+          desktopClass="sm:grid sm:grid-cols-2 sm:items-stretch sm:gap-4 lg:grid-cols-3 xl:grid-cols-6 sm:overflow-visible lg:gap-4"
+        >
           {CATEGORY_ORDER.map((id) => {
             const cat = CATALOG_CATEGORIES[id];
             return (
-              <Link
+              <BiohancedMobileRailItem
                 key={id}
-                href={`${BIOHENCED_LINKS.catalog}?cat=${id}`}
-                className="group flex min-h-[148px] flex-col justify-between rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-5 transition-all duration-300 hover:border-[#d8d6d0] hover:bg-bio-white hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
+                widthClass="w-[min(168px,44vw)]"
+                resetClass="sm:w-auto sm:shrink"
               >
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-[11px] transition-transform duration-300 group-hover:scale-105"
-                  style={{ background: CATEGORY_TILE_GRADIENTS[id] }}
+                <Link
+                  href={`${BIOHENCED_LINKS.catalog}?cat=${id}`}
+                  className="group flex h-full min-h-[148px] flex-col justify-between rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-5 transition-all duration-300 hover:border-[#d8d6d0] hover:bg-bio-white hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
                 >
-                  <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden>
-                    <path d="M57 9 L29 55 L46 55 L43 91 L73 41 L55 41 Z" fill="#fff" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[15px] font-semibold leading-tight text-bio-ink">{cat.name}</p>
-                  <p className="mt-1 text-[12px] text-bio-neutral-400">
-                    {countByCategory(id)} compounds
-                  </p>
-                </div>
-              </Link>
+                  <div
+                    className="flex h-10 w-10 items-center justify-center rounded-[11px] transition-transform duration-300 group-hover:scale-105"
+                    style={{ background: CATEGORY_TILE_GRADIENTS[id] }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden>
+                      <path d="M57 9 L29 55 L46 55 L43 91 L73 41 L55 41 Z" fill="#fff" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[15px] font-semibold leading-tight text-bio-ink">{cat.name}</p>
+                    <p className="mt-1 text-[12px] text-bio-neutral-400">
+                      {countByCategory(id)} compounds
+                    </p>
+                  </div>
+                </Link>
+              </BiohancedMobileRailItem>
             );
           })}
-        </div>
+        </BiohancedMobileRail>
       </div>
     </BiohancedSection>
   );
@@ -99,6 +108,7 @@ function FeaturedProducts() {
           columns={4}
           className="mt-10"
           showActions
+          mobileRail
         />
       </div>
     </BiohancedSection>
@@ -106,8 +116,6 @@ function FeaturedProducts() {
 }
 
 function BundleSection() {
-  const { addBundle } = useCart();
-
   return (
     <BiohancedSection tone="white">
       <div className="bio-container">
@@ -116,7 +124,10 @@ function BundleSection() {
           title="Pair compounds, save on research"
           description="Complementary pathways — up to 12% off when you order curated bundles."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <BiohancedMobileRail
+          className="mt-10"
+          desktopClass="md:grid md:grid-cols-2 md:items-stretch md:gap-5 lg:grid-cols-3 md:overflow-visible"
+        >
           {BIOHENCED_BUNDLES.map((bundle) => {
             const names = bundle.productIds
               .map((id) => getCatalogProduct(id)?.name)
@@ -124,32 +135,32 @@ function BundleSection() {
               .join(" + ");
             const save = bundle.regular - bundle.price;
             return (
-              <article
-                key={bundle.id}
-                className="rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
-              >
-                <p className="font-[Archivo,sans-serif] text-[18px] font-black text-bio-ink">{names}</p>
-                <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400">{bundle.note}</p>
-                <div className="mt-5 flex items-center gap-3">
-                  <span className="font-[Archivo,sans-serif] text-[24px] font-black text-bio-ink">
-                    ${bundle.price}
-                  </span>
-                  <span className="text-sm text-bio-neutral-400 line-through">${bundle.regular}</span>
-                  <span className="rounded-full bg-[#EEF7EE] px-2.5 py-0.5 text-[12px] font-semibold text-[#1F9E6B]">
-                    Save ${save}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => addBundle(bundle.id, names, bundle.price)}
-                  className="bio-btn-dark mt-5 w-full"
+              <BiohancedMobileRailItem key={bundle.id} widthClass="w-[min(300px,86vw)]">
+                <article
+                  className="flex h-full flex-col rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
                 >
-                  Add bundle to cart
-                </button>
-              </article>
+                  <p className="font-[Archivo,sans-serif] text-[18px] font-black text-bio-ink">{names}</p>
+                  <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400">{bundle.note}</p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="font-[Archivo,sans-serif] text-[24px] font-black text-bio-ink">
+                      ${bundle.price}
+                    </span>
+                    <span className="text-sm text-bio-neutral-400 line-through">${bundle.regular}</span>
+                    <span className="rounded-full bg-[#EEF7EE] px-2.5 py-0.5 text-[12px] font-semibold text-[#1F9E6B]">
+                      Save ${save}
+                    </span>
+                  </div>
+                  <BiohancedAddBundleButton
+                    bundleId={bundle.id}
+                    name={names}
+                    price={bundle.price}
+                    className="bio-btn-dark mt-5 w-full"
+                  />
+                </article>
+              </BiohancedMobileRailItem>
             );
           })}
-        </div>
+        </BiohancedMobileRail>
       </div>
     </BiohancedSection>
   );
@@ -172,17 +183,25 @@ function ManufacturingBrief() {
           action={{ label: "View quality standards", href: BIOHENCED_LINKS.manufacturing }}
           className="max-w-none"
         />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <BiohancedMobileRail
+          className="mt-8"
+          desktopClass="sm:grid sm:grid-cols-2 sm:items-stretch sm:gap-4 sm:overflow-visible"
+        >
           {stats.map((s) => (
-            <div
+            <BiohancedMobileRailItem
               key={s.label}
-              className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center"
+              widthClass="w-[min(160px,42vw)]"
+              resetClass="sm:w-auto sm:shrink"
             >
-              <p className="font-[Archivo,sans-serif] text-[32px] font-black text-bio-ink">{s.label}</p>
-              <p className="mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
-            </div>
+              <div
+                className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center"
+              >
+                <p className="font-[Archivo,sans-serif] text-[32px] font-black text-bio-ink">{s.label}</p>
+                <p className="mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
+              </div>
+            </BiohancedMobileRailItem>
           ))}
-        </div>
+        </BiohancedMobileRail>
       </div>
     </BiohancedSection>
   );

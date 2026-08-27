@@ -4,12 +4,28 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   BIOHENCED_CATALOG,
+  CATALOG_CATEGORIES,
   catalogImage,
   getCatalogProduct,
   type CatalogProduct,
 } from "@/lib/biohanced-catalog";
 import { BIOHENCED_LINKS, labResultPath } from "@/lib/biohanced-links";
 import { BiohancedVialStage } from "./BiohancedVialStage";
+import { BiohancedMobileRail, BiohancedMobileRailItem } from "./BiohancedMobileRail";
+
+function LabVialMock({ product }: { product: CatalogProduct }) {
+  const accent = CATALOG_CATEGORIES[product.category].dot;
+
+  return (
+    <BiohancedVialStage
+      src={catalogImage(product.id)}
+      alt={product.name}
+      accent={accent}
+      size="sm"
+      className="h-[200px] !aspect-auto rounded-none"
+    />
+  );
+}
 
 export function BiohancedLabResults() {
   const [query, setQuery] = useState("");
@@ -38,41 +54,45 @@ export function BiohancedLabResults() {
           />
         </div>
 
-        {/* Mobile — card list (no cut-off table) */}
-        <div className="space-y-4 md:hidden">
+        {/* Mobile — horizontal rail with client vial mock renders */}
+        <BiohancedMobileRail
+          className="md:hidden"
+          desktopClass="max-md:flex"
+        >
           {filtered.map((product) => (
-            <article
-              key={product.id}
-              className="overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white shadow-[0_2px_8px_rgba(10,11,14,0.04)]"
-            >
-              <BiohancedVialStage
-                src={catalogImage(product.id)}
-                alt={product.name}
-                size="sm"
-                className="h-[180px] !aspect-auto shrink-0 rounded-none"
-              />
-              <div className="space-y-3 p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[13px] text-bio-neutral-400">Batch</span>
-                  <span className="font-semibold text-bio-ink">{product.batch}</span>
+            <BiohancedMobileRailItem key={product.id} widthClass="w-[min(280px,82vw)]">
+              <article
+                className="overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white shadow-[0_2px_8px_rgba(10,11,14,0.04)]"
+              >
+                <LabVialMock product={product} />
+                <div className="space-y-3 p-4">
+                  <h3 className="font-[Archivo,sans-serif] text-[16px] font-black leading-tight text-bio-ink">
+                    {product.name}
+                  </h3>
+                  <p className="text-[12px] text-bio-neutral-400">{product.doseLabel} · {product.purity}</p>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[13px] text-bio-neutral-400">Batch</span>
+                    <span className="font-semibold text-bio-ink">{product.batch}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[13px] text-bio-neutral-400">Purity (HPLC)</span>
+                    <span className="font-semibold text-[#1F9E6B]">{product.purity}</span>
+                  </div>
+                  <Link href={labResultPath(product.id)} className="bio-btn-primary w-full text-center">
+                    View COA
+                  </Link>
                 </div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[13px] text-bio-neutral-400">Purity (HPLC)</span>
-                  <span className="font-semibold text-[#1F9E6B]">{product.purity}</span>
-                </div>
-                <Link href={labResultPath(product.id)} className="bio-btn-primary w-full text-center">
-                  View COA
-                </Link>
-              </div>
-            </article>
+              </article>
+            </BiohancedMobileRailItem>
           ))}
-        </div>
+        </BiohancedMobileRail>
 
-        {/* Desktop — table */}
+        {/* Desktop — table with mock vial thumbnails */}
         <div className="hidden overflow-hidden rounded-xl border border-bio-neutral-200 md:block">
           <table className="w-full text-left text-[15px]">
             <thead className="bg-bio-neutral-100 text-[13px] font-semibold uppercase tracking-wide text-bio-neutral-400">
               <tr>
+                <th className="px-4 py-3 w-[88px]">Vial</th>
                 <th className="px-4 py-3">Compound</th>
                 <th className="px-4 py-3">Batch</th>
                 <th className="px-4 py-3">Purity (HPLC)</th>
@@ -82,6 +102,17 @@ export function BiohancedLabResults() {
             <tbody>
               {filtered.map((product) => (
                 <tr key={product.id} className="border-t border-bio-neutral-200">
+                  <td className="px-3 py-2">
+                    <div className="h-16 w-16 overflow-hidden rounded-lg border border-bio-neutral-200">
+                      <BiohancedVialStage
+                        src={catalogImage(product.id)}
+                        alt={product.name}
+                        accent={CATALOG_CATEGORIES[product.category].dot}
+                        size="sm"
+                        className="h-16 !aspect-auto rounded-none"
+                      />
+                    </div>
+                  </td>
                   <td className="px-4 py-3 font-medium text-bio-ink">
                     <Link href={labResultPath(product.id)} className="hover:text-[#2E6BFF]">
                       {product.name}
@@ -115,6 +146,8 @@ export function BiohancedLabResults() {
 }
 
 export function BiohancedCoaDetail({ product }: { product: CatalogProduct }) {
+  const accent = CATALOG_CATEGORIES[product.category].dot;
+
   return (
     <section className="bg-bio-white py-12 md:py-16">
       <div className="bio-container max-w-3xl">
@@ -129,8 +162,9 @@ export function BiohancedCoaDetail({ product }: { product: CatalogProduct }) {
             <BiohancedVialStage
               src={catalogImage(product.id)}
               alt={product.name}
+              accent={accent}
               size="lg"
-              className="h-[280px] !aspect-auto rounded-none"
+              className="h-[320px] !aspect-auto rounded-none sm:h-[360px]"
             />
           </div>
           <div>
