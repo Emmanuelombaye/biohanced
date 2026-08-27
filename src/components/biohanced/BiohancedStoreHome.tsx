@@ -5,7 +5,6 @@ import {
   BIOHENCED_BUNDLES,
   CATALOG_CATEGORIES,
   CATEGORY_TILE_GRADIENTS,
-  catalogImage,
   countByCategory,
   getCatalogProduct,
   getFeaturedProducts,
@@ -15,7 +14,7 @@ import {
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
 import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedContactForm } from "./BiohancedContactForm";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedProductCard } from "./BiohancedProductCard";
 import { BiohancedTestimonials } from "./BiohancedTestimonials";
 import { BiohancedApplicationsSection } from "./BiohancedApplicationsSection";
 import { BiohancedMarketingCarousel } from "./BiohancedMarketingCarousel";
@@ -79,40 +78,9 @@ function FeaturedProducts() {
           </Link>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => {
-            const cat = CATALOG_CATEGORIES[product.category];
-            return (
-              <Link
-                key={product.id}
-                href={medicationHref(product.id)}
-                className="overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(10,11,14,0.08)]"
-              >
-                <div className="flex h-[160px] items-center justify-center bg-gradient-to-b from-[#16203A] to-[#0B0D12]">
-                  <BiohancedImg
-                    src={catalogImage(product.id)}
-                    alt={product.name}
-                    className="max-h-[86%] max-w-[70%] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
-                  />
-                </div>
-                <div className="p-4">
-                  <span className="flex items-center gap-2 text-[12px] text-bio-neutral-400">
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: cat.dot }} />
-                    {cat.name}
-                  </span>
-                  <p className="mt-2 font-[Archivo,sans-serif] text-[20px] font-black text-bio-ink">
-                    {product.name}
-                  </p>
-                  <p className="mt-1 text-sm text-bio-neutral-400">
-                    {product.doseLabel} · {product.purity}
-                  </p>
-                  <div className="mt-3 flex items-center justify-between">
-                    <span className="font-semibold text-bio-ink">From ${product.priceFrom}</span>
-                    <span className="text-sm font-semibold text-[#1F9E6B]">{product.purity}</span>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          {products.map((product) => (
+            <BiohancedProductCard key={product.id} productId={product.id} showPrice />
+          ))}
         </div>
       </div>
     </section>

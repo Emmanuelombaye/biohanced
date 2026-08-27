@@ -9,8 +9,10 @@ import {
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <BiohancedCartProvider>
-      <BiohancedPromoBar />
-      <BiohancedNavbar />
+      <header className="sticky top-0 z-50">
+        <BiohancedPromoBar />
+        <BiohancedNavbar />
+      </header>
       {children}
       <BiohancedFooter />
       <BiohancedCookieBanner />

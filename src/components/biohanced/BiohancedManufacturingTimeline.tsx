@@ -1,41 +1,29 @@
 import { MFG_COMPARISON, MFG_GUARANTEES, MFG_PHASES, MFG_STATS } from "@/lib/biohanced-mfg";
-import { CATALOG_CATEGORIES } from "@/lib/biohanced-catalog";
-import { BiohancedProductVial } from "./BiohancedVialShowcase";
-import { BiohancedVialShowcase } from "./BiohancedVialShowcase";
-
-const TIMELINE_VIALS = [
-  { id: "bpc157", name: "BPC-157", category: "recovery" as const },
-  { id: "ghkcu", name: "GHK-Cu", category: "longevity" as const },
-];
+import { BiohancedProductCardGrid } from "./BiohancedProductCard";
 
 export function BiohancedManufacturingTimeline() {
   return (
     <section className="bg-bio-white py-14 md:py-24">
       <div className="bio-container">
-        <div className="grid gap-10 lg:grid-cols-[1fr_minmax(280px,400px)] lg:items-start">
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2E6BFF]">
-              Manufacturing · 12 steps
-            </p>
-            <h2 className="bio-headline mt-4 text-[32px] text-bio-ink md:text-[44px]">
-              From lab to your research in 12 steps
-            </h2>
-            <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-bio-neutral-400">
-              Every compound moves through the same twelve checkpoints — synthesis, purification and
-              testing, then stability and delivery. Nothing ships until it passes each one.
-            </p>
-            <ul className="mt-6 space-y-2 text-[15px] text-bio-neutral-400">
-              {MFG_GUARANTEES.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#B6FF3A]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 bg-gradient-to-b from-[#16203A] to-[#0A0B0E] p-6">
-            <BiohancedVialShowcase items={TIMELINE_VIALS} layout="row" />
-          </div>
+        <div className="max-w-3xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2E6BFF]">
+            Manufacturing · 12 steps
+          </p>
+          <h2 className="bio-headline mt-4 text-[32px] text-bio-ink md:text-[44px]">
+            From lab to your research in 12 steps
+          </h2>
+          <p className="mt-4 text-[17px] leading-relaxed text-bio-neutral-400">
+            Every compound moves through the same twelve checkpoints — synthesis, purification and
+            testing, then stability and delivery. Nothing ships until it passes each one.
+          </p>
+          <ul className="mt-6 space-y-2 text-[15px] text-bio-neutral-400">
+            {MFG_GUARANTEES.map((item) => (
+              <li key={item} className="flex items-center gap-3">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#B6FF3A]" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -48,6 +36,18 @@ export function BiohancedManufacturingTimeline() {
               <p className="mt-1 text-sm text-bio-neutral-400">{stat.k}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1F9E6B]">
+            Finished product examples
+          </p>
+          <BiohancedProductCardGrid
+            productIds={["bpc157", "ghkcu"]}
+            columns={2}
+            imageHeight="sm"
+            className="mt-5 max-w-2xl"
+          />
         </div>
 
         <div className="mt-16 space-y-16">
@@ -110,18 +110,6 @@ export function BiohancedManufacturingTimeline() {
               ))}
             </tbody>
           </table>
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 bg-gradient-to-b from-[#16203A] to-[#0A0B0E] px-10 py-12">
-            <BiohancedProductVial
-              id="bpc157"
-              name="BPC-157"
-              accent={CATALOG_CATEGORIES.recovery.dot}
-              size="xl"
-              className="mx-auto w-full max-w-[300px]"
-            />
-          </div>
         </div>
       </div>
     </section>

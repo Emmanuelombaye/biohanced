@@ -30,4 +30,4 @@ export { BiohancedOrderConfirm } from "./BiohancedOrderConfirm";
 export { BiohancedVoltageLogo } from "./BiohancedVoltageLogo";
 export { BiohancedProductMarquee } from "./BiohancedProductMarquee";
 export { BiohancedCatalogGrid } from "./BiohancedCatalogGrid";
-export { BiohancedVialShowcase, BiohancedProductVial } from "./BiohancedVialShowcase";
+export { BiohancedProductCard, BiohancedProductCardGrid } from "./BiohancedProductCard";

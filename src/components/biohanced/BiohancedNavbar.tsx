@@ -96,9 +96,9 @@ export function BiohancedNavbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#1C1F27] bg-[#0A0B0E]">
-      <div className="bio-container flex h-16 items-center justify-between gap-6 md:h-[64px]">
-        <div className="flex items-center gap-8 lg:gap-10">
+    <div className="border-b border-[#1C1F27] bg-[#0A0B0E]">
+      <div className="bio-container flex h-16 items-center justify-between gap-4 md:h-[64px] md:gap-6">
+        <div className="flex min-w-0 items-center gap-4 lg:gap-10">
           <Link href={BIOHENCED_LINKS.home} aria-label="Biohanced Labs home" className="shrink-0">
             <BiohancedVoltageLogo size={34} />
           </Link>
@@ -131,31 +131,46 @@ export function BiohancedNavbar() {
           </nav>
         </div>
 
-        <Link
-          href={BIOHENCED_LINKS.contact}
-          className="hidden rounded-lg px-4 py-2 text-[14px] font-medium text-[#C9CCD2] transition-colors hover:text-white lg:inline-flex"
-        >
-          Contact
-        </Link>
+        <div className="flex shrink-0 items-center gap-2 lg:gap-4">
+          <Link
+            href={BIOHENCED_LINKS.cart}
+            className="inline-flex h-10 items-center gap-2 rounded-lg border border-[#262932] bg-[#14161A] px-3 text-[13px] font-medium text-white lg:hidden"
+          >
+            Cart
+            <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#B6FF3A] px-1.5 text-[11px] font-bold text-[#0A0B0E]">
+              {itemCount}
+            </span>
+          </Link>
 
-        <button
-          type="button"
-          className="inline-flex h-12 w-12 items-center justify-center lg:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
+          <Link
+            href={BIOHENCED_LINKS.contact}
+            className="hidden rounded-lg px-4 py-2 text-[14px] font-medium text-[#C9CCD2] transition-colors hover:text-white lg:inline-flex"
+          >
+            Contact
+          </Link>
+
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#262932] lg:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
           <div className="flex w-5 flex-col gap-[6px]">
             <span className={`h-[1.5px] w-full bg-[#C9CCD2] transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`} />
             <span className={`h-[1.5px] w-full bg-[#C9CCD2] ${open ? "opacity-0" : ""}`} />
             <span className={`h-[1.5px] w-[85%] bg-[#C9CCD2] transition-transform ${open ? "-translate-y-[7px] -rotate-45 w-full" : ""}`} />
           </div>
         </button>
+        </div>
       </div>
 
       {open ? (
-        <div className="fixed inset-0 top-16 z-40 bg-[#0A0B0E] lg:hidden">
-          <div className="bio-container flex h-full flex-col gap-2 overflow-y-auto py-6">
+        <div
+          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto border-t border-[#1C1F27] bg-[#0A0B0E] lg:hidden"
+          style={{ top: "var(--site-header-height)" }}
+        >
+          <div className="bio-container flex flex-col gap-1 py-5 pb-8">
             <div>
               <button
                 type="button"
@@ -191,13 +206,6 @@ export function BiohancedNavbar() {
               </Link>
             ))}
             <Link
-              href={BIOHENCED_LINKS.cart}
-              className="py-3 text-[17px] font-medium text-white"
-              onClick={() => setOpen(false)}
-            >
-              Cart ({itemCount})
-            </Link>
-            <Link
               href={BIOHENCED_LINKS.contact}
               className="py-3 text-[17px] font-medium text-[#C9CCD2]"
               onClick={() => setOpen(false)}
@@ -223,6 +231,6 @@ export function BiohancedNavbar() {
           </div>
         </div>
       ) : null}
-    </header>
+    </div>
   );
 }

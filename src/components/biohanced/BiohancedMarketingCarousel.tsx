@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CATALOG_CATEGORIES, getCarouselProducts, medicationHref } from "@/lib/biohanced-catalog";
-import { BiohancedProductVial } from "./BiohancedVialShowcase";
+import {
+  CATALOG_CATEGORIES,
+  catalogImage,
+  getCarouselProducts,
+  medicationHref,
+} from "@/lib/biohanced-catalog";
+import { BiohancedImg } from "./BiohancedImg";
 
 const SLIDE_COPY = [
   {
@@ -51,45 +56,38 @@ export function BiohancedMarketingCarousel() {
   return (
     <section className="bg-bio-white py-14 md:py-20">
       <div className="bio-container">
-        <div className="overflow-hidden rounded-[24px] border border-bio-neutral-200 bg-[#0A0B0E]">
+        <div className="overflow-hidden rounded-[24px] border border-bio-neutral-200 bg-bio-white shadow-[0_8px_32px_rgba(10,11,14,0.06)]">
           <div className="grid lg:grid-cols-2">
-            <div className="relative min-h-[280px] md:min-h-[360px]">
+            <div className="relative min-h-[280px] bg-gradient-to-b from-[#16203A] to-[#0B0B0E] md:min-h-[360px]">
               {products.map((item, i) => (
-                <div
+                <Link
                   key={item.id}
-                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ${
-                    i === index ? "opacity-100" : "opacity-0"
+                  href={medicationHref(item.id)}
+                  className={`absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 md:p-12 ${
+                    i === index ? "opacity-100" : "pointer-events-none opacity-0"
                   }`}
                 >
                   <div
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_50%_40%,rgba(79,123,255,0.28),transparent_72%)]"
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_42%,rgba(79,123,255,0.22),transparent_72%)]"
                     aria-hidden
                   />
-                  <Link
-                    href={medicationHref(item.id)}
-                    className="relative z-10 flex h-full w-full items-end justify-center p-8 pb-6 md:p-12 md:pb-8"
-                  >
-                    <BiohancedProductVial
-                      id={item.id}
-                      name={item.name}
-                      accent={CATALOG_CATEGORIES[item.category].dot}
-                      size="xl"
-                      className="w-full max-w-[320px]"
-                    />
-                  </Link>
-                </div>
+                  <BiohancedImg
+                    src={catalogImage(item.id)}
+                    alt={item.name}
+                    className="relative z-10 max-h-[min(240px,68%)] max-w-[58%] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)]"
+                  />
+                </Link>
               ))}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0A0B0E]/70 via-transparent to-transparent" />
               {product ? (
                 <div className="absolute bottom-6 left-6 z-10 rounded-[10px] border border-[#262932] bg-[#14161A]/90 px-4 py-2">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9AA0A8]">
-                    Featured compound
+                    {CATALOG_CATEGORIES[product.category].name}
                   </p>
                   <p className="text-[15px] font-semibold text-white">{product.name}</p>
                 </div>
               ) : null}
             </div>
-            <div className="flex flex-col justify-center p-8 md:p-12">
+            <div className="flex flex-col justify-center bg-[#0A0B0E] p-8 md:p-12">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
                 {copy.eyebrow}
               </p>

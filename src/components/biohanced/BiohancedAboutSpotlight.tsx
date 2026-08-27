@@ -1,4 +1,6 @@
-import { BiohancedVialShowcase, DEFAULT_VIAL_SHOWCASE } from "./BiohancedVialShowcase";
+import { BiohancedProductCardGrid } from "./BiohancedProductCard";
+
+const SPOTLIGHT_PRODUCTS = ["bpc157", "ghkcu", "retatrutide"];
 
 export function BiohancedAboutSpotlight() {
   return (
@@ -14,7 +16,7 @@ export function BiohancedAboutSpotlight() {
           Every SKU ships as a lyophilized vial with category-coded labeling, third-party purity
           verification, and a published Certificate of Analysis.
         </p>
-        <BiohancedVialShowcase items={DEFAULT_VIAL_SHOWCASE} layout="grid" className="mt-8" />
+        <BiohancedProductCardGrid productIds={SPOTLIGHT_PRODUCTS} columns={3} className="mt-8" />
       </div>
     </section>
   );

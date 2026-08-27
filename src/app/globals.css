@@ -42,6 +42,10 @@
 
 @import "tailwindcss";
 
+:root {
+  --site-header-height: 112px;
+}
+
 @theme {
   /* Biohanced Labs Voltage — mapped onto legacy bio-* utility names */
   --color-bio-neutral-100: #f6f5f2;
