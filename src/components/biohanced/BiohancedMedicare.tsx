@@ -1,6 +1,11 @@
-import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedVialShowcase } from "./BiohancedVialShowcase";
+
+const MEDICARE_VIALS = [
+  { id: "bpc157", name: "BPC-157", category: "recovery" as const },
+  { id: "ghkcu", name: "GHK-Cu", category: "longevity" as const },
+  { id: "retatrutide", name: "Retatrutide", category: "metabolic" as const },
+];
 
 export function BiohancedMedicare() {
   return (
@@ -43,12 +48,8 @@ export function BiohancedMedicare() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[28px] border border-[#CFE9CF] bg-[#0A0B0E] p-4">
-          <BiohancedImg
-            src={BIOHENCED_ASSETS.sections.mockups}
-            alt="Biohanced Labs vial manufacturing mockups"
-            className="h-auto w-full rounded-2xl object-contain"
-          />
+        <div className="relative rounded-[24px] border border-[#CFE9CF] bg-[#EEF7EE] p-4 md:p-5">
+          <BiohancedVialShowcase items={MEDICARE_VIALS} layout="row" />
           <div className="absolute bottom-6 left-6 rounded-[10px] bg-[#B6FF3A] px-5 py-3 text-bio-ink shadow-lg">
             <p className="text-base text-bio-ink/60 line-through">Gray-market imports</p>
             <p className="font-[Archivo,sans-serif] text-[20px] font-black leading-none">

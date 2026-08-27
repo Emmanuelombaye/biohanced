@@ -1,10 +1,9 @@
-import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedVialShowcase } from "./BiohancedVialShowcase";
 
 export function BiohancedApplicationsSection() {
   return (
     <section className="bg-bio-neutral-100 py-14 md:py-20">
-      <div className="bio-container grid items-center gap-10 lg:grid-cols-2">
+      <div className="bio-container grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_1.1fr] lg:gap-14">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2E6BFF]">
             Applications · lab-ready
@@ -16,23 +15,22 @@ export function BiohancedApplicationsSection() {
             From recovery and metabolic studies to longevity and specialty pathways — every compound
             ships lyophilized, documented, and ready for your bench protocol.
           </p>
+          <ul className="mt-6 space-y-2 text-[15px] text-bio-neutral-400">
+            <li className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2E6BFF]" />
+              Six application categories · 17 in-stock SKUs
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#B6FF3A]" />
+              Color-coded caps and labels for fast bench identification
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#8F74F5]" />
+              COA and lot data on every vial
+            </li>
+          </ul>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-[18px] border border-bio-neutral-200 bg-[#0A0B0E]">
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.sections.mockups}
-              alt="Biohanced Labs application mockups"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="overflow-hidden rounded-[18px] border border-bio-neutral-200 bg-[#0A0B0E]">
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.sections.detailMedia}
-              alt="Biohanced Labs vial detail"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
+        <BiohancedVialShowcase layout="bento" />
       </div>
     </section>
   );

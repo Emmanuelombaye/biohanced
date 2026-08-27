@@ -1,6 +1,12 @@
 import { MFG_COMPARISON, MFG_GUARANTEES, MFG_PHASES, MFG_STATS } from "@/lib/biohanced-mfg";
-import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
-import { BiohancedImg } from "./BiohancedImg";
+import { CATALOG_CATEGORIES } from "@/lib/biohanced-catalog";
+import { BiohancedProductVial } from "./BiohancedVialShowcase";
+import { BiohancedVialShowcase } from "./BiohancedVialShowcase";
+
+const TIMELINE_VIALS = [
+  { id: "bpc157", name: "BPC-157", category: "recovery" as const },
+  { id: "ghkcu", name: "GHK-Cu", category: "longevity" as const },
+];
 
 export function BiohancedManufacturingTimeline() {
   return (
@@ -27,12 +33,8 @@ export function BiohancedManufacturingTimeline() {
               ))}
             </ul>
           </div>
-          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200">
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.sections.heroStill}
-              alt="Biohanced Labs manufacturing"
-              className="w-full object-cover"
-            />
+          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 bg-gradient-to-b from-[#16203A] to-[#0A0B0E] p-6">
+            <BiohancedVialShowcase items={TIMELINE_VIALS} layout="row" />
           </div>
         </div>
 
@@ -111,11 +113,13 @@ export function BiohancedManufacturingTimeline() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 max-w-md">
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.sections.vialSingle}
-              alt="Biohanced Labs research vial"
-              className="w-full object-cover"
+          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 bg-gradient-to-b from-[#16203A] to-[#0A0B0E] px-10 py-12">
+            <BiohancedProductVial
+              id="bpc157"
+              name="BPC-157"
+              accent={CATALOG_CATEGORIES.recovery.dot}
+              size="xl"
+              className="mx-auto w-full max-w-[300px]"
             />
           </div>
         </div>

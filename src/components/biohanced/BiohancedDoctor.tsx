@@ -1,5 +1,12 @@
 import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
+import { CATALOG_CATEGORIES } from "@/lib/biohanced-catalog";
 import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedProductVial } from "./BiohancedVialShowcase";
+
+const TIMELINE_VIALS = [
+  { id: "bpc157", name: "BPC-157", category: "recovery" as const },
+  { id: "ghkcu", name: "GHK-Cu", category: "longevity" as const },
+];
 
 export function BiohancedDoctor() {
   return (
@@ -19,11 +26,13 @@ export function BiohancedDoctor() {
         </div>
 
         <article className="overflow-hidden rounded-2xl border border-bio-neutral-200 bg-[#0A0B0E]">
-          <div className="relative min-h-[280px] bg-gradient-to-br from-[#16203A] to-[#0B0D12] p-8">
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.sections.carousel[1]}
-              alt="Biohanced Labs research vials"
-              className="mx-auto max-h-[220px] w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+          <div className="relative min-h-[300px] bg-gradient-to-br from-[#16203A] to-[#0B0B0E] p-6 md:p-10">
+            <BiohancedProductVial
+              id="bpc157"
+              name="BPC-157"
+              accent={CATALOG_CATEGORIES.recovery.dot}
+              size="xl"
+              className="mx-auto w-full max-w-[280px]"
             />
           </div>
           <div className="border-t border-[#262932] p-8">

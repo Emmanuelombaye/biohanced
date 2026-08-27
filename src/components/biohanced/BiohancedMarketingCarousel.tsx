@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
-import { BiohancedImg } from "./BiohancedImg";
+import Link from "next/link";
+import { CATALOG_CATEGORIES, getCarouselProducts, medicationHref } from "@/lib/biohanced-catalog";
+import { BiohancedProductVial } from "./BiohancedVialShowcase";
 
 const SLIDE_COPY = [
   {
@@ -33,15 +34,16 @@ const SLIDE_COPY = [
 ];
 
 export function BiohancedMarketingCarousel() {
-  const slides = BIOHENCED_ASSETS.sections.carousel;
+  const products = getCarouselProducts().slice(0, SLIDE_COPY.length);
   const [index, setIndex] = useState(0);
   const copy = SLIDE_COPY[index] ?? SLIDE_COPY[0];
+  const product = products[index];
 
   const go = (dir: -1 | 1) => {
     setIndex((i) => {
       const next = i + dir;
-      if (next < 0) return slides.length - 1;
-      if (next >= slides.length) return 0;
+      if (next < 0) return products.length - 1;
+      if (next >= products.length) return 0;
       return next;
     });
   };
@@ -52,17 +54,40 @@ export function BiohancedMarketingCarousel() {
         <div className="overflow-hidden rounded-[24px] border border-bio-neutral-200 bg-[#0A0B0E]">
           <div className="grid lg:grid-cols-2">
             <div className="relative min-h-[280px] md:min-h-[360px]">
-              {slides.map((src, i) => (
-                <BiohancedImg
-                  key={src}
-                  src={src}
-                  alt=""
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+              {products.map((item, i) => (
+                <div
+                  key={item.id}
+                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ${
                     i === index ? "opacity-100" : "opacity-0"
                   }`}
-                />
+                >
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_50%_40%,rgba(79,123,255,0.28),transparent_72%)]"
+                    aria-hidden
+                  />
+                  <Link
+                    href={medicationHref(item.id)}
+                    className="relative z-10 flex h-full w-full items-end justify-center p-8 pb-6 md:p-12 md:pb-8"
+                  >
+                    <BiohancedProductVial
+                      id={item.id}
+                      name={item.name}
+                      accent={CATALOG_CATEGORIES[item.category].dot}
+                      size="xl"
+                      className="w-full max-w-[320px]"
+                    />
+                  </Link>
+                </div>
               ))}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0B0E]/80 via-[#0A0B0E]/40 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0A0B0E]/70 via-transparent to-transparent" />
+              {product ? (
+                <div className="absolute bottom-6 left-6 z-10 rounded-[10px] border border-[#262932] bg-[#14161A]/90 px-4 py-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9AA0A8]">
+                    Featured compound
+                  </p>
+                  <p className="text-[15px] font-semibold text-white">{product.name}</p>
+                </div>
+              ) : null}
             </div>
             <div className="flex flex-col justify-center p-8 md:p-12">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
@@ -80,7 +105,7 @@ export function BiohancedMarketingCarousel() {
                   ←
                 </button>
                 <div className="flex gap-2">
-                  {slides.map((_, dot) => (
+                  {products.map((_, dot) => (
                     <button
                       key={dot}
                       type="button"

@@ -20,7 +20,6 @@ import { BiohancedTestimonials } from "./BiohancedTestimonials";
 import { BiohancedApplicationsSection } from "./BiohancedApplicationsSection";
 import { BiohancedMarketingCarousel } from "./BiohancedMarketingCarousel";
 import { BiohancedProductMarquee } from "./BiohancedProductMarquee";
-import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
 
 const CATEGORY_ORDER: CatalogCategory[] = [
   "recovery",
@@ -204,16 +203,9 @@ function ManufacturingBrief() {
               className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-5 text-center"
             >
               <p className="font-[Archivo,sans-serif] text-[32px] font-black text-bio-ink">{s.label}</p>
-                  <p className="font-bio-greycliff mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
+              <p className="font-bio-greycliff mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
             </div>
           ))}
-        </div>
-        <div className="mt-8 overflow-hidden rounded-[18px] border border-bio-neutral-200">
-          <BiohancedImg
-            src={BIOHENCED_ASSETS.sections.featured}
-            alt="Biohanced Labs featured vials"
-            className="w-full object-cover"
-          />
         </div>
       </div>
     </section>

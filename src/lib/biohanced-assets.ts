@@ -65,13 +65,11 @@ export const BIOHENCED_ASSETS = {
   },
 } as const;
 
-/** Footer + credential badge row — every badge asset in public/biohanced */
+/** Footer credential badges — one mark per credential (no duplicate GMP / USA icons) */
 export const FOOTER_BADGE_ASSETS = [
   { src: BIOHENCED_ASSETS.badges.usaPng, alt: "Made in the USA" },
   { src: BIOHENCED_ASSETS.badges.gmpPng, alt: "GMP certified" },
-  { src: BIOHENCED_ASSETS.badges.gmpIcon, alt: "GMP certified icon" },
   { src: BIOHENCED_ASSETS.badges.markReversed, alt: "Biohanced Labs mark" },
-  { src: BIOHENCED_ASSETS.badges.usaIcon, alt: "Made in the USA icon" },
   { src: BIOHENCED_ASSETS.badges.stamp, alt: "Research-grade quality stamp" },
 ] as const;
 
