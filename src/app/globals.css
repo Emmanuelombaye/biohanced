@@ -1,5 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@500;600;700;800;900&display=swap");
 
+@font-face {
+  font-family: "Greycliff";
+  src: url("/biohanced/fonts/greycliff-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greycliff";
+  src: url("/biohanced/fonts/greycliff-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greycliff";
+  src: url("/biohanced/fonts/greycliff-semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quincy";
+  src: url("/biohanced/fonts/quincy-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quincy";
+  src: url("/biohanced/fonts/quincy-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -28,6 +68,8 @@
 
   --font-bio-serif: "Archivo", sans-serif;
   --font-bio-sans: "Space Grotesk", sans-serif;
+  --font-bio-greycliff: "Greycliff", "Space Grotesk", sans-serif;
+  --font-bio-quincy: "Quincy", "Archivo", serif;
 }
 
 @layer base {
@@ -81,6 +123,29 @@
 
   .bio-cta {
     @apply bg-bio-volt font-semibold text-bio-ink transition-[filter,transform] duration-200 hover:brightness-[1.03] active:scale-[0.98];
+  }
+
+  .font-bio-greycliff {
+    font-family: var(--font-bio-greycliff);
+  }
+
+  .font-bio-greycliff-medium {
+    font-family: var(--font-bio-greycliff);
+    font-weight: 500;
+  }
+
+  .font-bio-greycliff-semibold {
+    font-family: var(--font-bio-greycliff);
+    font-weight: 600;
+  }
+
+  .font-bio-quincy {
+    font-family: var(--font-bio-quincy);
+  }
+
+  .font-bio-quincy-italic {
+    font-family: var(--font-bio-quincy);
+    font-style: italic;
   }
 }
 

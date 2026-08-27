@@ -5,40 +5,48 @@ export function BiohancedDoctor() {
   return (
     <section className="bg-bio-neutral-100 py-16 md:py-32 md:pb-16">
       <div className="bio-container grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-        <h2 className="bio-headline max-w-[592px] text-[29px] leading-[1.1] text-bio-ink md:text-[48px] md:leading-[52.8px]">
-          Found&apos;s program is designed by leading doctors in obesity medicine
-        </h2>
-
-        <article
-          className="rounded-xl px-10 pt-12 pb-14"
-          style={{
-            backgroundImage: "linear-gradient(201deg, #a8beb7, #d8ece4)",
-          }}
-        >
-          <BiohancedImg
-            src={BIOHENCED_ASSETS.remote.quoteLight}
-            alt=""
-            width={96}
-            height={72}
-            className="mb-6 h-9 w-auto object-contain"
-          />
-          <p className="text-[22px] leading-snug text-bio-sage-500 md:text-[32px] md:leading-10 lg:text-[40px] lg:leading-[48px]">
-            As Found&apos;s Senior Medical Advisor, I help design the clinical protocols that guide
-            the medical care Found&apos;s members receive—care that is guided by the latest
-            advancements in obesity medicine.
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2E6BFF]">
+            Science · verified
           </p>
-          <div className="mt-10 flex items-center justify-end gap-4">
-            <div className="text-right">
-              <p className="text-[22px] font-semibold text-bio-sage-500">Dr. Kumar</p>
-              <p className="text-sm text-bio-sage-500/80">Senior Medical Advisor</p>
-            </div>
+          <h2 className="bio-headline mt-4 max-w-[592px] text-[29px] leading-[1.1] text-bio-ink md:text-[48px] md:leading-[52.8px]">
+            Every batch documented. Every vial traceable.
+          </h2>
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-bio-neutral-400">
+            US-synthesized peptides with third-party HPLC and mass-spec verification — the
+            transparency research labs expect from a serious supplier.
+          </p>
+        </div>
+
+        <article className="overflow-hidden rounded-2xl border border-bio-neutral-200 bg-[#0A0B0E]">
+          <div className="relative min-h-[280px] bg-gradient-to-br from-[#16203A] to-[#0B0D12] p-8">
             <BiohancedImg
-              src={BIOHENCED_ASSETS.remote.doctor}
-              alt="Dr. Kumar"
-              width={96}
-              height={96}
-              className="h-24 w-24 rounded-full object-cover object-center"
+              src={BIOHENCED_ASSETS.sections.carousel[1]}
+              alt="Biohanced Labs research vials"
+              className="mx-auto max-h-[220px] w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
             />
+          </div>
+          <div className="border-t border-[#262932] p-8">
+            <BiohancedImg
+              src={BIOHENCED_ASSETS.badges.stamp}
+              alt=""
+              width={120}
+              height={48}
+              className="mb-6 h-10 w-auto object-contain opacity-90"
+            />
+            <p className="text-[20px] leading-snug text-[#C9CCD2] md:text-[24px] md:leading-8">
+              We cross-check every release with independent HPLC and mass spectrometry — then publish
+              the COA so your lab never has to guess what is in the vial.
+            </p>
+            <div className="mt-8 flex items-center justify-between gap-4 border-t border-[#262932] pt-6">
+              <div>
+                <p className="text-[18px] font-semibold text-white">Dr. Elias Renner</p>
+                <p className="text-sm text-[#9AA0A8]">Chief Science Officer · Biohanced Labs</p>
+              </div>
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#4F7BFF] via-[#8F74F5] to-[#B6EE6C] font-[Archivo,sans-serif] text-lg font-black text-white">
+                ER
+              </div>
+            </div>
           </div>
         </article>
       </div>

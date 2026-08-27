@@ -1,44 +1,51 @@
 "use client";
 
 import Link from "next/link";
+import { BIOHENCED_ASSETS, FOOTER_BADGE_ASSETS } from "@/lib/biohanced-assets";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
 import { BiohancedVoltageLogo } from "./BiohancedVoltageLogo";
 
-const PROGRAM_LINKS = [
-  { label: "Recovery peptides", href: BIOHENCED_LINKS.allMedications },
-  { label: "GH secretagogues", href: BIOHENCED_LINKS.allMedications },
-  { label: "Metabolic", href: BIOHENCED_LINKS.allMedications },
-  { label: "Longevity", href: BIOHENCED_LINKS.allMedications },
-  { label: "Specialty", href: BIOHENCED_LINKS.allMedications },
-  { label: "Essentials", href: BIOHENCED_LINKS.allMedications },
+const SHOP_LINKS = [
+  { label: "Catalog", href: BIOHENCED_LINKS.catalog },
+  { label: "Lab results", href: BIOHENCED_LINKS.labResults },
+  { label: "Cart", href: BIOHENCED_LINKS.cart },
 ];
 
 const COMPANY_LINKS = [
-  { label: "Who we are", href: BIOHENCED_LINKS.about },
-  { label: "Quality & COAs", href: BIOHENCED_LINKS.disclaimers },
+  { label: "About", href: BIOHENCED_LINKS.about },
+  { label: "Manufacturing", href: BIOHENCED_LINKS.manufacturing },
+  { label: "Quality", href: BIOHENCED_LINKS.disclaimers },
+];
+
+const SUPPORT_LINKS = [
+  { label: "FAQ", href: BIOHENCED_LINKS.faqPage },
+  { label: "Shipping", href: BIOHENCED_LINKS.faqPage },
+  { label: "Pricing guide", href: BIOHENCED_LINKS.pricingGuide, external: true },
   { label: "Contact", href: BIOHENCED_LINKS.contactPage },
-  { label: "My account", href: BIOHENCED_LINKS.login, external: true },
 ];
 
 const LEGAL_ROW_1 = [
   { label: "Privacy Policy", href: BIOHENCED_LINKS.privacy },
-  { label: "State-Privacy Law Addendum", href: BIOHENCED_LINKS.statePrivacy },
-  { label: "Notice of Privacy Practices", href: BIOHENCED_LINKS.npp },
-  { label: "Important safety information", href: BIOHENCED_LINKS.disclaimers },
-  { label: "Telehealth consent", href: BIOHENCED_LINKS.telehealth },
+  { label: "State privacy addendum", href: BIOHENCED_LINKS.statePrivacy },
+  { label: "Notice of privacy practices", href: BIOHENCED_LINKS.npp },
+  { label: "Disclaimers", href: BIOHENCED_LINKS.disclaimers },
 ];
 
 const LEGAL_ROW_2 = [
-  { label: "Payment & billing consent", href: BIOHENCED_LINKS.billing },
+  { label: "Payment & billing", href: BIOHENCED_LINKS.billing },
   { label: "Refund policy", href: BIOHENCED_LINKS.refund },
   { label: "Terms of service", href: BIOHENCED_LINKS.terms },
-  { label: "SMS terms of service", href: BIOHENCED_LINKS.sms },
 ];
 
-const LEGAL_ROW_3 = [
-  { label: "Programs", href: BIOHENCED_LINKS.programPage },
-  { label: "Tools", href: BIOHENCED_LINKS.tools },
-  { label: "Help center", href: BIOHENCED_LINKS.help, external: true },
+const FOOTER_LEGAL_BLOCKS = [
+  "By purchasing from Biohanced Labs, you affirm that you are at least 21 years of age and a licensed professional or qualified researcher purchasing solely for laboratory research use.",
+  "Products offered are research-use-only (RUO) or investigational-use-only (IUO) materials exempt from FDA clearance under 21 CFR § 809.10(c)(2) when used for research purposes.",
+  "Biohanced Labs is not a 503A or 503B compounding pharmacy and does not manufacture or dispense drug products for clinical use.",
+  "Products are not drugs, dietary supplements, food, or cosmetics. They are not intended for human or animal consumption, diagnosis, treatment, cure, or prevention of any disease.",
+  "Purchasers are solely responsible for compliance with the Controlled Substances Act, anti-doping regulations, and institutional research protocols.",
+  "Products may not be shipped to certain jurisdictions including New York, Massachusetts, and Connecticut. International purchasers are responsible for import/export compliance.",
+  "WARNING: This product can expose you to chemicals including peptides and solvents, which are known to the State of California to cause reproductive harm. For more information go to www.P65Warnings.ca.gov.",
+  "Biohanced Labs disclaims all liability for misuse, improper handling, or use contrary to research-only labeling. Limited to the purchase price of goods supplied.",
 ];
 
 function FooterLink({
@@ -117,76 +124,66 @@ export function BiohancedFooter() {
       </div>
 
       <div className="bio-container relative z-10 py-14 md:py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_1fr_1fr] lg:gap-10">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_1fr_1fr_1fr] lg:gap-8">
           <div>
             <Link href={BIOHENCED_LINKS.home} className="inline-block">
               <BiohancedVoltageLogo size={44} />
             </Link>
-            <div className="mt-8 space-y-2 font-[Space_Grotesk,sans-serif] text-[15px]">
-              <p>
-                <FooterLink href={BIOHENCED_LINKS.home}>Biohanced Labs</FooterLink>
-              </p>
-              <p>
-                <FooterLink href={BIOHENCED_LINKS.contactPage}>Contact support</FooterLink>
-              </p>
-            </div>
+            <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-[#9AA0A8]">
+              US-synthesized research-grade peptides. For research use only — not for human
+              consumption.
+            </p>
             <div className="mt-8">
               <Link
-                href={BIOHENCED_LINKS.getStarted}
-                target="_blank"
-                rel="noreferrer"
+                href={BIOHENCED_LINKS.browseCatalog}
                 className="inline-flex items-center justify-center rounded-[10px] bg-[#B6FF3A] px-7 py-3.5 text-[15px] font-semibold text-[#0A0B0E] transition-[filter,transform] duration-200 hover:brightness-[1.03] active:scale-[0.98]"
               >
-                Get started
+                Browse catalog
               </Link>
             </div>
           </div>
 
-          <FooterColumn title="Programs" links={PROGRAM_LINKS} />
+          <FooterColumn title="Shop" links={SHOP_LINKS} />
           <FooterColumn title="Company" links={COMPANY_LINKS} />
+          <FooterColumn title="Support" links={SUPPORT_LINKS} />
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          <img
-            src="/biohanced/voltage/logos/badge-usa-real.png"
-            alt="Compounded by licensed pharmacies in the USA"
-            className="h-14 w-auto object-contain md:h-16"
-          />
-          <img
-            src="/biohanced/voltage/logos/badge-gmp.png"
-            alt="GMP certified"
-            className="h-14 w-auto object-contain md:h-16"
-          />
-          <img
-            src="/biohanced/voltage/logos/stamp-on-green.png"
-            alt="Research-grade quality stamp"
-            className="h-14 w-auto object-contain md:h-16"
-          />
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          {FOOTER_BADGE_ASSETS.map((badge) => (
+            <img
+              key={badge.src}
+              src={badge.src}
+              alt={badge.alt}
+              className="h-12 w-auto object-contain md:h-14"
+            />
+          ))}
         </div>
 
         <p className="mx-auto mt-10 max-w-3xl text-center font-[Space_Grotesk,sans-serif] text-[13px] leading-relaxed text-[#9AA0A8]">
-          Products are for research use only and are not for human consumption. Medical and
-          telehealth services, where offered, are provided by licensed professionals employed by or
-          contracted with independent entities. Biohanced Labs provides administrative support and
-          does not replace advice from your physician. Information on this site is educational and
-          not a substitute for professional medical advice.
+          FOR RESEARCH USE ONLY · NOT FOR USE IN DIAGNOSTIC PROCEDURES · 21 CFR § 809.10(c)(2)
         </p>
+
+        <div className="mx-auto mt-8 max-w-4xl space-y-4 text-center font-bio-greycliff text-[12px] leading-relaxed text-[#9AA0A8]">
+          {FOOTER_LEGAL_BLOCKS.map((block) => (
+            <p key={block}>{block}</p>
+          ))}
+        </div>
 
         <div className="mt-10 space-y-4 border-t border-[#1C1F27] pt-8">
           <LegalRow links={LEGAL_ROW_1} />
           <LegalRow links={LEGAL_ROW_2} />
-          <LegalRow links={LEGAL_ROW_3} />
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-[#1C1F27] pt-8 md:flex-row">
           <p className="font-[Space_Grotesk,sans-serif] text-[12px] text-[#9AA0A8]">
-            © {new Date().getFullYear()} Biohanced Labs. All rights reserved.
+            © {new Date().getFullYear()} Biohanced Labs · For research use only · Not for human
+            consumption
           </p>
-          <div className="flex items-center gap-5 font-[Space_Grotesk,sans-serif] text-[13px]">
-            <FooterLink href={BIOHENCED_LINKS.social.facebook} external>Facebook</FooterLink>
-            <FooterLink href={BIOHENCED_LINKS.social.instagram} external>Instagram</FooterLink>
-            <FooterLink href={BIOHENCED_LINKS.social.linkedin} external>LinkedIn</FooterLink>
-          </div>
+          <p className="font-[Space_Grotesk,sans-serif] text-[13px] text-[#9AA0A8]">
+            <a href={BIOHENCED_LINKS.email} className="text-[#C9CCD2] hover:text-white">
+              research@biohancedlabs.com
+            </a>
+          </p>
         </div>
       </div>
     </footer>

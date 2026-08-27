@@ -1,19 +1,24 @@
-import Link from "next/link";
-import { resolveSitePage } from "@/lib/biohanced-site-pages";
-import { BiohancedCalculator } from "./BiohancedCalculator";
+import { BiohancedAboutSpotlight } from "./BiohancedAboutSpotlight";
+import { BiohancedCheckout } from "./BiohancedCheckout";
 import { BiohancedContactForm } from "./BiohancedContactForm";
 import { BiohancedDoctor } from "./BiohancedDoctor";
 import { BiohancedFaq } from "./BiohancedFaq";
-import { BiohancedInsurance } from "./BiohancedInsurance";
-import { BiohancedMedications } from "./BiohancedMedications";
-import { BiohancedMicrodose } from "./BiohancedMicrodose";
+import { BiohancedCart } from "./BiohancedCart";
+import { BiohancedLabResults } from "./BiohancedLabResults";
+import { BiohancedManufacturingTimeline } from "./BiohancedManufacturingTimeline";
+import { BiohancedMedicare } from "./BiohancedMedicare";
+import { BiohancedOrderConfirm } from "./BiohancedOrderConfirm";
+import Link from "next/link";
+import { resolveSitePage } from "@/lib/biohanced-site-pages";
 import { BiohancedCtaBand, BiohancedPageHero, BiohancedPageSection } from "./BiohancedPageChrome";
-import { BiohancedTestimonials } from "./BiohancedTestimonials";
-import { BiohancedTimeline } from "./BiohancedTimeline";
 
 export function BiohancedInnerPage({ slug }: { slug: string[] }) {
   const page = resolveSitePage(slug);
   if (!page) return null;
+
+  if (page.extras?.includes("orderConfirm")) {
+    return <BiohancedOrderConfirm />;
+  }
 
   return (
     <>
@@ -34,7 +39,7 @@ export function BiohancedInnerPage({ slug }: { slug: string[] }) {
             <ul className="space-y-2">
               {section.links.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-medium text-bio-sage-500 underline">
+                  <Link href={item.href} className="font-medium text-[#2E6BFF] underline">
                     {item.label}
                   </Link>
                 </li>
@@ -46,20 +51,14 @@ export function BiohancedInnerPage({ slug }: { slug: string[] }) {
           ) : null}
         </BiohancedPageSection>
       ))}
-      {page.calculator ? (
-        <section className="bg-bio-white pb-16">
-          <div className="bio-container">
-            <BiohancedCalculator kind={page.calculator} />
-          </div>
-        </section>
-      ) : null}
-      {page.extras?.includes("timeline") ? <BiohancedTimeline /> : null}
-      {page.extras?.includes("medications") ? <BiohancedMedications /> : null}
-      {page.extras?.includes("microdose") ? <BiohancedMicrodose /> : null}
-      {page.extras?.includes("insurance") ? <BiohancedInsurance /> : null}
-      {page.extras?.includes("testimonials") ? <BiohancedTestimonials /> : null}
+      {page.extras?.includes("aboutSpotlight") ? <BiohancedAboutSpotlight /> : null}
+      {page.extras?.includes("mfgTimeline") ? <BiohancedManufacturingTimeline /> : null}
+      {page.extras?.includes("medicare") ? <BiohancedMedicare /> : null}
       {page.extras?.includes("doctor") ? <BiohancedDoctor /> : null}
       {page.extras?.includes("faq") ? <BiohancedFaq /> : null}
+      {page.extras?.includes("labResults") ? <BiohancedLabResults /> : null}
+      {page.extras?.includes("cart") ? <BiohancedCart /> : null}
+      {page.extras?.includes("checkout") ? <BiohancedCheckout /> : null}
       {page.hideCta ? null : <BiohancedCtaBand />}
     </>
   );

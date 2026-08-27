@@ -1,64 +1,58 @@
 import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
+import { BiohancedImg } from "./BiohancedImg";
 
 export function BiohancedMedicare() {
   return (
-    <section id="medicare" className="bg-bio-mint py-16 md:py-[104px] text-[#162a29]">
+    <section id="medicare" className="bg-[#EEF7EE] py-16 md:py-[104px] text-[#0A0B0E]">
       <div className="bio-container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="text-sm font-bold tracking-[0.08em] text-[#162a29] uppercase">
-            Now serving ages 65–75
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#1F9E6B]">
+            Manufacturing · USA
           </p>
-          <h2 className="bio-headline mt-4 max-w-[560px] text-[32px] leading-[1.2] text-[#162a29] md:text-[40px] md:leading-[48px]">
-            Get Wegovy<sup className="text-[0.45em]">®</sup>, Foundayo
-            <sup className="text-[0.45em]">®</sup>, or Zepbound
-            <sup className="text-[0.45em]">®</sup> for as little as $50/mo through Medicare
+          <h2 className="bio-headline mt-4 max-w-[560px] text-[32px] leading-[1.15] md:text-[40px] md:leading-[1.12]">
+            From synthesis to sealed vial — verified in twelve steps
           </h2>
-          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-bio-sage-400">
-            The Medicare GLP-1 Bridge Program helps eligible Part D members access brand-name GLP-1
-            medications for as little as $50/month.
+          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-bio-neutral-400">
+            US-synthesized, HPLC-purified, and third-party tested. Every batch ships with a
+            Certificate of Analysis and cold-chain handling.
           </p>
 
-          <ul className="mt-6 space-y-3 text-base text-[#162a29]">
+          <ul className="mt-6 space-y-3 text-base">
             <li className="flex items-center gap-3">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#162a29]" />
-              We handle insurance paperwork
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#B6FF3A]" />
+              ≥99% purity by HPLC, identity confirmed by mass spec
             </li>
             <li className="flex items-center gap-3">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#162a29]" />
-              Ongoing clinician support
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#B6FF3A]" />
+              COA published for every lot
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#B6FF3A]" />
+              Discreet packaging with tracking on every order
             </li>
           </ul>
 
           <div className="mt-8">
             <a
-              href={BIOHENCED_LINKS.medicarePage}
-              className="inline-flex items-center justify-center rounded-full bg-bio-grass px-[42px] py-4 text-[15px] font-medium text-bio-sage-500 transition-opacity hover:opacity-90"
+              href={BIOHENCED_LINKS.manufacturing}
+              className="bio-cta inline-flex items-center justify-center rounded-[10px] px-[42px] py-4 text-[15px]"
             >
-              Learn More
+              View quality standards
             </a>
           </div>
-
-          <p className="mt-6 max-w-xl text-[11px] leading-relaxed text-bio-neutral-300">
-            For eligible Medicare Part D members with a qualifying GLP-1 prescription for weight
-            management. This is not a guarantee of coverage. Actual eligibility is determined by the
-            Medicare GLP-1 Bridge program&apos;s criteria. The $50 copay does not count toward your
-            Part D deductible or out-of-pocket maximum, and low-income subsidies (LIS/Extra Help) do
-            not apply. Found is not affiliated with or endorsed by CMS.
-          </p>
         </div>
 
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-[560px] overflow-hidden rounded-[28px]">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${BIOHENCED_ASSETS.remote.medicareFrame})` }}
-            role="img"
-            aria-label="Medicare members"
+        <div className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[28px] border border-[#CFE9CF] bg-[#0A0B0E] p-4">
+          <BiohancedImg
+            src={BIOHENCED_ASSETS.sections.mockups}
+            alt="Biohanced Labs vial manufacturing mockups"
+            className="h-auto w-full rounded-2xl object-contain"
           />
-          <div className="absolute bottom-6 left-6 rounded-[10px] bg-bio-volt px-5 py-3 text-bio-ink shadow-lg">
-            <p className="text-base text-bio-ink/60 line-through">$1,000+</p>
-            <p className="font-bio-sans text-[20px] leading-none font-semibold text-bio-ink">
-              $50/mo
+          <div className="absolute bottom-6 left-6 rounded-[10px] bg-[#B6FF3A] px-5 py-3 text-bio-ink shadow-lg">
+            <p className="text-base text-bio-ink/60 line-through">Gray-market imports</p>
+            <p className="font-[Archivo,sans-serif] text-[20px] font-black leading-none">
+              US verified
             </p>
           </div>
         </div>
