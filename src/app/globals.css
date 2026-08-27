@@ -175,6 +175,22 @@
   .bio-scroll-rail > * {
     scroll-snap-stop: normal;
   }
+
+  /* Product card — quiet luxury retail */
+  .bio-product-card {
+    @apply overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white;
+    box-shadow: 0 1px 2px rgba(10, 11, 14, 0.04);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+  }
+
+  .bio-product-card:hover {
+    transform: translateY(-2px);
+    border-color: #d8d6d0;
+    box-shadow: 0 16px 40px rgba(10, 11, 14, 0.08);
+  }
 }
 
 @keyframes bio-marquee {

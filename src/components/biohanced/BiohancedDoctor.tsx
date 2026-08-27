@@ -1,8 +1,12 @@
+import Link from "next/link";
 import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
+import { CATALOG_CATEGORIES, catalogImage, medicationHref } from "@/lib/biohanced-catalog";
 import { BiohancedImg } from "./BiohancedImg";
-import { BiohancedProductCard } from "./BiohancedProductCard";
+import { BiohancedVialStage } from "./BiohancedVialStage";
 
 export function BiohancedDoctor() {
+  const cat = CATALOG_CATEGORIES.recovery;
+
   return (
     <section className="bg-bio-neutral-100 py-16 md:py-32 md:pb-16">
       <div className="bio-container grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
@@ -20,12 +24,15 @@ export function BiohancedDoctor() {
         </div>
 
         <article className="overflow-hidden rounded-2xl border border-bio-neutral-200 bg-bio-white shadow-[0_8px_32px_rgba(10,11,14,0.06)]">
-          <BiohancedProductCard
-            productId="bpc157"
-            imageHeight="lg"
-            showMeta={false}
-            className="rounded-none border-0 shadow-none hover:translate-y-0 hover:shadow-none"
-          />
+          <Link href={medicationHref("bpc157")} className="group block">
+            <BiohancedVialStage
+              src={catalogImage("bpc157")}
+              alt="BPC-157"
+              accent={cat.dot}
+              size="lg"
+              className="rounded-none"
+            />
+          </Link>
           <div className="border-t border-bio-neutral-200 p-8">
             <BiohancedImg
               src={BIOHENCED_ASSETS.badges.stamp}

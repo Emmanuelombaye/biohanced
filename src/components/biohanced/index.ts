@@ -31,4 +31,4 @@ export { BiohancedVoltageLogo } from "./BiohancedVoltageLogo";
 export { BiohancedProductMarquee } from "./BiohancedProductMarquee";
 export { BiohancedCatalogGrid } from "./BiohancedCatalogGrid";
 export { BiohancedProductCard, BiohancedProductCardGrid } from "./BiohancedProductCard";
-export { BiohancedVialStage } from "./BiohancedVialStage";
+export { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";

@@ -74,7 +74,8 @@ export function BiohancedMarketingCarousel() {
                       alt={item.name}
                       accent={accent}
                       size="lg"
-                      className="h-full min-h-[300px] md:min-h-[380px] rounded-none"
+                      fill
+                      className="rounded-none"
                     />
                   </Link>
                 );

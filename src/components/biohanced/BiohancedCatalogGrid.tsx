@@ -56,7 +56,7 @@ export function BiohancedCatalogGrid({ categoryParam }: { categoryParam?: string
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
             <article key={product.id} className="flex flex-col">
-              <BiohancedProductCard productId={product.id} showPrice showMeta />
+              <BiohancedProductCard productId={product.id} showPrice />
               <button
                 type="button"
                 onClick={() => quickAdd(product)}

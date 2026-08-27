@@ -6,10 +6,7 @@ export const metadata: Metadata = {
   description:
     "US-synthesized research-grade peptides, third-party verified by HPLC & mass spectrometry. Biology, upgraded.",
   icons: {
-    icon: [
-      { url: "/biohanced/favicon.png", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
+    icon: "/biohanced/favicon.png",
     shortcut: "/biohanced/favicon.png",
     apple: "/biohanced/apple-touch-icon.png",
   },

@@ -45,8 +45,9 @@ export function BiohancedManufacturingTimeline() {
           <BiohancedProductCardGrid
             productIds={["bpc157", "ghkcu"]}
             columns={2}
-            imageHeight="sm"
             className="mt-5 max-w-2xl"
+            mobileRail={false}
+            compact
           />
         </div>
 

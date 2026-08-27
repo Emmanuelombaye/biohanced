@@ -316,7 +316,7 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
                 alt={`${product.name} research vial`}
                 accent={CATALOG_CATEGORIES[product.category].dot}
                 size="lg"
-                className="min-h-[300px] md:min-h-[360px] rounded-none"
+                className="rounded-t-[20px]"
               />
               <div className="flex justify-between gap-4 border-t border-[#f0eeea] bg-bio-neutral-100 px-5 py-4 text-sm">
                 <div>
