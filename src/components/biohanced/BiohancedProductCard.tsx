@@ -5,7 +5,7 @@ import {
   getCatalogProduct,
   medicationHref,
 } from "@/lib/biohanced-catalog";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedVialStage } from "./BiohancedVialStage";
 
 type ProductCardProps = {
   productId: string;
@@ -13,70 +13,76 @@ type ProductCardProps = {
   imageHeight?: "sm" | "md" | "lg";
   showMeta?: boolean;
   showPrice?: boolean;
+  /** Mini strip card — vial + name only */
+  variant?: "default" | "mini";
 };
 
-const IMAGE_HEIGHT = {
-  sm: "h-[120px] md:h-[132px]",
-  md: "h-[148px] md:h-[160px]",
-  lg: "h-[180px] md:h-[200px]",
-} as const;
-
-/** Found-style catalog card — white shell, dark image well, consistent vial scale */
+/** Premium catalog card — studio-lit single vial on warm white (client mockup style) */
 export function BiohancedProductCard({
   productId,
   className = "",
   imageHeight = "md",
   showMeta = true,
   showPrice = false,
+  variant = "default",
 }: ProductCardProps) {
   const product = getCatalogProduct(productId);
   if (!product) return null;
 
   const cat = CATALOG_CATEGORIES[product.category];
+  const isMini = variant === "mini";
 
   return (
     <Link
       href={medicationHref(product.id)}
-      className={`group flex flex-col overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(10,11,14,0.1)] ${className}`}
+      className={`group flex flex-col overflow-hidden rounded-[20px] border border-[#e8e6e1] bg-bio-white shadow-[0_1px_2px_rgba(10,11,14,0.04),0_14px_40px_rgba(10,11,14,0.06)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-[#d8d6d0] hover:shadow-[0_20px_48px_rgba(10,11,14,0.1)] ${className}`}
     >
-      <div
-        className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#16203A] to-[#0B0B0E] ${IMAGE_HEIGHT[imageHeight]}`}
-      >
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_42%,rgba(79,123,255,0.2),transparent_70%)]"
-          aria-hidden
-        />
-        <BiohancedImg
-          src={catalogImage(product.id)}
-          alt={product.name}
-          className="relative z-10 max-h-[76%] max-w-[58%] object-contain object-bottom drop-shadow-[0_16px_32px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-[1.03]"
-        />
-      </div>
-      {showMeta ? (
-        <div className="flex flex-1 flex-col p-4">
-          <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-bio-neutral-400">
-            <span
-              className="h-1.5 w-1.5 shrink-0 rounded-full"
-              style={{ backgroundColor: cat.dot }}
-              aria-hidden
-            />
-            <span className="truncate">{cat.name}</span>
+      {!isMini ? (
+        <div className="flex items-center gap-2 px-4 pt-4">
+          <span
+            className="h-2 w-2 shrink-0 rounded-full ring-2 ring-white"
+            style={{ backgroundColor: cat.dot, boxShadow: `0 0 10px ${cat.dot}55` }}
+            aria-hidden
+          />
+          <span className="truncate text-[10px] font-semibold uppercase tracking-[0.16em] text-bio-neutral-400">
+            {cat.name}
           </span>
-          <p className="mt-2 font-[Archivo,sans-serif] text-[18px] font-black leading-tight text-bio-ink md:text-[20px]">
+        </div>
+      ) : null}
+
+      <BiohancedVialStage
+        src={catalogImage(product.id)}
+        alt={product.name}
+        accent={cat.dot}
+        size={isMini ? "sm" : imageHeight}
+        className={`${isMini ? "mx-1 mt-1 rounded-[12px]" : "mx-2 mt-1 rounded-[14px]"}`}
+      />
+
+      {isMini ? (
+        <p className="px-3 pb-3 text-center text-[11px] font-semibold text-bio-ink">{product.name}</p>
+      ) : null}
+
+      {showMeta && !isMini ? (
+        <div className="flex flex-1 flex-col border-t border-[#f0eeea] px-4 pb-4 pt-3">
+          <p className="font-[Archivo,sans-serif] text-[19px] font-black leading-tight tracking-[-0.02em] text-bio-ink md:text-[21px]">
             {product.name}
           </p>
           {product.doseLabel ? (
-            <p className="mt-1 text-[13px] text-bio-neutral-400">
-              {product.doseLabel} · {product.purity}
+            <p className="mt-1.5 text-[13px] leading-relaxed text-bio-neutral-400">
+              {product.doseLabel}
+              <span className="mx-1.5 text-[#d8d6d0]">·</span>
+              <span className="font-medium text-[#1F9E6B]">{product.purity}</span>
             </p>
           ) : null}
           {showPrice ? (
-            <div className="mt-3 flex items-center justify-between">
-              <span className="font-semibold text-bio-ink">From ${product.priceFrom}</span>
-              <span className="text-sm font-semibold text-[#1F9E6B]">{product.purity}</span>
+            <div className="mt-4 flex items-center justify-between border-t border-[#f0eeea] pt-3">
+              <span className="text-[15px] font-semibold text-bio-ink">From ${product.priceFrom}</span>
+              <span className="rounded-full bg-[#eef7ee] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#1F9E6B]">
+                In stock
+              </span>
             </div>
           ) : (
-            <p className="mt-3 text-[13px] font-semibold text-[#2E6BFF] group-hover:underline">
+            <p className="mt-3 text-[13px] font-medium text-[#2E6BFF] transition-colors group-hover:text-bio-ink">
               View compound →
             </p>
           )}
@@ -91,12 +97,45 @@ export function BiohancedProductCardGrid({
   columns = 3,
   imageHeight = "md",
   className = "",
+  mobileRail = true,
+  showPrice = false,
 }: {
   productIds: string[];
   columns?: 2 | 3 | 4;
   imageHeight?: "sm" | "md" | "lg";
   className?: string;
+  mobileRail?: boolean;
+  showPrice?: boolean;
 }) {
+  if (mobileRail) {
+    return (
+      <div className={`bio-scroll-rail -mx-6 px-6 md:mx-0 md:px-0 ${className}`}>
+        <div
+          className={`flex gap-4 overflow-x-auto pb-1 snap-x snap-mandatory md:grid md:gap-5 md:overflow-visible ${
+            columns === 2
+              ? "md:grid-cols-2"
+              : columns === 4
+                ? "md:grid-cols-2 lg:grid-cols-4"
+                : "md:grid-cols-2 lg:grid-cols-3"
+          }`}
+        >
+          {productIds.map((id) => (
+            <div
+              key={id}
+              className="w-[min(292px,82vw)] shrink-0 snap-center md:w-auto md:shrink"
+            >
+              <BiohancedProductCard
+                productId={id}
+                imageHeight={imageHeight}
+                showPrice={showPrice}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   const colClass =
     columns === 2
       ? "grid-cols-1 sm:grid-cols-2"
@@ -107,7 +146,7 @@ export function BiohancedProductCardGrid({
   return (
     <div className={`grid gap-4 md:gap-5 ${colClass} ${className}`}>
       {productIds.map((id) => (
-        <BiohancedProductCard key={id} productId={id} imageHeight={imageHeight} />
+        <BiohancedProductCard key={id} productId={id} imageHeight={imageHeight} showPrice={showPrice} />
       ))}
     </div>
   );

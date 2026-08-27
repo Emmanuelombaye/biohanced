@@ -14,7 +14,7 @@ import {
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
 import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedContactForm } from "./BiohancedContactForm";
-import { BiohancedProductCard } from "./BiohancedProductCard";
+import { BiohancedProductCardGrid } from "./BiohancedProductCard";
 import { BiohancedTestimonials } from "./BiohancedTestimonials";
 import { BiohancedApplicationsSection } from "./BiohancedApplicationsSection";
 import { BiohancedMarketingCarousel } from "./BiohancedMarketingCarousel";
@@ -77,11 +77,14 @@ function FeaturedProducts() {
             View all →
           </Link>
         </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <BiohancedProductCard key={product.id} productId={product.id} showPrice />
-          ))}
-        </div>
+        <BiohancedProductCardGrid
+          productIds={products.map((p) => p.id)}
+          columns={4}
+          imageHeight="md"
+          className="mt-8"
+          mobileRail
+          showPrice
+        />
       </div>
     </section>
   );

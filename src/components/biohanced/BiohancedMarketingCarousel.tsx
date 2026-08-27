@@ -8,7 +8,7 @@ import {
   getCarouselProducts,
   medicationHref,
 } from "@/lib/biohanced-catalog";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedVialStage } from "./BiohancedVialStage";
 
 const SLIDE_COPY = [
   {
@@ -54,51 +54,62 @@ export function BiohancedMarketingCarousel() {
   };
 
   return (
-    <section className="bg-bio-white py-14 md:py-20">
+    <section className="bg-bio-neutral-100 py-14 md:py-20">
       <div className="bio-container">
-        <div className="overflow-hidden rounded-[24px] border border-bio-neutral-200 bg-bio-white shadow-[0_8px_32px_rgba(10,11,14,0.06)]">
-          <div className="grid lg:grid-cols-2">
-            <div className="relative min-h-[280px] bg-gradient-to-b from-[#16203A] to-[#0B0B0E] md:min-h-[360px]">
-              {products.map((item, i) => (
-                <Link
-                  key={item.id}
-                  href={medicationHref(item.id)}
-                  className={`absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 md:p-12 ${
-                    i === index ? "opacity-100" : "pointer-events-none opacity-0"
-                  }`}
-                >
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_42%,rgba(79,123,255,0.22),transparent_72%)]"
-                    aria-hidden
-                  />
-                  <BiohancedImg
-                    src={catalogImage(item.id)}
-                    alt={item.name}
-                    className="relative z-10 max-h-[min(240px,68%)] max-w-[58%] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)]"
-                  />
-                </Link>
-              ))}
+        <div className="overflow-hidden rounded-[28px] border border-[#e8e6e1] bg-bio-white shadow-[0_16px_56px_rgba(10,11,14,0.07)]">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[300px] border-b border-[#ececea] bg-bio-neutral-100 md:min-h-[380px] lg:border-b-0 lg:border-r">
+              {products.map((item, i) => {
+                const accent = CATALOG_CATEGORIES[item.category].dot;
+                return (
+                  <Link
+                    key={item.id}
+                    href={medicationHref(item.id)}
+                    className={`absolute inset-0 flex flex-col transition-opacity duration-700 ease-out ${
+                      i === index ? "opacity-100" : "pointer-events-none opacity-0"
+                    }`}
+                  >
+                    <BiohancedVialStage
+                      src={catalogImage(item.id)}
+                      alt={item.name}
+                      accent={accent}
+                      size="lg"
+                      className="h-full min-h-[300px] md:min-h-[380px] rounded-none"
+                    />
+                  </Link>
+                );
+              })}
               {product ? (
-                <div className="absolute bottom-6 left-6 z-10 rounded-[10px] border border-[#262932] bg-[#14161A]/90 px-4 py-2">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9AA0A8]">
-                    {CATALOG_CATEGORIES[product.category].name}
-                  </p>
-                  <p className="text-[15px] font-semibold text-white">{product.name}</p>
+                <div className="absolute bottom-5 left-5 right-5 z-10 flex flex-wrap items-end justify-between gap-3">
+                  <div className="rounded-[12px] border border-[#e8e6e1] bg-white/95 px-4 py-3 shadow-[0_8px_24px_rgba(10,11,14,0.08)] backdrop-blur-sm">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-bio-neutral-400">
+                      {CATALOG_CATEGORIES[product.category].name}
+                    </p>
+                    <p className="font-[Archivo,sans-serif] text-[18px] font-black text-bio-ink">
+                      {product.name}
+                    </p>
+                    <p className="mt-0.5 text-[13px] text-bio-neutral-400">
+                      {product.doseLabel} · {product.purity}
+                    </p>
+                  </div>
                 </div>
               ) : null}
             </div>
+
             <div className="flex flex-col justify-center bg-[#0A0B0E] p-8 md:p-12">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
                 {copy.eyebrow}
               </p>
-              <h2 className="bio-headline mt-4 text-[28px] text-white md:text-[36px]">{copy.title}</h2>
+              <h2 className="bio-headline mt-4 text-[28px] leading-tight text-white md:text-[36px]">
+                {copy.title}
+              </h2>
               <p className="mt-4 text-[17px] leading-relaxed text-[#9AA0A8]">{copy.body}</p>
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-3">
                 <button
                   type="button"
                   aria-label="Previous slide"
                   onClick={() => go(-1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#262932] text-white hover:border-[#B6FF3A]/50"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#262932] text-white transition-colors hover:border-[#B6FF3A]/50"
                 >
                   ←
                 </button>
@@ -109,8 +120,8 @@ export function BiohancedMarketingCarousel() {
                       type="button"
                       aria-label={`Slide ${dot + 1}`}
                       onClick={() => setIndex(dot)}
-                      className={`h-2 w-2 rounded-full transition-colors ${
-                        index === dot ? "bg-[#B6FF3A]" : "bg-white/30"
+                      className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                        index === dot ? "w-6 bg-[#B6FF3A]" : "bg-white/25"
                       }`}
                     />
                   ))}
@@ -119,7 +130,7 @@ export function BiohancedMarketingCarousel() {
                   type="button"
                   aria-label="Next slide"
                   onClick={() => go(1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#262932] text-white hover:border-[#B6FF3A]/50"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#262932] text-white transition-colors hover:border-[#B6FF3A]/50"
                 >
                   →
                 </button>

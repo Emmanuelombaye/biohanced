@@ -19,8 +19,8 @@ import {
 } from "@/lib/biohanced-price-tiers";
 import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedCtaBand } from "./BiohancedPageChrome";
-import { BiohancedImg } from "./BiohancedImg";
 import { BiohancedCatalogGrid } from "./BiohancedCatalogGrid";
+import { BiohancedVialStage } from "./BiohancedVialStage";
 
 const TABS = [
   { id: "description", label: "Description" },
@@ -176,13 +176,13 @@ function AlternativeGrid({ currentId }: { currentId: string }) {
           href={medicationHref(alt.id)}
           className="group rounded-2xl border border-bio-neutral-200 bg-bio-white p-4 transition-shadow hover:shadow-[0_8px_24px_rgba(10,11,14,0.08)]"
         >
-          <div className="flex h-[120px] items-center justify-center rounded-xl bg-gradient-to-b from-[#16203A] to-[#0B0D12]">
-            <BiohancedImg
-              src={catalogImage(alt.id)}
-              alt={alt.name}
-              className="max-h-[88%] max-w-[70%] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
-            />
-          </div>
+          <BiohancedVialStage
+            src={catalogImage(alt.id)}
+            alt={alt.name}
+            accent={CATALOG_CATEGORIES[alt.category].dot}
+            size="sm"
+            className="rounded-xl"
+          />
           <p className="mt-3 text-[15px] font-semibold text-bio-ink group-hover:text-[#2E6BFF]">
             {alt.name}
           </p>
@@ -310,25 +310,26 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[24px] border border-bio-neutral-200 bg-[#0A0B0E] p-8">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_62%_at_50%_40%,rgba(79,123,255,0.2),transparent_70%)]" />
-              <BiohancedImg
+            <div className="overflow-hidden rounded-[24px] border border-[#e8e6e1] bg-bio-white shadow-[0_14px_40px_rgba(10,11,14,0.06)]">
+              <BiohancedVialStage
                 src={catalogImage(product.id)}
                 alt={`${product.name} research vial`}
-                className="relative mx-auto max-h-[320px] w-full object-contain drop-shadow-[0_30px_44px_rgba(0,0,0,0.45)]"
+                accent={CATALOG_CATEGORIES[product.category].dot}
+                size="lg"
+                className="min-h-[300px] md:min-h-[360px] rounded-none"
               />
-              <div className="relative mt-6 flex justify-between gap-4 rounded-xl border border-[#262932] bg-[#14161A] px-4 py-3 text-sm">
+              <div className="flex justify-between gap-4 border-t border-[#f0eeea] bg-bio-neutral-100 px-5 py-4 text-sm">
                 <div>
-                  <p className="text-[11px] uppercase tracking-wider text-[#9AA0A8]">Purity</p>
+                  <p className="text-[11px] uppercase tracking-wider text-bio-neutral-400">Purity</p>
                   <p className="font-semibold text-[#1F9E6B]">{product.purity}</p>
                 </div>
                 <div>
-                  <p className="text-[11px] uppercase tracking-wider text-[#9AA0A8]">Batch</p>
-                  <p className="font-semibold text-white">{product.batch}</p>
+                  <p className="text-[11px] uppercase tracking-wider text-bio-neutral-400">Batch</p>
+                  <p className="font-semibold text-bio-ink">{product.batch}</p>
                 </div>
                 <div>
-                  <p className="text-[11px] uppercase tracking-wider text-[#9AA0A8]">From</p>
-                  <p className="font-semibold text-white">${product.priceFrom}</p>
+                  <p className="text-[11px] uppercase tracking-wider text-bio-neutral-400">From</p>
+                  <p className="font-semibold text-bio-ink">${product.priceFrom}</p>
                 </div>
               </div>
             </div>

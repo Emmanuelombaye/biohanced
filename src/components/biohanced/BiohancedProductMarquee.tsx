@@ -1,40 +1,39 @@
 import Link from "next/link";
-import { BIOHENCED_CATALOG, catalogImage, medicationHref } from "@/lib/biohanced-catalog";
-import { BiohancedImg } from "./BiohancedImg";
+import { BIOHENCED_CATALOG } from "@/lib/biohanced-catalog";
+import { BiohancedProductCard } from "./BiohancedProductCard";
 
-/** Marquee of every catalog vial — compact cards, consistent scale */
+/** Full-catalog strip — studio cards in a smooth horizontal rail */
 export function BiohancedProductMarquee() {
   const items = [...BIOHENCED_CATALOG, ...BIOHENCED_CATALOG];
 
   return (
-    <section className="border-y border-[#262932] bg-[#0A0B0E] py-8" aria-label="Full catalog">
-      <div className="bio-container mb-4 flex items-center justify-between gap-4">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#9AA0A8]">
-          Full catalog · {BIOHENCED_CATALOG.length} compounds
-        </p>
-        <Link href="/catalog" className="text-[13px] font-semibold text-[#B6FF3A] hover:underline">
+    <section className="border-y border-[#ececea] bg-bio-white py-10 md:py-12" aria-label="Full catalog">
+      <div className="bio-container mb-5 flex items-center justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-bio-neutral-400">
+            Full catalog
+          </p>
+          <p className="mt-1 font-[Archivo,sans-serif] text-[22px] font-black text-bio-ink md:text-[26px]">
+            {BIOHENCED_CATALOG.length} research-grade compounds
+          </p>
+        </div>
+        <Link
+          href="/catalog"
+          className="shrink-0 text-[14px] font-semibold text-[#2E6BFF] hover:underline"
+        >
           View all →
         </Link>
       </div>
-      <div className="overflow-hidden">
-        <div className="bio-marquee flex w-max gap-3 px-4">
+
+      <div className="bio-scroll-rail overflow-hidden">
+        <div className="bio-marquee flex w-max gap-3 px-6 md:gap-4 md:px-10">
           {items.map((product, index) => (
-            <Link
+            <BiohancedProductCard
               key={`${product.id}-${index}`}
-              href={medicationHref(product.id)}
-              className="flex w-[128px] shrink-0 flex-col overflow-hidden rounded-xl border border-[#262932] bg-[#14161A] transition-colors hover:border-[#B6FF3A]/35"
-            >
-              <div className="flex h-[118px] items-center justify-center bg-gradient-to-b from-[#16203A] to-[#0B0B0E]">
-                <BiohancedImg
-                  src={catalogImage(product.id)}
-                  alt={product.name}
-                  className="max-h-[76%] max-w-[58%] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]"
-                />
-              </div>
-              <p className="border-t border-[#262932] px-2 py-2.5 text-center text-[11px] font-medium leading-tight text-[#C9CCD2]">
-                {product.name}
-              </p>
-            </Link>
+              productId={product.id}
+              variant="mini"
+              className="w-[148px] shrink-0 shadow-[0_8px_28px_rgba(10,11,14,0.06)] md:w-[164px]"
+            />
           ))}
         </div>
       </div>
