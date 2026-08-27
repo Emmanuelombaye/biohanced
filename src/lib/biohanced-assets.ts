@@ -2,44 +2,53 @@
 export const BIOHENCED_ASSETS = {
   hero: {
     poster: "/biohanced/hero/poster.jpg",
+    threeVials: "/biohanced/hero/three-vials.png",
+    vialsWide: "/biohanced/hero/hero-vials-wide.png",
     video:
       "https://cdn.prod.website-files.com/673b84b14328f286d03968dc%2F67b05482aed635590cf4278e_Final%20%28Without%20Labels%29-transcode.mp4",
-    mobilePoster:
-      "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb%2F67edccaa69426fb1b3a54bb0_home-hero%20%281%29-poster-00001.jpg",
+    mobilePoster: "/biohanced/hero/poster.jpg",
     mobileVideo:
       "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb%2F67edccaa69426fb1b3a54bb0_home-hero%20%281%29-transcode.mp4",
+  },
+  products: {
+    retatrutide: "/biohanced/products/retatrutide.png",
+    cjcdac: "/biohanced/products/cjcdac.png",
+    ipamorelin: "/biohanced/products/ipamorelin.png",
+    tesamorelin: "/biohanced/products/tesamorelin.png",
+    sermorelin: "/biohanced/products/sermorelin.png",
+    bpc157: "/biohanced/products/bpc157.png",
+    tb500: "/biohanced/products/tb500.png",
+    ghkcu: "/biohanced/products/ghkcu.png",
+    igf1lr3: "/biohanced/products/igf1lr3.png",
+    semax: "/biohanced/products/semax.png",
+    epithalon: "/biohanced/products/epithalon.png",
+    motsc: "/biohanced/products/motsc.png",
+    nad: "/biohanced/products/nad.png",
+    pt141: "/biohanced/products/pt141.png",
+    mt2: "/biohanced/products/mt2.png",
+    aminomq: "/biohanced/products/aminomq.png",
+    bacwater: "/biohanced/products/bacwater.png",
   },
   icons: {
     scale: "/biohanced/icons/scale-check.svg",
     phone: "/biohanced/icons/mobile-phone.svg",
     insurance: "/biohanced/icons/insurance.svg",
-    mobileScale:
-      "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7b2b_Scale%20Check.svg",
-    mobilePhone:
-      "https://cdn.prod.website-files.com/673b84b14328f286d03968dc/67b3cab366ec70816d77f304_Mobile%20Phone.svg",
-    mobileInsurance:
-      "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7b2c_Insurance.svg",
+    mobileScale: "/biohanced/icons/scale-check.svg",
+    mobilePhone: "/biohanced/icons/mobile-phone.svg",
+    mobileInsurance: "/biohanced/icons/insurance.svg",
   },
   insurers: [
     {
-      name: "Anthem",
-      src: "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7ac8_Anthem.svg",
+      name: "GMP Certified",
+      src: "/biohanced/voltage/logos/badge-gmp.png",
     },
     {
-      name: "BlueCross BlueShield",
-      src: "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7ac7_BlueCross%20BueShield.svg",
+      name: "Made in USA",
+      src: "/biohanced/voltage/logos/badge-usa-real.png",
     },
     {
-      name: "UnitedHealthcare",
-      src: "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7ac3_United%20Healthcare.svg",
-    },
-    {
-      name: "Aetna",
-      src: "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7aca_Aetna.svg",
-    },
-    {
-      name: "Cigna",
-      src: "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7ac9_Cigna.svg",
+      name: "Biohanced Labs",
+      src: "/biohanced/voltage/logos/stamp-on-green.png",
     },
   ],
   remote: {
@@ -60,24 +69,15 @@ export const BIOHENCED_ASSETS = {
       "https://cdn.prod.website-files.com/65d8ac86401a1ef9f1915fdb/67bd147776437ca6917a7b11_0H1A2118.avif",
     ],
     meds: {
-      compoundedTirzepatide:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/69fd124fbd54ce0616cd8ad7_med-slider-corner-compounded-tirzepatide.png",
-      compoundedSemaglutide:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/69fd12e389b86f8b6e24dc04_med-slider-corner-compounded-semaglutide.png",
-      ozempic:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee56b7c6401f375dddebd_ozempic.png",
-      wegovy:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee57c6edfab025435b9be_wegovy.png",
-      zepbound:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee5a4dfc4c1b1c0772dc5_zepbound.png",
-      mounjaro:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee5c6bb0889cd6f0933ce_mounjaro.png",
-      saxenda:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee5e3854da2075349fdca_saxenda.png",
-      foundayo:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/69d025bf9ef31b2d834233da_foundayo.png",
-      victoza:
-        "https://cdn.prod.website-files.com/660dbd9edac735ff882da2d3/679ee5fb1100c3bccc2c1fa8_victoza.png",
+      compoundedTirzepatide: "/biohanced/products/retatrutide.png",
+      compoundedSemaglutide: "/biohanced/products/ipamorelin.png",
+      ozempic: "/biohanced/products/retatrutide.png",
+      wegovy: "/biohanced/products/retatrutide.png",
+      zepbound: "/biohanced/products/retatrutide.png",
+      mounjaro: "/biohanced/products/retatrutide.png",
+      saxenda: "/biohanced/products/ipamorelin.png",
+      foundayo: "/biohanced/products/ghkcu.png",
+      victoza: "/biohanced/products/sermorelin.png",
     },
     testimonials: [
       {
