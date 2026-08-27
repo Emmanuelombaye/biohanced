@@ -24,12 +24,12 @@ export function BiohancedHero() {
           aria-hidden
         />
 
-        <div className="relative flex flex-col gap-8 p-6 md:gap-10 md:p-10 lg:flex-row lg:items-center lg:gap-14">
+        <div className="relative flex flex-col gap-6 p-6 md:gap-10 md:p-10 lg:flex-row lg:items-center lg:gap-12">
           <div className="max-w-[560px] lg:flex-1">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
               Peptides · engineered
             </p>
-            <h1 className="bio-headline mt-3 text-[40px] leading-[0.98] text-white sm:text-[48px] md:text-[58px]">
+            <h1 className="bio-headline mt-3 text-[38px] leading-[0.98] text-white sm:text-[48px] md:text-[58px]">
               Biology,
               <br />
               upgraded.
@@ -39,7 +39,10 @@ export function BiohancedHero() {
               spectrometry. Built for labs that don&apos;t compromise on purity.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href={BIOHENCED_LINKS.browseCatalog} className="bio-btn-primary w-full sm:w-auto px-8 text-[16px]">
+              <Link
+                href={BIOHENCED_LINKS.browseCatalog}
+                className="bio-btn-primary w-full px-8 text-[16px] sm:w-auto"
+              >
                 Browse catalog
               </Link>
               <Link
@@ -51,36 +54,35 @@ export function BiohancedHero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[320px] shrink-0 sm:max-w-[380px] lg:max-w-[420px] lg:flex-1">
+          <div className="relative mx-auto flex w-full max-w-[360px] items-end justify-center lg:max-w-[440px] lg:flex-1">
             <div
-              className="pointer-events-none absolute inset-0 rounded-[20px] bg-[radial-gradient(60%_62%_at_50%_44%,rgba(255,255,255,0.92),rgba(233,238,245,0.75)_58%,transparent_82%)]"
+              className="pointer-events-none absolute inset-x-[-8%] bottom-0 top-[10%] rounded-[24px] bg-[radial-gradient(55%_70%_at_50%_55%,rgba(255,255,255,0.95),rgba(233,238,245,0.5)_55%,transparent_78%)]"
               aria-hidden
             />
             <BiohancedImg
               src={BIOHENCED_ASSETS.hero.threeVials}
-              alt="Biohanced Labs research vials"
-              width={420}
-              height={480}
+              alt="Biohanced Labs research vials — BPC-157, GHK-cu, Retatrutide"
+              width={440}
+              height={500}
               loading="eager"
-              className="relative mx-auto w-full max-h-[min(320px,42vh)] object-contain object-bottom drop-shadow-[0_24px_40px_rgba(0,0,0,0.45)]"
+              className="relative z-[1] w-full max-h-[min(280px,38vh)] object-contain object-bottom sm:max-h-[320px] md:max-h-[380px] drop-shadow-[0_28px_48px_rgba(0,0,0,0.5)]"
             />
           </div>
         </div>
 
-        {/* Trust strip — inside hero card (no overlap) */}
-        <div className="relative border-t border-[#1C1F27] bg-[#0A0B0E] px-4 py-5 md:px-10 md:py-5">
+        <div className="relative border-t border-[#1C1F27] bg-[#0A0B0E] px-4 py-5 md:px-10">
           <BiohancedImg
             src={BIOHENCED_ASSETS.hero.poster}
             alt=""
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-10"
           />
-          <div className="relative grid grid-cols-2 gap-x-4 gap-y-3 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8">
+          <div className="relative grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8">
             {TRUST_ITEMS.map((item) => (
               <div
                 key={item.label}
-                className="flex items-center gap-2 text-[11px] leading-snug text-[#C9CCD2] sm:text-[13px]"
+                className="flex items-start gap-2 text-[11px] leading-snug text-[#C9CCD2] sm:text-[13px]"
               >
-                <img src={item.icon} alt="" className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                <img src={item.icon} alt="" className="mt-0.5 h-4 w-4 shrink-0 opacity-80" aria-hidden />
                 <span>{item.label}</span>
               </div>
             ))}

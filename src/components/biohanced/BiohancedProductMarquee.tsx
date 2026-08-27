@@ -32,8 +32,8 @@ export function BiohancedProductMarquee() {
               key={`${product.id}-${index}`}
               productId={product.id}
               size="compact"
-              showPrice
-              className="w-[156px] shrink-0 md:w-[172px]"
+              showActions={false}
+              className="w-[240px] shrink-0 md:w-[260px]"
             />
           ))}
         </div>

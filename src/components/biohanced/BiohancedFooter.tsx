@@ -111,18 +111,7 @@ function LegalRow({ links }: { links: { label: string; href: string; external?: 
 
 export function BiohancedFooter() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-[#0A0B0E] text-white">
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 hidden items-end justify-center overflow-hidden sm:flex"
-        aria-hidden
-      >
-        <span
-          className="translate-y-[28%] font-[Archivo,sans-serif] text-[clamp(100px,18vw,240px)] font-black tracking-[-0.04em] text-white/[0.035] select-none"
-        >
-          BIOHANCED
-        </span>
-      </div>
-
+    <footer id="contact" className="relative overflow-hidden bg-[#0A0B0E] pb-6 text-white">
       <div className="bio-container relative z-10 py-14 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_1fr_1fr_1fr] lg:gap-8">
           <div>
@@ -174,10 +163,12 @@ export function BiohancedFooter() {
           <LegalRow links={LEGAL_ROW_2} />
         </div>
 
-        <div className="relative z-20 mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#1C1F27] bg-[#0A0B0E] pt-8 md:flex-row md:gap-6">
-          <p className="font-[Space_Grotesk,sans-serif] text-center text-[12px] text-[#9AA0A8] md:text-left">
-            © {new Date().getFullYear()} Biohanced Labs · For research use only · Not for human
-            consumption
+        <div className="relative z-20 mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#1C1F27] pt-8 md:flex-row md:gap-6">
+          <p className="font-[Space_Grotesk,sans-serif] text-center text-[11px] leading-relaxed text-[#9AA0A8] sm:text-[12px] md:text-left">
+            © {new Date().getFullYear()} Biohanced Labs. All rights reserved.
+            <span className="mt-1 block text-[#6C7280]">
+              For research use only · Not for human consumption
+            </span>
           </p>
           <p className="font-[Space_Grotesk,sans-serif] text-[13px]">
             <a

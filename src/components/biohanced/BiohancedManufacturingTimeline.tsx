@@ -47,7 +47,7 @@ export function BiohancedManufacturingTimeline() {
             columns={2}
             className="mt-5 max-w-2xl"
             mobileRail={false}
-            compact
+            showActions
           />
         </div>
 

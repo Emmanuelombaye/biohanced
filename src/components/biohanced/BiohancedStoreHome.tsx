@@ -99,7 +99,6 @@ function FeaturedProducts() {
           columns={4}
           className="mt-10"
           showActions
-          cardSize="standard"
         />
       </div>
     </BiohancedSection>

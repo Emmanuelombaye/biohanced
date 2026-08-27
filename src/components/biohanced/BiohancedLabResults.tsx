@@ -49,9 +49,7 @@ export function BiohancedLabResults() {
                 src={catalogImage(product.id)}
                 alt={product.name}
                 size="sm"
-                className="rounded-none"
-                label={product.name}
-                doseLabel={product.doseLabel}
+                className="h-[180px] !aspect-auto shrink-0 rounded-none"
               />
               <div className="space-y-3 p-4">
                 <div className="flex items-center justify-between gap-3">
@@ -132,9 +130,7 @@ export function BiohancedCoaDetail({ product }: { product: CatalogProduct }) {
               src={catalogImage(product.id)}
               alt={product.name}
               size="lg"
-              className="rounded-none"
-              label={product.name}
-              doseLabel={product.doseLabel}
+              className="h-[280px] !aspect-auto rounded-none"
             />
           </div>
           <div>
