@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Quincy CF";
+  src: url("/biohanced/fonts/quincy-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quincy CF";
+  src: url("/biohanced/fonts/quincy-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greycliff CF";
+  src: url("/biohanced/fonts/greycliff-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greycliff CF";
+  src: url("/biohanced/fonts/greycliff-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Greycliff CF";
+  src: url("/biohanced/fonts/greycliff-semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-bio-neutral-100: #f6f1ee;
+  --color-bio-neutral-200: #d5d1ce;
+  --color-bio-neutral-300: #93908e;
+  --color-bio-neutral-400: #504f4f;
+  --color-bio-neutral-500: #0e0e0f;
+
+  --color-bio-sage-100: #d8ece4;
+  --color-bio-sage-200: #a8beb7;
+  --color-bio-sage-300: #798f8b;
+  --color-bio-sage-400: #49615e;
+  --color-bio-sage-500: #193231;
+
+  --color-bio-mint: #e5f5ed;
+  --color-bio-grass: #daff9d;
+  --color-bio-melon: #e3e9bb;
+  --color-bio-white: #ffffff;
+
+  --font-bio-serif: "Quincy CF", Georgia, serif;
+  --font-bio-sans: "Greycliff CF", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bio-neutral-100 font-bio-sans text-bio-neutral-500 antialiased;
+  }
+
+  ::selection {
+    background: #d8ece4;
+  }
+}
+
+@layer utilities {
+  .bio-container {
+    @apply mx-auto w-full max-w-[1280px] px-6 md:px-10;
+  }
+
+  .bio-headline {
+    @apply font-bio-serif font-normal tracking-normal;
+  }
+
+  .bio-marquee {
+    animation: bio-marquee 16s linear infinite;
+  }
+
+  .bio-marquee-reverse {
+    animation: bio-marquee-reverse 16s linear infinite;
+  }
+
+  .bio-reveal {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .bio-reveal.is-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bio-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes bio-marquee-reverse {
+  from {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-marquee,
+  .bio-marquee-reverse {
+    animation: none;
+  }
+
+  .bio-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
