@@ -32,7 +32,6 @@ export function BiohancedApplicationsSection() {
           productIds={APPLICATION_PRODUCTS}
           columns={3}
           className="mt-10"
-          mobileRail
           cardSize="full"
         />
       </div>

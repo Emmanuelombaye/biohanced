@@ -17,22 +17,17 @@ type BiohancedButtonProps = {
 };
 
 const variants: Record<NonNullable<BiohancedButtonProps["variant"]>, string> = {
-  "hero-white":
-    "w-[341px] max-w-full rounded-[10px] bg-bio-volt px-[42px] py-4 text-[17px] font-semibold text-bio-ink",
+  "hero-white": "bio-btn-primary w-full max-w-[341px] px-8 text-[17px]",
   "hero-ghost":
-    "w-[341px] max-w-full rounded-[10px] border border-white/80 bg-transparent px-[42px] py-4 text-[17px] font-medium text-bio-white",
+    "inline-flex min-h-[48px] w-full max-w-[341px] items-center justify-center rounded-[10px] border-2 border-white/80 bg-transparent px-8 text-[17px] font-semibold text-white",
   "nav-login": "rounded-lg px-5 py-2 text-base font-medium text-[#C9CCD2]",
-  "nav-cta":
-    "rounded-[10px] bg-bio-volt px-5 py-2 text-base font-semibold text-bio-ink",
-  dark: "rounded-[10px] bg-bio-volt px-7 py-3.5 text-[15px] font-semibold text-bio-ink",
-  solid:
-    "rounded-[10px] bg-bio-white px-7 py-3.5 text-[15px] font-medium text-bio-ink",
+  "nav-cta": "bio-btn-primary px-5 py-2 text-base",
+  dark: "bio-btn-primary text-[15px]",
+  solid: "bio-btn-outline bg-bio-white text-[15px]",
   outline:
-    "rounded-[10px] border border-white/80 bg-transparent px-7 py-3.5 text-[15px] font-medium text-bio-white",
-  "solid-dark":
-    "rounded-[10px] bg-bio-volt px-7 py-3.5 text-[15px] font-semibold text-bio-ink",
-  "ghost-light":
-    "rounded-[10px] border border-bio-neutral-200 bg-bio-white px-7 py-3.5 text-[15px] font-medium text-bio-ink",
+    "inline-flex min-h-[48px] items-center justify-center rounded-[10px] border-2 border-white/80 bg-transparent px-7 text-[15px] font-semibold text-white",
+  "solid-dark": "bio-btn-primary text-[15px]",
+  "ghost-light": "bio-btn-outline text-[15px]",
 };
 
 export function BiohancedButton({
@@ -46,7 +41,7 @@ export function BiohancedButton({
     <Link
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className={`inline-flex items-center justify-center transition-[filter,transform] duration-200 hover:brightness-[1.03] active:scale-[0.98] ${variants[variant]} ${className}`}
+      className={`${variants[variant]} ${className}`}
     >
       {children}
     </Link>

@@ -97,7 +97,6 @@ function FeaturedProducts() {
           productIds={products.map((p) => p.id)}
           columns={4}
           className="mt-10"
-          mobileRail
           showPrice
           cardSize="full"
         />
@@ -143,7 +142,7 @@ function BundleSection() {
                 <button
                   type="button"
                   onClick={() => addBundle(bundle.id, names, bundle.price)}
-                  className="mt-5 w-full rounded-[10px] bg-bio-ink py-3 text-[14px] font-semibold text-white transition-colors hover:bg-[#14161A]"
+                  className="bio-btn-dark mt-5 w-full"
                 >
                   Add bundle to cart
                 </button>
@@ -238,7 +237,7 @@ function FinalCta() {
           </Link>
           <Link
             href={BIOHENCED_LINKS.viewCoas}
-            className="inline-flex rounded-[10px] border border-[#262932] px-8 py-3.5 text-[17px] font-medium text-white hover:border-[#3f434d]"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-[10px] border-2 border-[#262932] px-8 py-3.5 text-[17px] font-semibold text-white hover:border-[#3f434d]"
           >
             View COAs
           </Link>

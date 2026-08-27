@@ -128,7 +128,57 @@
   }
 
   .bio-cta {
-    @apply bg-bio-volt font-semibold text-bio-ink transition-[filter,transform] duration-200 hover:brightness-[1.03] active:scale-[0.98];
+    @apply inline-flex items-center justify-center min-h-[48px] rounded-[10px] bg-bio-volt px-6 py-3 text-[15px] font-semibold text-bio-ink shadow-[0_2px_8px_rgba(10,11,14,0.12),0_0_0_1px_rgba(10,11,14,0.08)];
+    transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .bio-cta:hover {
+      filter: brightness(1.03);
+      box-shadow: 0 4px 14px rgba(10, 11, 14, 0.16), 0 0 0 1px rgba(10, 11, 14, 0.1);
+    }
+
+    .bio-cta:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .bio-btn-primary {
+    @apply inline-flex items-center justify-center min-h-[48px] rounded-[10px] bg-bio-volt px-6 py-3 text-[15px] font-semibold text-bio-ink shadow-[0_2px_8px_rgba(10,11,14,0.12),0_0_0_1px_rgba(10,11,14,0.08)];
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .bio-btn-secondary {
+    @apply inline-flex items-center justify-center min-h-[48px] rounded-[10px] border-2 border-bio-ink bg-bio-white px-6 py-3 text-[15px] font-semibold text-bio-ink shadow-[0_1px_4px_rgba(10,11,14,0.06)];
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .bio-btn-outline {
+    @apply inline-flex items-center justify-center min-h-[48px] rounded-[10px] border-2 border-bio-neutral-200 bg-bio-white px-6 py-3 text-[15px] font-semibold text-bio-ink;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .bio-btn-dark {
+    @apply inline-flex items-center justify-center min-h-[48px] rounded-[10px] bg-bio-ink px-6 py-3 text-[15px] font-semibold text-white shadow-[0_2px_8px_rgba(10,11,14,0.2)];
+    transition: background 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .bio-btn-primary:hover {
+      filter: brightness(1.03);
+    }
+
+    .bio-btn-secondary:hover {
+      @apply bg-bio-neutral-100;
+    }
+
+    .bio-btn-outline:hover {
+      @apply border-bio-ink bg-bio-neutral-100;
+    }
+
+    .bio-btn-dark:hover {
+      @apply bg-[#14161A];
+    }
   }
 
   .font-bio-greycliff {
@@ -176,20 +226,34 @@
     scroll-snap-stop: normal;
   }
 
-  /* Product card — quiet luxury retail */
+  /* Product card — no lift on touch devices */
   .bio-product-card {
     @apply overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white;
     box-shadow: 0 1px 2px rgba(10, 11, 14, 0.04);
-    transition:
-      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.35s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .bio-product-card:hover {
-    transform: translateY(-2px);
-    border-color: #d8d6d0;
-    box-shadow: 0 16px 40px rgba(10, 11, 14, 0.08);
+  @media (hover: hover) and (min-width: 768px) {
+    .bio-product-card {
+      transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease;
+    }
+
+    .bio-product-card:hover {
+      transform: translateY(-2px);
+      border-color: #d8d6d0;
+      box-shadow: 0 16px 40px rgba(10, 11, 14, 0.08);
+    }
+
+    .group:hover .bio-vial-image {
+      transform: scale(1.03);
+    }
+  }
+
+  .bio-vial-image {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .bio-product-card-full {

@@ -35,7 +35,6 @@ export function BiohancedCatalogShowcase() {
           productIds={SHOWCASE_IDS}
           columns={3}
           className="mt-12"
-          mobileRail
           showPrice
           cardSize="full"
         />

@@ -60,7 +60,7 @@ export function BiohancedCatalogGrid({ categoryParam }: { categoryParam?: string
               <button
                 type="button"
                 onClick={() => quickAdd(product)}
-                className="mt-3 w-full rounded-[12px] border border-[#e8e6e1] bg-bio-neutral-100 py-2.5 text-[13px] font-semibold text-bio-ink transition-colors hover:border-bio-ink hover:bg-bio-white"
+                className="bio-btn-outline mt-3 w-full text-[14px]"
               >
                 Add 1 vial to cart
               </button>

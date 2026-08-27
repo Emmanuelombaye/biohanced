@@ -59,23 +59,25 @@ export function BiohancedProductCard({
         accent={cat.dot}
         size={stageSize}
         className="rounded-t-[16px]"
+        label={product.name}
+        doseLabel={product.doseLabel}
       />
 
-      <div
-        className={`flex flex-1 flex-col ${isCompact ? "p-3" : isFull ? "p-6" : "p-5"}`}
-      >
+      <div className={`flex flex-1 flex-col ${isCompact ? "p-3" : isFull ? "p-5 sm:p-6" : "p-5"}`}>
         <CategoryBadge name={cat.name} color={cat.dot} />
 
         <h3
           className={`mt-3 font-[Archivo,sans-serif] font-black leading-tight tracking-[-0.02em] text-bio-ink ${
-            isCompact ? "text-[15px]" : isFull ? "text-[22px] md:text-[24px]" : "text-[20px] md:text-[22px]"
+            isCompact ? "text-[15px]" : isFull ? "text-[20px] sm:text-[24px]" : "text-[20px] md:text-[22px]"
           }`}
         >
           {product.name}
         </h3>
 
         {isFull && product.subtitle ? (
-          <p className="mt-1.5 text-[13px] font-medium text-bio-neutral-400">{product.subtitle}</p>
+          <p className="mt-1.5 text-[13px] font-medium leading-snug text-bio-neutral-400">
+            {product.subtitle}
+          </p>
         ) : null}
 
         {product.doseLabel && !isFull ? (
@@ -84,21 +86,19 @@ export function BiohancedProductCard({
 
         {isFull ? (
           <>
-            <p className="mt-3 text-[14px] leading-relaxed text-bio-neutral-400 line-clamp-3">
-              {product.blurb}
-            </p>
-            <ul className="mt-4 space-y-1.5 border-t border-bio-neutral-200 pt-4 text-[13px] text-bio-neutral-400">
-              <li className="flex justify-between gap-3">
+            <p className="mt-3 text-[14px] leading-relaxed text-bio-neutral-400">{product.blurb}</p>
+            <ul className="mt-4 space-y-2 border-t border-bio-neutral-200 pt-4 text-[13px] text-bio-neutral-400">
+              <li className="flex justify-between gap-3 border-b border-bio-neutral-100 pb-2">
                 <span>Dose</span>
-                <span className="font-medium text-bio-ink">{product.doseLabel}</span>
+                <span className="font-semibold text-bio-ink">{product.doseLabel}</span>
               </li>
-              <li className="flex justify-between gap-3">
+              <li className="flex justify-between gap-3 border-b border-bio-neutral-100 pb-2">
                 <span>Batch</span>
-                <span className="font-medium text-bio-ink">{product.batch}</span>
+                <span className="font-semibold text-bio-ink">{product.batch}</span>
               </li>
               <li className="flex justify-between gap-3">
                 <span>Form</span>
-                <span className="font-medium text-bio-ink">{product.formLabel}</span>
+                <span className="font-semibold text-bio-ink">{product.formLabel}</span>
               </li>
             </ul>
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-bio-neutral-200 pt-4">
@@ -110,9 +110,9 @@ export function BiohancedProductCard({
               </div>
               <PurityBadge purity={product.purity} />
             </div>
-            <p className="mt-4 text-[13px] font-medium text-[#2E6BFF] transition-colors group-hover:text-bio-ink">
-              View compound · COA published →
-            </p>
+            <span className="bio-btn-outline mt-4 w-full text-center text-[14px]">
+              View compound · COA published
+            </span>
           </>
         ) : showPrice ? (
           <div className="mt-4 flex items-center justify-between gap-3 border-t border-bio-neutral-200 pt-3">
@@ -126,9 +126,7 @@ export function BiohancedProductCard({
             <PurityBadge purity={product.purity} />
           </div>
         ) : (
-          <p className="mt-4 text-[13px] font-medium text-bio-neutral-400 transition-colors group-hover:text-bio-ink">
-            View details
-          </p>
+          <span className="bio-btn-outline mt-4 w-full text-center text-[13px]">View details</span>
         )}
       </div>
     </Link>
@@ -139,7 +137,7 @@ export function BiohancedProductCardGrid({
   productIds,
   columns = 3,
   className = "",
-  mobileRail = true,
+  mobileRail = false,
   showPrice = false,
   compact = false,
   cardSize,
@@ -158,24 +156,28 @@ export function BiohancedProductCardGrid({
     columns === 2
       ? "md:grid-cols-2"
       : columns === 4
-      ? "md:grid-cols-2 lg:grid-cols-4"
-      : "md:grid-cols-2 lg:grid-cols-3";
+        ? "md:grid-cols-2 lg:grid-cols-4"
+        : "md:grid-cols-2 lg:grid-cols-3";
 
-  const railWidth =
-    resolvedSize === "full"
-      ? "w-[min(340px,90vw)]"
-      : resolvedSize === "compact"
-        ? "w-[min(260px,72vw)]"
-        : "w-[min(280px,78vw)]";
+  const colClass =
+    columns === 2
+      ? "grid-cols-1 sm:grid-cols-2"
+      : columns === 4
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
-  if (mobileRail) {
+  /* Horizontal rail only for compact marquee strips — full cards stack on mobile */
+  const useRail = mobileRail && resolvedSize === "compact";
+
+  if (useRail) {
     return (
-      <div className={`bio-scroll-rail -mx-6 px-6 md:mx-0 md:px-0 ${className}`}>
-        <div
-          className={`flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:gap-6 md:overflow-visible ${gridCols}`}
-        >
+      <div className={`bio-scroll-rail ${className}`}>
+        <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:gap-6 md:overflow-visible ${gridCols}">
           {productIds.map((id) => (
-            <div key={id} className={`${railWidth} shrink-0 snap-center md:w-auto md:shrink`}>
+            <div
+              key={id}
+              className="w-[min(260px,78vw)] shrink-0 snap-center md:w-auto md:shrink"
+            >
               <BiohancedProductCard productId={id} size={resolvedSize} showPrice={showPrice} />
             </div>
           ))}
@@ -183,13 +185,6 @@ export function BiohancedProductCardGrid({
       </div>
     );
   }
-
-  const colClass =
-    columns === 2
-      ? "grid-cols-1 sm:grid-cols-2"
-      : columns === 4
-        ? "grid-cols-2 lg:grid-cols-4"
-        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <div className={`grid gap-5 md:gap-6 ${colClass} ${className}`}>

@@ -9,7 +9,7 @@ import {
   type CatalogProduct,
 } from "@/lib/biohanced-catalog";
 import { BIOHENCED_LINKS, labResultPath } from "@/lib/biohanced-links";
-import { BiohancedImg } from "./BiohancedImg";
+import { BiohancedVialStage } from "./BiohancedVialStage";
 
 export function BiohancedLabResults() {
   const [query, setQuery] = useState("");
@@ -34,10 +34,44 @@ export function BiohancedLabResults() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by compound, batch ID, or SKU…"
-            className="w-full max-w-md rounded-[10px] border border-bio-neutral-200 px-4 py-3 text-[15px]"
+            className="w-full max-w-md rounded-[10px] border-2 border-bio-neutral-200 px-4 py-3 text-[15px] focus:border-bio-ink focus:outline-none"
           />
         </div>
-        <div className="overflow-hidden rounded-xl border border-bio-neutral-200">
+
+        {/* Mobile — card list (no cut-off table) */}
+        <div className="space-y-4 md:hidden">
+          {filtered.map((product) => (
+            <article
+              key={product.id}
+              className="overflow-hidden rounded-[16px] border border-bio-neutral-200 bg-bio-white shadow-[0_2px_8px_rgba(10,11,14,0.04)]"
+            >
+              <BiohancedVialStage
+                src={catalogImage(product.id)}
+                alt={product.name}
+                size="sm"
+                className="rounded-none"
+                label={product.name}
+                doseLabel={product.doseLabel}
+              />
+              <div className="space-y-3 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[13px] text-bio-neutral-400">Batch</span>
+                  <span className="font-semibold text-bio-ink">{product.batch}</span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[13px] text-bio-neutral-400">Purity (HPLC)</span>
+                  <span className="font-semibold text-[#1F9E6B]">{product.purity}</span>
+                </div>
+                <Link href={labResultPath(product.id)} className="bio-btn-primary w-full text-center">
+                  View COA
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Desktop — table */}
+        <div className="hidden overflow-hidden rounded-xl border border-bio-neutral-200 md:block">
           <table className="w-full text-left text-[15px]">
             <thead className="bg-bio-neutral-100 text-[13px] font-semibold uppercase tracking-wide text-bio-neutral-400">
               <tr>
@@ -58,7 +92,10 @@ export function BiohancedLabResults() {
                   <td className="px-4 py-3 text-bio-neutral-400">{product.batch}</td>
                   <td className="px-4 py-3 font-semibold text-[#1F9E6B]">{product.purity}</td>
                   <td className="px-4 py-3">
-                    <Link href={labResultPath(product.id)} className="text-[#2E6BFF] underline">
+                    <Link
+                      href={labResultPath(product.id)}
+                      className="bio-btn-outline px-4 py-2 text-[13px]"
+                    >
                       View COA
                     </Link>
                   </td>
@@ -67,6 +104,7 @@ export function BiohancedLabResults() {
             </tbody>
           </table>
         </div>
+
         <p className="mt-6 text-sm text-bio-neutral-400">
           Full Certificates of Analysis include identity (mass spec), purity (HPLC), and batch
           metadata. Email{" "}
@@ -82,40 +120,57 @@ export function BiohancedCoaDetail({ product }: { product: CatalogProduct }) {
   return (
     <section className="bg-bio-white py-12 md:py-16">
       <div className="bio-container max-w-3xl">
-        <Link href={BIOHENCED_LINKS.labResults} className="text-[14px] font-medium text-[#2E6BFF]">
+        <Link
+          href={BIOHENCED_LINKS.labResults}
+          className="bio-btn-outline px-4 py-2 text-[14px]"
+        >
           ← All lab results
         </Link>
-        <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="flex h-[280px] items-center justify-center rounded-[20px] border border-bio-neutral-200 bg-gradient-to-b from-[#16203A] to-[#0B0D12]">
-            <BiohancedImg
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
+          <div className="overflow-hidden rounded-[20px] border border-bio-neutral-200 bg-bio-white shadow-[0_4px_16px_rgba(10,11,14,0.06)]">
+            <BiohancedVialStage
               src={catalogImage(product.id)}
               alt={product.name}
-              className="max-h-[86%] max-w-[70%] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+              size="lg"
+              className="rounded-none"
+              label={product.name}
+              doseLabel={product.doseLabel}
             />
           </div>
           <div>
-            <h1 className="bio-headline text-[32px] text-bio-ink md:text-[40px]">
+            <h1 className="bio-headline text-[28px] text-bio-ink sm:text-[40px]">
               {product.name} COA
             </h1>
             <p className="mt-2 text-bio-neutral-400">Batch {product.batch}</p>
-            <p className="mt-6 font-[Archivo,sans-serif] text-[56px] font-black text-[#1F9E6B]">
+            <p className="mt-6 font-[Archivo,sans-serif] text-[48px] font-black text-[#1F9E6B] sm:text-[56px]">
               {product.purity}
             </p>
             <p className="text-[13px] font-semibold uppercase tracking-wide text-bio-neutral-400">
               Purity by HPLC
             </p>
-            <p className="mt-4 text-[15px] text-bio-neutral-400">
+            <p className="mt-4 text-[15px] leading-relaxed text-bio-neutral-400">
               Identity confirmed by mass spectrometry. Test method: HPLC / Mass Spec.
             </p>
-            <a
-              href={BIOHENCED_LINKS.email}
-              className="bio-cta mt-6 inline-flex rounded-[10px] px-6 py-3 text-[15px]"
-            >
+            <a href={BIOHENCED_LINKS.email} className="bio-btn-primary mt-6">
               Request full PDF
             </a>
           </div>
         </div>
-        <div className="mt-12 overflow-hidden rounded-xl border border-bio-neutral-200">
+
+        {/* Mobile-friendly spec list */}
+        <div className="mt-10 space-y-0 overflow-hidden rounded-xl border border-bio-neutral-200 md:hidden">
+          {product.specs.map((row) => (
+            <div
+              key={row.k}
+              className="flex justify-between gap-4 border-b border-bio-neutral-200 px-4 py-3 last:border-0"
+            >
+              <span className="text-[14px] font-medium text-bio-ink">{row.k}</span>
+              <span className="text-[14px] text-bio-neutral-400 text-right">{row.v}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 hidden overflow-hidden rounded-xl border border-bio-neutral-200 md:block">
           <table className="w-full text-left text-[15px]">
             <tbody>
               {product.specs.map((row) => (
@@ -129,6 +184,7 @@ export function BiohancedCoaDetail({ product }: { product: CatalogProduct }) {
             </tbody>
           </table>
         </div>
+
         <p className="mt-6 text-[12px] text-bio-neutral-400">
           For research use only. Not for human consumption.
         </p>

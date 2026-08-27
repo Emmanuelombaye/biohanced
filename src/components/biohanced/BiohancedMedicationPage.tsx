@@ -297,13 +297,13 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="bio-cta inline-flex items-center justify-center rounded-[10px] px-8 py-3.5 text-[17px]"
+                  className="bio-btn-primary px-8 text-[17px]"
                 >
                   {added ? "Added to cart" : "Add to cart"}
                 </button>
                 <Link
                   href={labResultPath(product.id)}
-                  className="inline-flex items-center justify-center rounded-[10px] border border-bio-neutral-200 bg-bio-white px-8 py-3.5 text-[17px] font-medium text-bio-ink"
+                  className="bio-btn-outline px-8 text-[17px]"
                 >
                   View COA
                 </Link>
@@ -420,7 +420,7 @@ export function BiohancedMedicationDetail({ productId }: { productId: string }) 
                     <button
                       type="button"
                       onClick={() => addBundle(bundle.id, names, bundle.price)}
-                      className="mt-4 w-full rounded-[10px] bg-[#0A0B0E] py-3 text-[14px] font-semibold text-white hover:bg-[#14161A]"
+                      className="bio-btn-dark mt-4 w-full text-[14px]"
                     >
                       Add bundle to cart
                     </button>
@@ -467,13 +467,13 @@ export function BiohancedMedicationIndex({ category }: { category?: string }) {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={BIOHENCED_LINKS.contact}
-              className="bio-cta inline-flex rounded-[10px] px-8 py-3.5 text-[17px]"
+              className="bio-btn-primary px-8 text-[17px]"
             >
               Request order
             </Link>
             <Link
               href={BIOHENCED_LINKS.labResults}
-              className="inline-flex rounded-[10px] border border-bio-neutral-200 bg-bio-white px-8 py-3.5 text-[17px] font-medium text-bio-ink"
+              className="bio-btn-outline px-8 text-[17px]"
             >
               View COAs
             </Link>
