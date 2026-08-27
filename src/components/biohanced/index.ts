@@ -21,4 +21,4 @@ export { BiohancedPromoBar } from "./BiohancedPromoBar";
 export { BiohancedReveal } from "./BiohancedReveal";
 export { BiohancedStats } from "./BiohancedStats";
 export { BiohancedTestimonials } from "./BiohancedTestimonials";
-export { BiohancedTimeline } from "./BiohancedTimeline";
+export { BiohancedVoltageLogo } from "./BiohancedVoltageLogo";

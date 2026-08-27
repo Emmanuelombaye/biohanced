@@ -1,0 +1,6 @@
+/* Biohanced Labs — global CSS entry point.
+   Consumers link THIS file. It only @imports; all real rules live in the imported files. */
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/effects.css";

@@ -59,14 +59,14 @@ export function BiohancedPageSection({
 
 export function BiohancedCtaBand() {
   return (
-    <section className="bg-bio-sage-500 py-16 text-center text-bio-white">
+    <section className="bio-hero-gradient py-16 text-center text-bio-white">
       <div className="bio-container">
         <h2 className="bio-headline text-[32px] md:text-[44px]">Ready to get started?</h2>
-        <p className="mt-3 text-bio-sage-100">Lose weight with Found.</p>
+        <p className="mt-3 text-[#C9CCD2]">Research-grade peptides, verified every batch.</p>
         <div className="mt-8">
           <Link
             href={BIOHENCED_LINKS.getStarted}
-            className="inline-flex rounded-full bg-bio-white px-8 py-3.5 text-[17px] font-medium text-bio-sage-500"
+            className="bio-cta inline-flex rounded-[10px] px-8 py-3.5 text-[17px]"
           >
             Get started
           </Link>

@@ -1,0 +1,47 @@
+/* ============================================================
+   TYPE SYSTEM — Archivo (display) + Space Grotesk (text/UI)
+   Webfonts loaded from Google Fonts (no local binaries shipped).
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@500;600;700;800;900&display=swap");
+
+:root {
+  /* Families */
+  --font-display: "Archivo", sans-serif;        /* weight 900, tight tracking — headlines, product names, prices */
+  --font-text:    "Space Grotesk", sans-serif;  /* body, UI, labels, eyebrows */
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+  --fw-black:   900;   /* Archivo display weight */
+
+  /* Display scale (Archivo 900, letter-spacing -.02 to -.03em, line-height ~1) */
+  --fs-hero:     58px;  /* home hero */
+  --fs-display:  42px;  /* page titles */
+  --fs-h1:       34px;
+  --fs-h2:       28px;
+  --fs-h3:       22px;
+  --fs-product:  20px;  /* product-card name */
+  --fs-price:    17px;
+
+  /* Text scale (Space Grotesk) */
+  --fs-lead:     16px;  /* hero sub / lead paragraph */
+  --fs-body:     15px;
+  --fs-sm:       14px;  /* nav, buttons, meta */
+  --fs-xs:       13px;
+  --fs-2xs:      12px;
+  --fs-micro:    11px;  /* eyebrow / legal */
+
+  /* Tracking */
+  --ls-tight:   -0.03em;  /* hero */
+  --ls-display: -0.02em;  /* headings */
+  --ls-eyebrow:  0.24em;  /* uppercase eyebrows */
+  --ls-label:    0.14em;  /* uppercase card labels */
+  --ls-lockup:   0.5em;   /* "LABS" wordmark spacing */
+
+  /* Line heights */
+  --lh-tight:  0.98;
+  --lh-snug:   1.2;
+  --lh-body:   1.55;
+}

@@ -24,8 +24,8 @@ const HIGHLIGHTS = [
 
 function DesktopHero() {
   return (
-    <div className="hidden bg-bio-white p-10 md:block">
-      <div className="relative mx-auto min-h-[min(744px,80vh)] overflow-hidden rounded-2xl">
+    <div className="hidden bg-bio-neutral-100 p-6 md:block md:p-10">
+      <div className="relative mx-auto min-h-[min(744px,80vh)] overflow-hidden rounded-[26px]">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay
@@ -36,12 +36,21 @@ function DesktopHero() {
         >
           <source src={BIOHENCED_ASSETS.hero.video} type="video/mp4" />
         </video>
+        <div className="bio-hero-gradient absolute inset-0 opacity-90" aria-hidden />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_20%_10%,rgba(79,123,255,0.22),transparent_60%)]"
+          aria-hidden
+        />
 
         <div className="relative z-10 flex min-h-[744px] flex-col justify-between p-12 text-bio-white">
           <div className="flex max-w-[550px] flex-col items-start gap-10">
-            <h1 className="bio-headline text-[64px] leading-[64px] text-bio-white">
-              Proven weight loss, the{" "}
-              <em className="font-bio-serif italic text-bio-sage-100">affordable</em> way
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
+              Peptides · engineered
+            </p>
+            <h1 className="bio-headline mt-4 text-[58px] leading-[0.98] text-bio-white">
+              Biology,
+              <br />
+              upgraded.
             </h1>
 
             <div className="flex w-full max-w-[341px] flex-col gap-2">
@@ -81,14 +90,18 @@ function MobileHero() {
   return (
     <div className="bg-bio-neutral-100 px-6 pt-6 pb-0 md:hidden">
       <div className="flex flex-col gap-10">
-        <h2 className="bio-headline text-[38px] leading-[45.6px] text-bio-sage-400">
-          Proven weight loss, the{" "}
-          <em className="italic text-bio-sage-500">affordable</em> way
+        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2E6BFF]">
+          Peptides · engineered
+        </p>
+        <h2 className="bio-headline mt-3 text-[38px] leading-[1.02] text-bio-ink">
+          Biology,
+          <br />
+          upgraded.
         </h2>
 
         <div className="flex flex-col gap-2">
           {HIGHLIGHTS.map((item) => (
-            <div key={item.text} className="flex items-center gap-2 text-bio-sage-500">
+            <div key={item.text} className="flex items-center gap-2 text-bio-neutral-400">
               <BiohancedImg
                 src={item.mobileIcon}
                 alt=""
@@ -104,13 +117,13 @@ function MobileHero() {
         <div className="flex flex-col gap-2">
           <Link
             href={BIOHENCED_LINKS.getStarted}
-            className="inline-flex h-[57px] items-center justify-center rounded-full bg-bio-sage-500 px-[42px] text-[17px] font-medium text-bio-white"
+            className="bio-cta inline-flex h-[57px] items-center justify-center rounded-[10px] px-[42px] text-[17px]"
           >
             Get started
           </Link>
           <Link
             href={BIOHENCED_LINKS.getStarted}
-            className="inline-flex h-[60px] items-center justify-center rounded-full border-2 border-bio-sage-500 px-6 text-[17px] font-medium text-bio-sage-500"
+            className="inline-flex h-[60px] items-center justify-center rounded-[10px] border border-bio-neutral-200 bg-bio-white px-6 text-[17px] font-medium text-bio-ink"
           >
             Start with a free insurance check
           </Link>

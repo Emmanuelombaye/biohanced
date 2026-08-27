@@ -1,0 +1,63 @@
+/* ============================================================
+   COLOR SYSTEM — Biohanced Labs "Voltage" (primary colorway)
+   Ink + Warm White base, Electric Blue → Indigo → Voltage Green accents.
+   ============================================================ */
+:root {
+  /* --- Brand accents (Voltage) --- */
+  --volt-blue:        #2E6BFF;   /* Electric Blue  · oklch .60 .22 264 */
+  --volt-blue-soft:   #4F7BFF;   /* lighter blue used in the mark gradient */
+  --volt-indigo:      #7C5CFF;   /* Indigo        · oklch .62 .20 290 */
+  --volt-indigo-soft: #8F74F5;   /* mid gradient stop */
+  --volt-green:       #B6FF3A;   /* Voltage Green · oklch .92 .24 128  — the signal color */
+  --volt-green-hover: #C6FF5C;   /* green hover (brighter) */
+  --volt-green-soft:  #B6EE6C;   /* mark gradient tail */
+
+  /* --- Neutrals (Ink → Warm White ramp) --- */
+  --ink:        #0A0B0E;   /* near-black brand surface · oklch .16 .01 270 */
+  --ink-2:      #14161A;   /* raised ink / mono logo */
+  --ink-3:      #16181D;   /* headings on light */
+  --line-dark:  #1C1F27;   /* hairline on ink surfaces */
+  --line-dark-2:#262932;   /* border on dark cards / inputs */
+  --slate:      #6C7280;   /* muted text on light  · oklch .55 .02 265 */
+  --steel:      #9AA0A8;   /* muted text on dark */
+  --mist:       #E6E8EC;   /* light divider / chip */
+  --line-light: #ECECEA;   /* card border on light */
+  --warm-white: #F6F5F2;   /* page background · oklch .97 .004 90 */
+  --cream:      #FBF4EC;   /* warmer alt background (Ember colorway) */
+  --white:      #FFFFFF;
+
+  /* --- Semantic feedback --- */
+  --success:      #1F9E6B;   /* purity / in-stock green (readable on white) */
+  --success-ink:  #1F7A52;
+  --success-bg:   #EEF7EE;
+  --success-line: #CFE9CF;
+  --price-strike: #A3A6AD;
+
+  /* --- Category dots (catalog taxonomy) --- */
+  --cat-recovery:   #4F7BFF;
+  --cat-gh:         #8F74F5;
+  --cat-metabolic:  #5A9E1F;
+  --cat-longevity:  #14B89A;
+  --cat-specialty:  #E0772E;
+  --cat-essentials: #9AA0A8;
+
+  /* --- Signature gradients --- */
+  --grad-mark:  linear-gradient(150deg, #2E6BFF, #7C5CFF 55%, #B6FF3A);        /* the bolt-mark tile */
+  --grad-mark-soft: linear-gradient(145deg, #4F7BFF, #8F74F5 50%, #B6EE6C);    /* softer nav/icon variant */
+  --grad-hero:  linear-gradient(135deg, #0B0D12, #121A2B 60%, #15241F);        /* dark hero field */
+
+  /* --- Semantic aliases (use these in product code) --- */
+  --bg-page:       var(--warm-white);
+  --bg-surface:    var(--white);
+  --bg-invert:     var(--ink);
+  --text-strong:   var(--ink-3);
+  --text-body:     #14161A;
+  --text-muted:    #71757D;
+  --text-on-dark:  #C9CCD2;
+  --text-on-dark-muted: var(--steel);
+  --border-card:   var(--line-light);
+  --accent:        var(--volt-green);   /* primary CTA color */
+  --accent-on:     var(--ink);          /* text on accent */
+  --link:          #5566CC;
+  --link-hover:    #2E6BFF;
+}

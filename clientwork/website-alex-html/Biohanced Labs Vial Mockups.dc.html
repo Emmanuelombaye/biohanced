@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Archivo:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { background:#eceae6; }
+</style>
+</helmet>
+
+<div style="width:1520px; padding:40px 40px 70px; font-family:'Space Grotesk',sans-serif;">
+
+  <!-- heading -->
+  <div style="max-width:900px;">
+    <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:42px; letter-spacing:-.025em; color:#15171b;">Biohanced Labs — Vial Mockups</div>
+    <div style="font-size:15px; color:#4b4e55; margin-top:9px; line-height:1.55;">Photorealistic product renders of the full in-stock catalog. Clear molded-glass vial with a color-coded aluminum flip-off cap, wrap label carrying the Biohanced mark, category band, boxed dose and lot. Powder shown lyophilized; GHK-Cu in copper blue; bacteriostatic water shown as sterile diluent.</div>
+  </div>
+
+  <!-- grid -->
+  <div style="display:flex; flex-wrap:wrap; gap:22px; margin-top:34px;">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+      <div style="width:352px;">
+        <div style="display:flex; align-items:center; gap:9px; margin:0 0 12px 4px;">
+          <span style="width:9px; height:9px; border-radius:50%; background:{{ p.accent }};"></span>
+          <span style="font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#3c3f46;">{{ p.caption }}</span>
+        </div>
+        <div style="position:relative; height:660px; border-radius:6px; overflow:hidden; background:radial-gradient(120% 72% at 50% 16%, #ffffff 0%, #f5f5f3 58%, #e7e7e3 100%); box-shadow:0 1px 3px rgba(0,0,0,.08), 0 16px 46px rgba(0,0,0,.08);">
+          <div style="position:absolute; left:0; right:0; bottom:0; height:130px; background:linear-gradient(180deg, rgba(228,228,223,0), rgba(216,216,210,.55));"></div>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <div style="transform:scale(.9); transform-origin:center;">
+              <dc-import name="VialReal" hint-size="340px,660px" compound="{{ p.name }}" no="{{ p.no }}" dose="{{ p.dose }}" purity="{{ p.purity }}" lot="{{ p.lot }}" accent="{{ p.accent }}" powder="{{ p.powder }}" liquid="{{ p.liquid }}"></dc-import>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const PAL = {
+      recovery:  '#2f6bf0',
+      gh:        '#7c5cf0',
+      metabolic: '#4f9e2a',
+      longevity: '#0f9e86',
+      specialty: '#e0772e',
+      essentials:'#64748b'
+    };
+    const CAT = {
+      recovery:'Healing & Recovery', gh:'Growth Hormone', metabolic:'Metabolic & Weight',
+      longevity:'Longevity & Cellular', specialty:'Specialty', essentials:'Essentials'
+    };
+    const raw = [
+      { name:'BPC-157',            cat:'recovery',  purity:'99.7%', dose:'5 MG',   lot:'BH-0806' },
+      { name:'TB-500',             cat:'recovery',  purity:'99.4%', dose:'5 MG',   lot:'BH-0807' },
+      { name:'IGF-1 LR3',          cat:'recovery',  purity:'99.1%', dose:'0.1 MG', lot:'BH-0809' },
+      { name:'CJC-1295 (with DAC)',cat:'gh',        purity:'99.3%', dose:'5 MG',   lot:'BH-0802' },
+      { name:'Ipamorelin',         cat:'gh',        purity:'99.6%', dose:'5 MG',   lot:'BH-0803' },
+      { name:'Tesamorelin',        cat:'gh',        purity:'99.5%', dose:'5 MG',   lot:'BH-0804' },
+      { name:'Sermorelin Acetate', cat:'gh',        purity:'99.2%', dose:'5 MG',   lot:'BH-0805' },
+      { name:'Retatrutide',        cat:'metabolic', purity:'99.5%', dose:'15 MG',  lot:'BH-0801' },
+      { name:'5-Amino-1MQ',        cat:'metabolic', purity:'99.0%', dose:'50 MG',  lot:'BH-0816' },
+      { name:'GHK-Cu',             cat:'longevity', purity:'99.8%', dose:'50 MG',  lot:'BH-0808', powder:'#2f7ef0' },
+      { name:'Epithalon',          cat:'longevity', purity:'99.4%', dose:'10 MG',  lot:'BH-0811' },
+      { name:'MOTS-c',             cat:'longevity', purity:'99.2%', dose:'10 MG',  lot:'BH-0812' },
+      { name:'NAD+',               cat:'longevity', purity:'99.0%', dose:'500 MG', lot:'BH-0813' },
+      { name:'Semax',              cat:'specialty', purity:'99.3%', dose:'10 MG',  lot:'BH-0810' },
+      { name:'PT-141',             cat:'specialty', purity:'99.3%', dose:'10 MG',  lot:'BH-0814' },
+      { name:'MT-2 (Melanotan 2)', cat:'specialty', purity:'99.3%', dose:'10 MG',  lot:'BH-0815' },
+      { name:'Bacteriostatic Water',cat:'essentials',purity:'USP Grade', dose:'10 ML', lot:'BH-0817', liquid:true }
+    ];
+    const products = raw.map((r,i) => ({
+      name: r.name,
+      caption: String(i+1).padStart(3,'0') + ' · ' + CAT[r.cat],
+      no: String(i+1).padStart(3,'0'),
+      dose: r.dose,
+      purity: r.liquid ? r.purity : r.purity + ' Purity',
+      lot: r.lot,
+      accent: PAL[r.cat],
+      powder: r.powder || '#eef0f2',
+      liquid: r.liquid === true
+    }));
+    return { products };
+  }
+}
+</script>
+</body>
+</html>

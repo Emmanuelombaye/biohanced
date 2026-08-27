@@ -104,7 +104,7 @@ export function BiohancedMedications() {
                 <div className="flex flex-wrap gap-2">
                   <Link
                     href={BIOHENCED_LINKS.getStarted}
-                    className="inline-flex items-center justify-center rounded-full bg-bio-sage-500 px-[22px] py-3 text-[17px] font-medium text-bio-white transition-opacity hover:opacity-90"
+                    className="bio-cta inline-flex items-center justify-center rounded-[10px] px-[22px] py-3 text-[17px]"
                   >
                     Get started
                   </Link>
@@ -145,7 +145,7 @@ export function BiohancedMedications() {
               aria-label={`Go to slide ${dotIndex + 1}`}
               onClick={() => setIndex(dotIndex)}
               className={`h-2 w-2 rounded-full ${
-                index === dotIndex ? "bg-bio-sage-500" : "bg-bio-neutral-200"
+                index === dotIndex ? "bg-bio-volt" : "bg-bio-neutral-200"
               }`}
             />
           ))}

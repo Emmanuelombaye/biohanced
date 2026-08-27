@@ -73,7 +73,7 @@ export function BiohancedInsurance() {
           <div className="mt-8">
             <Link
               href={BIOHENCED_LINKS.getStarted}
-              className="inline-flex items-center justify-center rounded-full bg-bio-sage-500 px-[22px] py-3 text-[17px] font-medium text-bio-white transition-opacity hover:opacity-90"
+              className="bio-cta inline-flex items-center justify-center rounded-[10px] px-[22px] py-3 text-[17px]"
             >
               Get started
             </Link>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Archivo:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+</helmet>
+
+<div style="width:340px; height:660px; position:relative; display:flex; flex-direction:column; align-items:center; font-family:'Space Grotesk',sans-serif;">
+
+  <!-- contact shadow -->
+  <div style="position:absolute; left:50%; bottom:14px; transform:translateX(-50%); width:224px; height:30px; border-radius:50%; background:radial-gradient(50% 50% at 50% 50%, rgba(24,30,38,.24), rgba(24,30,38,0) 72%); filter:blur(3px);"></div>
+
+  <!-- ===== FLIP-OFF CAP (brand-color) ===== -->
+  <div style="position:relative; z-index:4; width:158px; height:110px; margin-top:6px;
+    border-radius:42px 42px 9px 9px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 26%, rgba(0,0,0,.20) 100%),
+      linear-gradient(90deg, rgba(0,0,0,.34) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,.55) 23%, rgba(255,255,255,0) 44%, rgba(255,255,255,0) 60%, rgba(0,0,0,.13) 80%, rgba(0,0,0,.36) 100%),
+      {{ accent }};
+    box-shadow: inset 0 6px 8px rgba(255,255,255,.35), inset 0 -12px 16px rgba(0,0,0,.30), inset 9px 0 16px -6px rgba(0,0,0,.25), inset -9px 0 16px -6px rgba(0,0,0,.25), 0 9px 17px rgba(0,0,0,.22);">
+    <!-- flip button top -->
+    <div style="position:absolute; top:11px; left:50%; transform:translateX(-50%); width:102px; height:36px; border-radius:50%;
+      background: radial-gradient(60% 120% at 50% 28%, rgba(255,255,255,.5), rgba(255,255,255,0) 62%), {{ accent }};
+      box-shadow: inset 0 -4px 6px rgba(0,0,0,.30), inset 0 2px 3px rgba(255,255,255,.5);"></div>
+    <!-- center dimple -->
+    <div style="position:absolute; top:24px; left:50%; transform:translateX(-50%); width:36px; height:12px; border-radius:50%; background:rgba(0,0,0,.16); box-shadow: inset 0 1px 2px rgba(0,0,0,.32);"></div>
+    <!-- bottom skirt rim -->
+    <div style="position:absolute; bottom:0; left:0; right:0; height:16px; border-radius:0 0 9px 9px; background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(255,255,255,.16));"></div>
+  </div>
+
+  <!-- ===== GLASS NECK + ROLLED LIP ===== -->
+  <div style="position:relative; z-index:3; width:118px; height:46px; margin-top:-8px;
+    background:linear-gradient(90deg, rgba(120,132,148,.55) 0%, rgba(255,255,255,.9) 14%, rgba(255,255,255,.2) 30%, rgba(255,255,255,0) 50%, rgba(255,255,255,.2) 70%, rgba(255,255,255,.9) 86%, rgba(120,132,148,.55) 100%);">
+    <div style="position:absolute; top:2px; left:-5px; right:-5px; height:15px; border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(182,190,198,.5));
+      box-shadow: inset 0 -2px 3px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.12);"></div>
+  </div>
+
+  <!-- ===== GLASS BODY ===== -->
+  <div style="position:relative; z-index:2; width:244px; height:408px; margin-top:-10px; overflow:hidden;
+    border-radius:30px 30px 22px 22px;
+    background:linear-gradient(90deg, rgba(120,132,148,.5) 0%, rgba(255,255,255,.92) 5%, rgba(210,216,222,.16) 15%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 67%, rgba(210,216,222,.18) 85%, rgba(255,255,255,.88) 95%, rgba(120,132,148,.5) 100%);
+    box-shadow: inset 0 2px 9px rgba(255,255,255,.6), inset 0 -12px 20px rgba(90,100,115,.12), 0 14px 34px rgba(60,70,90,.16);">
+
+    <!-- shoulder shading -->
+    <div style="position:absolute; top:0; left:0; right:0; height:58px; background:linear-gradient(180deg, rgba(110,122,138,.24), rgba(110,122,138,0));"></div>
+    <div style="position:absolute; top:6px; left:50%; transform:translateX(-50%); width:120px; height:20px; border-radius:50%; background:radial-gradient(50% 100% at 50% 0%, rgba(255,255,255,.7), rgba(255,255,255,0) 70%);"></div>
+
+    <!-- liquid fill (diluent) -->
+    <sc-if value="{{ liquid }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:6px; right:6px; bottom:6px; height:300px; border-radius:2px 2px 18px 18px; overflow:hidden;
+        background:linear-gradient(180deg, rgba(224,238,246,.5), rgba(204,226,238,.64));
+        box-shadow: inset 0 -10px 16px rgba(120,150,170,.24);">
+        <div style="position:absolute; top:0; left:0; right:0; height:9px; background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,0));"></div>
+      </div>
+    </sc-if>
+
+    <!-- powder fill -->
+    <sc-if value="{{ solid }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute; left:6px; right:6px; bottom:6px; height:58px; border-radius:2px 2px 18px 18px; overflow:hidden;
+        background:{{ powder }};
+        background-image:
+          radial-gradient(circle at 24% 34%, rgba(255,255,255,.5) 0 1.5px, transparent 2.2px),
+          radial-gradient(circle at 68% 56%, rgba(0,0,0,.18) 0 1.4px, transparent 2px),
+          radial-gradient(circle at 46% 76%, rgba(255,255,255,.4) 0 1.3px, transparent 1.9px),
+          radial-gradient(circle at 84% 26%, rgba(0,0,0,.12) 0 1.3px, transparent 1.9px);
+        background-size:11px 11px, 13px 13px, 9px 9px, 15px 15px;
+        box-shadow: inset 0 8px 11px rgba(255,255,255,.3), inset 0 -9px 13px rgba(0,0,0,.22);">
+        <div style="position:absolute; top:-4px; left:-8%; width:116%; height:12px; background:radial-gradient(60% 100% at 42% 100%, rgba(255,255,255,.5), transparent 72%);"></div>
+      </div>
+    </sc-if>
+
+    <!-- ===== LABEL ===== -->
+    <div style="position:absolute; top:66px; left:5px; right:5px; height:266px; border-radius:2px; overflow:hidden; display:flex;
+      background:linear-gradient(90deg, rgba(198,202,208,.9) 0%, #ffffff 5%, #ffffff 95%, rgba(198,202,208,.9) 100%);
+      box-shadow: inset 16px 0 22px -12px rgba(0,0,0,.22), inset -16px 0 22px -12px rgba(0,0,0,.22), 0 1px 2px rgba(0,0,0,.12);">
+
+      <!-- vertical NO. sidebar -->
+      <div style="width:33px; flex-shrink:0; background:{{ accent }}; position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-weight:700; font-size:11px; letter-spacing:.24em; color:rgba(255,255,255,.94);">NO. {{ no }}</div>
+        <div style="position:absolute; top:9px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.6); font-size:11px; line-height:1;">+</div>
+        <div style="position:absolute; bottom:9px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.6); font-size:11px; line-height:1;">+</div>
+      </div>
+
+      <!-- main -->
+      <div style="flex:1; position:relative; overflow:hidden;">
+        <!-- watermark -->
+        <div style="position:absolute; right:-6px; top:60px; opacity:.07; z-index:0;">
+          <svg width="150" height="150" viewBox="0 0 100 100"><path d="M57 9 L29 55 L46 55 L43 91 L73 41 L55 41 Z" fill="#8b9097"></path></svg>
+        </div>
+        <!-- registration marks -->
+        <div style="position:absolute; right:11px; top:11px; color:#c2c5cb; font-size:11px; line-height:1; z-index:1;">+</div>
+        <div style="position:absolute; right:11px; bottom:11px; color:#c2c5cb; font-size:11px; line-height:1; z-index:1;">+</div>
+
+        <!-- header: brand -->
+        <div style="position:relative; z-index:1; padding:13px 14px 0 14px; display:flex; align-items:center; gap:8px;">
+          <div style="width:30px; height:30px; border-radius:8px; background:linear-gradient(150deg,#2e6bff,#7c5cff 55%,#b6ff3a); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 5px rgba(46,107,255,.32);">
+            <svg width="15" height="15" viewBox="0 0 100 100"><path d="M57 9 L29 55 L46 55 L43 91 L73 41 L55 41 Z" fill="#ffffff"></path></svg>
+          </div>
+          <div style="display:flex; flex-direction:column; line-height:.92;">
+            <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:14px; letter-spacing:-.01em; color:#15171b;">BIOHANCED</div>
+            <div style="font-weight:600; font-size:7.5px; letter-spacing:.4em; color:#7b7e85; margin-top:2px;">LABS</div>
+          </div>
+        </div>
+
+        <!-- name band (bleeds to right edge) -->
+        <div style="position:relative; z-index:1; margin-top:13px; min-height:44px; background:{{ accent }}; padding:9px 14px; display:flex; align-items:center;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:21px; letter-spacing:-.01em; color:#ffffff; line-height:1.02;">{{ compound }}</div>
+        </div>
+
+        <!-- dose + purity + lot -->
+        <div style="position:relative; z-index:1; padding:13px 14px 0 14px;">
+          <div style="display:inline-block; border:2px solid #15171b; border-radius:4px; padding:5px 13px;">
+            <span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; color:#15171b; letter-spacing:.01em;">{{ dose }}</span>
+          </div>
+          <div style="font-size:12px; color:#20242a; font-weight:500; margin-top:13px; line-height:1.35;">{{ purity }}</div>
+          <div style="font-size:12px; color:#20242a; font-weight:500; line-height:1.35;">For Research Use Only</div>
+          <div style="font-size:10.5px; color:#8b8f96; letter-spacing:.04em; margin-top:9px;">LOT {{ lot }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GLASS REFLECTIONS ===== -->
+    <div style="position:absolute; top:44px; bottom:0; left:5%; width:9px; border-radius:6px; background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.18)); filter:blur(1.6px); z-index:6; pointer-events:none;"></div>
+    <div style="position:absolute; top:44px; bottom:0; left:9%; width:2px; background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.05)); z-index:6; pointer-events:none;"></div>
+    <div style="position:absolute; top:44px; bottom:0; right:6%; width:6px; border-radius:6px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.08)); filter:blur(1.6px); z-index:6; pointer-events:none;"></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:340,&quot;height&quot;:660},&quot;compound&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BPC-157&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;no&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;001&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dose&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5 MG&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;purity&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;99.7% Purity&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BH-0806&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f6bf0&quot;,&quot;options&quot;:[&quot;#2f6bf0&quot;,&quot;#7c5cf0&quot;,&quot;#4f9e2a&quot;,&quot;#0f9e86&quot;,&quot;#e0772e&quot;,&quot;#64748b&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;powder&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#eef0f2&quot;,&quot;options&quot;:[&quot;#eef0f2&quot;,&quot;#2f7ef0&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;liquid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+    const liquid = p.liquid === true || p.liquid === 'true';
+    return {
+      compound: p.compound ?? 'BPC-157',
+      no: p.no ?? '001',
+      dose: p.dose ?? '5 MG',
+      purity: p.purity ?? '99.7% Purity',
+      lot: p.lot ?? 'BH-0806',
+      accent: p.accent ?? '#2f6bf0',
+      powder: p.powder ?? '#eef0f2',
+      liquid: liquid,
+      solid: !liquid
+    };
+  }
+}
+</script>
+</body>
+</html>

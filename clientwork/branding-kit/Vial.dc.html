@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Archivo:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+</helmet>
+
+<div style="width:320px; height:600px; position:relative; display:flex; flex-direction:column; align-items:center; font-family:'Space Grotesk',sans-serif;">
+
+  <!-- contact shadow -->
+  <div style="position:absolute; left:50%; bottom:8px; transform:translateX(-50%); width:210px; height:26px; border-radius:50%; background:radial-gradient(50% 50% at 50% 50%, rgba(20,24,30,.22), rgba(20,24,30,0) 72%); filter:blur(2px);"></div>
+
+  <!-- ===== CAP (black rubber stopper) ===== -->
+  <div style="width:206px; height:112px; position:relative; z-index:4; margin-top:6px;
+    border-radius:26px 26px 15px 15px;
+    background:
+      radial-gradient(130% 70% at 33% 16%, rgba(255,255,255,.30), rgba(255,255,255,0) 44%),
+      linear-gradient(180deg, #3c4046 0%, #25282c 24%, #15171a 72%, #0a0b0d 100%);
+    box-shadow: inset 0 5px 7px rgba(255,255,255,.14), inset 0 -12px 16px rgba(0,0,0,.55), inset 8px 0 14px rgba(0,0,0,.4), inset -8px 0 14px rgba(0,0,0,.4), 0 7px 16px rgba(0,0,0,.30);">
+    <!-- knurl texture band -->
+    <div style="position:absolute; left:8px; right:8px; bottom:10px; height:46px; border-radius:10px; opacity:.5;
+      background:repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, rgba(0,0,0,.12) 1px 2px, transparent 2px 5px);"></div>
+    <!-- top sheen -->
+    <div style="position:absolute; top:9px; left:26px; width:96px; height:26px; border-radius:50%; background:radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.42), rgba(255,255,255,0) 70%); filter:blur(1px);"></div>
+  </div>
+
+  <!-- ===== METAL CRIMP COLLAR ===== -->
+  <div style="width:152px; height:52px; position:relative; z-index:3; margin-top:-12px;
+    border-radius:5px 5px 7px 7px;
+    background:linear-gradient(90deg,
+      #54565a 0%, #8d9196 8%, #d7dadd 20%, #ffffff 31%, #cfd3d7 41%,
+      #93979c 53%, #e0e3e6 67%, #b4b8bc 82%, #6c6f74 93%, #4d4f53 100%);
+    box-shadow: inset 0 4px 5px rgba(255,255,255,.6), inset 0 -7px 9px rgba(0,0,0,.34), 0 3px 7px rgba(0,0,0,.22);">
+    <!-- crimp grooves -->
+    <div style="position:absolute; top:10px; left:0; right:0; height:1px; background:rgba(0,0,0,.22);"></div>
+    <div style="position:absolute; bottom:11px; left:0; right:0; height:1px; background:rgba(0,0,0,.22);"></div>
+    <div style="position:absolute; top:13px; left:0; right:0; height:1px; background:rgba(255,255,255,.5);"></div>
+  </div>
+
+  <!-- ===== GLASS BODY ===== -->
+  <div style="width:244px; height:418px; position:relative; z-index:2; margin-top:-5px; overflow:hidden;
+    border-radius:7px 7px 20px 20px;
+    background:linear-gradient(90deg,
+      rgba(120,128,136,.5) 0%, rgba(255,255,255,.85) 5%, rgba(206,213,219,.20) 14%,
+      rgba(255,255,255,0) 33%, rgba(255,255,255,0) 67%, rgba(206,213,219,.20) 86%,
+      rgba(255,255,255,.82) 95%, rgba(120,128,136,.5) 100%);
+    box-shadow: inset 0 2px 9px rgba(255,255,255,.6), inset 0 -10px 18px rgba(90,100,115,.12), 0 12px 30px rgba(60,70,90,.16);">
+
+    <!-- shoulder shadow under stopper -->
+    <div style="position:absolute; top:0; left:0; right:0; height:30px; background:linear-gradient(180deg, rgba(40,46,54,.20), rgba(40,46,54,0));"></div>
+
+    <!-- ===== LABEL ===== -->
+    <div style="position:absolute; top:34px; left:0; right:0; height:296px; box-sizing:border-box; padding:14px 18px 12px;
+      display:flex; flex-direction:column;
+      background:linear-gradient(90deg, rgba(208,210,214,.92) 0%, #ffffff 7%, #ffffff 93%, rgba(208,210,214,.92) 100%);
+      box-shadow: 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.05);">
+
+      <!-- header -->
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:27px; height:27px; border-radius:8px; background:linear-gradient(150deg,#2e6bff,#7c5cff 55%,#b6ff3a); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 5px rgba(46,107,255,.32);">
+          <svg width="14" height="14" viewBox="0 0 100 100"><path d="M57 9 L29 55 L46 55 L43 91 L73 41 L55 41 Z" fill="#ffffff"></path></svg>
+        </div>
+        <div style="display:flex; flex-direction:column; line-height:.9;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:13px; letter-spacing:-.01em; color:#14161a;">BIOHANCED</div>
+          <div style="font-weight:600; font-size:7px; letter-spacing:.36em; color:#7b7e85; margin-top:2px;">LABS</div>
+        </div>
+        <div style="margin-left:auto; font-size:7.5px; letter-spacing:.12em; color:#9a9ea3; text-transform:uppercase; text-align:right; line-height:1.3;">Research<br>Grade</div>
+      </div>
+
+      <!-- category gradient band -->
+      <div style="height:5px; border-radius:3px; margin-top:11px; background:{{ grad }};"></div>
+
+      <!-- name + descriptor -->
+      <div style="margin-top:13px;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:23px; letter-spacing:-.02em; color:#15171b; line-height:1.0;">{{ compound }}</div>
+        <div style="font-size:9.5px; color:#6b6f78; margin-top:5px; letter-spacing:.01em;">{{ descriptor }}</div>
+      </div>
+
+      <!-- dose -->
+      <div style="display:flex; align-items:center; gap:9px; margin-top:14px;">
+        <div style="display:inline-flex; align-items:center; background:{{ grad }}; border-radius:18px; padding:6px 15px; box-shadow:0 2px 6px rgba(0,0,0,.16);">
+          <span style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; color:#fff; letter-spacing:.02em;">{{ dose }}</span>
+        </div>
+        <span style="font-weight:600; font-size:8.5px; letter-spacing:.16em; color:#9a9ea3; text-transform:uppercase;">Lyophilized<br>Powder</span>
+      </div>
+
+      <!-- divider -->
+      <div style="height:1px; background:#eceae5; margin-top:14px;"></div>
+
+      <!-- purity -->
+      <div style="display:flex; align-items:center; gap:7px; margin-top:11px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:{{ accent }};"></span>
+        <span style="font-weight:700; font-size:12px; color:{{ accent }}; letter-spacing:.03em;">{{ purity }} PURITY</span>
+      </div>
+
+      <!-- footer -->
+      <div style="margin-top:auto; display:flex; flex-direction:column; gap:3px;">
+        <div style="font-weight:700; font-size:8.5px; letter-spacing:.2em; color:#3c3f46; text-transform:uppercase;">For Research Use Only</div>
+        <div style="font-size:7.5px; letter-spacing:.14em; color:#a8abb0; text-transform:uppercase;">Lot {{ lot }} &nbsp;·&nbsp; Store −20°C &nbsp;·&nbsp; Not for human use</div>
+      </div>
+    </div>
+
+    <!-- ===== POWDER ===== -->
+    <div style="position:absolute; left:7px; right:7px; bottom:7px; height:64px; border-radius:2px 2px 14px 14px; overflow:hidden;
+      background:{{ powder }};
+      background-image:
+        radial-gradient(circle at 24% 34%, rgba(255,255,255,.55) 0 1.6px, transparent 2.3px),
+        radial-gradient(circle at 68% 56%, rgba(0,0,0,.20) 0 1.5px, transparent 2.2px),
+        radial-gradient(circle at 46% 76%, rgba(255,255,255,.42) 0 1.4px, transparent 2px),
+        radial-gradient(circle at 84% 26%, rgba(0,0,0,.14) 0 1.4px, transparent 2px),
+        radial-gradient(circle at 12% 68%, rgba(0,0,0,.12) 0 1.3px, transparent 2px);
+      background-size:11px 11px, 13px 13px, 9px 9px, 15px 15px, 17px 17px;
+      box-shadow: inset 0 8px 11px rgba(255,255,255,.32), inset 0 -9px 13px rgba(0,0,0,.24);">
+      <!-- uneven top surface -->
+      <div style="position:absolute; top:-4px; left:-8%; width:116%; height:13px; background:radial-gradient(60% 100% at 42% 100%, rgba(255,255,255,.5), transparent 72%);"></div>
+    </div>
+
+    <!-- ===== GLASS REFLECTIONS (over everything) ===== -->
+    <div style="position:absolute; top:0; bottom:0; left:3.5%; width:8px; border-radius:6px; background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.18)); filter:blur(1.5px); z-index:6; pointer-events:none;"></div>
+    <div style="position:absolute; top:0; bottom:0; left:7.5%; width:2px; border-radius:6px; background:linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.04)); z-index:6; pointer-events:none;"></div>
+    <div style="position:absolute; top:0; bottom:0; right:5%; width:6px; border-radius:6px; background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.08)); filter:blur(1.5px); z-index:6; pointer-events:none;"></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:680},&quot;compound&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BPC-157&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;descriptor&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Body Protection Compound&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dose&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;10 MG&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;purity&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;99.7%&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BH-0426&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3f6bf2&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;grad&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;linear-gradient(135deg,#4f7bff,#6f7bf5)&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;powder&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#edeff1&quot;,&quot;options&quot;:[&quot;#edeff1&quot;,&quot;#2f7ef0&quot;],&quot;tsType&quot;:&quot;string&quot;}}">class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+    return {
+      compound: p.compound ?? 'BPC-157',
+      descriptor: p.descriptor ?? 'Body Protection Compound',
+      dose: p.dose ?? '10 MG',
+      purity: p.purity ?? '99.7%',
+      lot: p.lot ?? 'BH-0426',
+      accent: p.accent ?? '#3f6bf2',
+      grad: p.grad ?? 'linear-gradient(135deg,#4f7bff,#6f7bf5)',
+      powder: p.powder ?? '#edeff1'
+    };
+  }
+}</script>
+</body>
+</html>

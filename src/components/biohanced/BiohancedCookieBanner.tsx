@@ -42,7 +42,7 @@ export function BiohancedCookieBanner() {
         <button
           type="button"
           onClick={accept}
-          className="rounded-full bg-bio-sage-500 px-5 py-2 text-sm font-semibold text-bio-white"
+          className="bio-cta rounded-[10px] px-5 py-2 text-sm"
         >
           Accept Cookies
         </button>

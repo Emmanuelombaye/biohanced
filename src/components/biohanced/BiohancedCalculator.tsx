@@ -125,7 +125,7 @@ export function BiohancedCalculator({ kind }: { kind: Kind }) {
       ) : null}
       <button
         type="submit"
-        className="rounded-full bg-bio-sage-500 px-6 py-3 text-sm font-semibold text-bio-white"
+        className="bio-cta rounded-[10px] px-6 py-3 text-sm"
       >
         Calculate
       </button>

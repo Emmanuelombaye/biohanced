@@ -1,0 +1,33 @@
+/* ============================================================
+   SPACING & LAYOUT
+   ============================================================ */
+:root {
+  /* Spacing scale (px) */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+
+  /* Layout */
+  --container:      1180px;   /* max content width, centered, 24px gutters */
+  --gutter:         24px;
+  --nav-height:     64px;
+  --section-pad-y:  64px;      /* vertical rhythm between page sections */
+
+  /* Radii */
+  --r-xs:   8px;    /* pills, small buttons */
+  --r-sm:   10px;   /* buttons, inputs */
+  --r-md:   14px;   /* category tiles */
+  --r-lg:   16px;   /* product cards */
+  --r-xl:   18px;   /* bundle cards */
+  --r-2xl:  26px;   /* hero panels */
+  --r-pill: 999px;
+  --r-mark: 22px;   /* app-icon mark rounding (at 34px) */
+}

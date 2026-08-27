@@ -14,7 +14,7 @@ export function BiohancedMicrodose() {
           <div className="mt-8">
             <a
               href={BIOHENCED_LINKS.microdosingPage}
-              className="inline-flex items-center justify-center rounded-full bg-bio-sage-200 px-[42px] py-4 text-[17px] font-medium text-bio-sage-500 transition-opacity hover:opacity-90"
+              className="bio-cta inline-flex items-center justify-center rounded-[10px] px-[42px] py-4 text-[17px]"
             >
               Learn more
             </a>

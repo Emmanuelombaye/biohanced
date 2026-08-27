@@ -1,0 +1,22 @@
+/* ============================================================
+   SHADOWS, BORDERS, MOTION
+   ============================================================ */
+:root {
+  /* Elevation — soft, low-contrast; product surfaces sit on warm white */
+  --shadow-card:   0 1px 3px rgba(0,0,0,.10), 0 8px 30px rgba(0,0,0,.06);
+  --shadow-hover:  0 16px 36px rgba(0,0,0,.10);   /* product-card lift */
+  --shadow-tile:   0 12px 30px rgba(0,0,0,.08);   /* category-tile lift */
+  --shadow-mark:   0 12px 36px rgba(46,107,255,.40); /* glow under the gradient mark */
+  --shadow-vial:   0 18px 44px rgba(0,0,0,.30);   /* dark product / vial imagery */
+
+  /* Borders */
+  --bw: 1px;
+  --border-light: 1px solid var(--line-light);
+  --border-dark:  1px solid var(--line-dark);
+
+  /* Motion — one signature ease for lifts, quick snap on press */
+  --ease-lift: cubic-bezier(.2,.8,.3,1);
+  --dur-hover: .22s;
+  --dur-press: .08s;
+  /* Hover = translateY(-2 to -4px) + brightness(1.03); Press = translateY(0) scale(.97) brightness(.98) */
+}

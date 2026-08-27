@@ -55,9 +55,9 @@ export function BiohancedMedicare() {
             role="img"
             aria-label="Medicare members"
           />
-          <div className="absolute bottom-6 left-6 rounded-full bg-bio-sage-500 px-5 py-3 shadow-lg">
-            <p className="text-base text-bio-white/70 line-through">$1,000+</p>
-            <p className="font-bio-sans text-[20px] leading-none font-medium text-[#fbfcfa]">
+          <div className="absolute bottom-6 left-6 rounded-[10px] bg-bio-volt px-5 py-3 text-bio-ink shadow-lg">
+            <p className="text-base text-bio-ink/60 line-through">$1,000+</p>
+            <p className="font-bio-sans text-[20px] leading-none font-semibold text-bio-ink">
               $50/mo
             </p>
           </div>

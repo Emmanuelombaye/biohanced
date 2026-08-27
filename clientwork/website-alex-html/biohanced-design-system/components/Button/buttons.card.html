@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components" viewport="700x210" name="Button" subtitle="Voltage-green primary, dark, outline, ghost · 3 sizes" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;font-family:var(--font-text);padding:22px;box-sizing:border-box;background:var(--warm-white)}
+.b{font-family:var(--font-text);font-weight:600;border-radius:var(--r-sm);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent}
+.md{padding:14px 26px;font-size:15px}.sm{padding:9px 16px;font-size:13px}.lg{padding:16px 30px;font-size:16px}
+.primary{background:var(--volt-green);color:var(--ink)}
+.dark{background:var(--ink);color:#fff}
+.outline{background:transparent;color:#14161a;border:1px solid var(--line-light)}
+.ghost{background:transparent;color:var(--ink-3)}
+.row{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.onDark{background:var(--ink);padding:16px;border-radius:12px}
+.onDark .outline{color:#fff;border-color:var(--line-dark-2)}
+.onDark .ghost{color:var(--text-on-dark)}</style></head>
+<body>
+  <div class="row">
+    <button class="b md primary">Browse catalog</button>
+    <button class="b md dark">Add to cart</button>
+    <button class="b md outline">View COAs</button>
+    <button class="b md ghost">Catalog</button>
+  </div>
+  <div class="row onDark">
+    <button class="b md primary">Shop</button>
+    <button class="b md outline">View COAs</button>
+    <button class="b md ghost">Science</button>
+  </div>
+  <div class="row">
+    <button class="b sm primary">Small</button>
+    <button class="b md primary">Medium</button>
+    <button class="b lg primary">Large</button>
+  </div>
+</body></html>

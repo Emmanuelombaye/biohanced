@@ -5,7 +5,7 @@ export function BiohancedDoctor() {
   return (
     <section className="bg-bio-neutral-100 py-16 md:py-32 md:pb-16">
       <div className="bio-container grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-        <h2 className="bio-headline max-w-[592px] text-[29px] leading-[1.1] text-bio-sage-200 md:text-[48px] md:leading-[52.8px]">
+        <h2 className="bio-headline max-w-[592px] text-[29px] leading-[1.1] text-bio-ink md:text-[48px] md:leading-[52.8px]">
           Found&apos;s program is designed by leading doctors in obesity medicine
         </h2>
 

@@ -12,13 +12,13 @@ export default function NotFound() {
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href={BIOHENCED_LINKS.home}
-            className="rounded-full bg-bio-sage-500 px-7 py-3.5 text-[15px] font-medium text-bio-white"
+              className="bio-cta rounded-[10px] px-7 py-3.5 text-[15px]"
           >
             Back home
           </Link>
           <Link
             href={BIOHENCED_LINKS.getStarted}
-            className="rounded-full border border-bio-sage-500 px-7 py-3.5 text-[15px] font-medium text-bio-sage-500"
+            className="rounded-[10px] border border-bio-neutral-200 bg-bio-white px-7 py-3.5 text-[15px] font-medium text-bio-ink"
           >
             Get started
           </Link>

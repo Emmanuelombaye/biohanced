@@ -18,8 +18,10 @@
 # production
 /build
 
-# misc
-.DS_Store
+# clientwork archives (keep local; extracted folders are in repo)
+clientwork/*.zip
+clientwork/_downloads/
+
 *.pem
 .tools/
 node.zip
