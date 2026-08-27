@@ -32,3 +32,6 @@ export { BiohancedProductMarquee } from "./BiohancedProductMarquee";
 export { BiohancedCatalogGrid } from "./BiohancedCatalogGrid";
 export { BiohancedProductCard, BiohancedProductCardGrid } from "./BiohancedProductCard";
 export { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";
+export { BiohancedTrustStrip } from "./BiohancedTrustStrip";
+export { BiohancedHowItWorks } from "./BiohancedHowItWorks";
+export { BiohancedCatalogShowcase } from "./BiohancedCatalogShowcase";

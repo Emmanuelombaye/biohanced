@@ -191,6 +191,10 @@
     border-color: #d8d6d0;
     box-shadow: 0 16px 40px rgba(10, 11, 14, 0.08);
   }
+
+  .bio-product-card-full {
+    min-height: 100%;
+  }
 }
 
 @keyframes bio-marquee {

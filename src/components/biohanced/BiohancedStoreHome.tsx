@@ -20,6 +20,8 @@ import { BiohancedApplicationsSection } from "./BiohancedApplicationsSection";
 import { BiohancedMarketingCarousel } from "./BiohancedMarketingCarousel";
 import { BiohancedProductMarquee } from "./BiohancedProductMarquee";
 import { BiohancedMedicare } from "./BiohancedMedicare";
+import { BiohancedCatalogShowcase } from "./BiohancedCatalogShowcase";
+import { BiohancedHowItWorks } from "./BiohancedHowItWorks";
 
 const CATEGORY_ORDER: CatalogCategory[] = [
   "recovery",
@@ -97,6 +99,7 @@ function FeaturedProducts() {
           className="mt-10"
           mobileRail
           showPrice
+          cardSize="full"
         />
       </div>
     </BiohancedSection>
@@ -147,6 +150,39 @@ function BundleSection() {
               </article>
             );
           })}
+        </div>
+      </div>
+    </BiohancedSection>
+  );
+}
+
+function ManufacturingBrief() {
+  const stats = [
+    { label: "≥99%", sub: "HPLC-MS verified" },
+    { label: "12", sub: "Step process" },
+    { label: "100%", sub: "Third-party tested" },
+    { label: "COA", sub: "Every batch" },
+  ];
+  return (
+    <BiohancedSection tone="white">
+      <div className="bio-container grid gap-12 lg:grid-cols-2 lg:items-center">
+        <BiohancedSectionHeader
+          eyebrow="Manufacturing · USA"
+          title="From lab to your research in 12 steps"
+          description="US-synthesized, HPLC-purified, and third-party tested. Manufacturing and packaging from start to finish in the USA — no relabeling."
+          action={{ label: "View quality standards", href: BIOHENCED_LINKS.manufacturing }}
+          className="max-w-none"
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center"
+            >
+              <p className="font-[Archivo,sans-serif] text-[32px] font-black text-bio-ink">{s.label}</p>
+              <p className="mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
+            </div>
+          ))}
         </div>
       </div>
     </BiohancedSection>
@@ -212,16 +248,19 @@ function FinalCta() {
   );
 }
 
-/** Homepage body — editorial flow: featured → categories → quality → applications → manufacturing → bundles → proof → catalog → contact */
+/** Homepage — mature editorial flow with full product cards and quality narrative */
 export function BiohancedStoreHome() {
   return (
     <>
-      <FeaturedProducts />
       <CategoryGrid />
+      <FeaturedProducts />
+      <BiohancedCatalogShowcase />
+      <BundleSection />
+      <ManufacturingBrief />
       <BiohancedMarketingCarousel />
+      <BiohancedHowItWorks />
       <BiohancedApplicationsSection />
       <BiohancedMedicare />
-      <BundleSection />
       <BiohancedTestimonials />
       <BiohancedProductMarquee />
       <ContactBlock />
