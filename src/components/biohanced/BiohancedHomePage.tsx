@@ -1,5 +1,4 @@
 import { BiohancedHero, BiohancedHeroDisclaimer } from "./BiohancedHero";
-import { BiohancedReveal } from "./BiohancedReveal";
 import { BiohancedStoreHome } from "./BiohancedStoreHome";
 
 export function BiohancedHomePage() {
@@ -7,9 +6,7 @@ export function BiohancedHomePage() {
     <>
       <BiohancedHero />
       <BiohancedHeroDisclaimer />
-      <BiohancedReveal>
-        <BiohancedStoreHome />
-      </BiohancedReveal>
+      <BiohancedStoreHome />
     </>
   );
 }

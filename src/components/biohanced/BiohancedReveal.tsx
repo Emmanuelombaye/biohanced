@@ -18,18 +18,32 @@ export function BiohancedReveal({
     const node = ref.current;
     if (!node) return;
 
+    const reveal = () => setVisible(true);
+
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      reveal();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          reveal();
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+
+    const fallback = window.setTimeout(reveal, 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (

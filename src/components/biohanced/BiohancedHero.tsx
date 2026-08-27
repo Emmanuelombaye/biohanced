@@ -15,7 +15,10 @@ export function BiohancedHero() {
     <section>
       <div className="bg-bio-neutral-100 p-4 md:p-6 md:pb-0 lg:p-10 lg:pb-0">
         <div
-          className="relative mx-auto max-w-[1180px] overflow-hidden rounded-[26px] bg-[linear-gradient(135deg,#0B0D12,#121A2B_60%,#15241F)]"
+          className="bio-hero-gradient relative mx-auto min-h-[min(520px,72vh)] max-w-[1180px] overflow-hidden rounded-[26px]"
+          style={{
+            background: "linear-gradient(135deg, #0b0d12, #121a2b 60%, #15241f)",
+          }}
         >
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_18%_12%,rgba(79,123,255,0.28),transparent_58%)]"
@@ -62,13 +65,6 @@ export function BiohancedHero() {
                 height={520}
                 loading="eager"
                 className="relative w-full drop-shadow-[0_30px_44px_rgba(0,0,0,0.5)]"
-              />
-              <BiohancedImg
-                src={BIOHENCED_ASSETS.hero.vialsWide}
-                alt=""
-                width={200}
-                height={120}
-                className="pointer-events-none absolute -bottom-2 -right-2 hidden w-[42%] opacity-90 drop-shadow-[0_16px_32px_rgba(0,0,0,0.35)] xl:block"
               />
             </div>
           </div>
