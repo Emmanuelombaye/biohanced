@@ -259,6 +259,27 @@
   .bio-product-card-full {
     min-height: 100%;
   }
+
+  /* Thorne-style pill CTAs on product cards */
+  .bio-btn-cart {
+    @apply inline-flex items-center justify-center min-h-[44px] rounded-full bg-bio-volt px-4 py-2.5 text-[13px] font-bold uppercase tracking-[0.04em] text-bio-ink shadow-[0_2px_8px_rgba(182,255,58,0.35)];
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .bio-btn-view {
+    @apply inline-flex items-center justify-center min-h-[44px] rounded-full border-2 border-bio-neutral-200 bg-bio-white px-4 py-2.5 text-[13px] font-bold uppercase tracking-[0.04em] text-bio-ink;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .bio-btn-cart:hover {
+      filter: brightness(1.05);
+    }
+
+    .bio-btn-view:hover {
+      @apply border-bio-ink bg-bio-neutral-100;
+    }
+  }
 }
 
 @keyframes bio-marquee {

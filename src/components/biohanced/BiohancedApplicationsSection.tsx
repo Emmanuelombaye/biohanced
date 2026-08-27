@@ -32,7 +32,7 @@ export function BiohancedApplicationsSection() {
           productIds={APPLICATION_PRODUCTS}
           columns={3}
           className="mt-10"
-          cardSize="full"
+          showActions
         />
       </div>
     </BiohancedSection>

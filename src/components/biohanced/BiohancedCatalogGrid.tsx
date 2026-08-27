@@ -6,10 +6,7 @@ import {
   CATALOG_NAV_CATEGORIES,
   getProductsByCategory,
   type CatalogCategory,
-  type CatalogProduct,
 } from "@/lib/biohanced-catalog";
-import { getVariantsForProduct } from "@/lib/biohanced-price-tiers";
-import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedProductCard } from "./BiohancedProductCard";
 
 function parseCategory(value?: string): CatalogCategory | "all" {
@@ -21,14 +18,6 @@ function parseCategory(value?: string): CatalogCategory | "all" {
 export function BiohancedCatalogGrid({ categoryParam }: { categoryParam?: string }) {
   const active = parseCategory(categoryParam);
   const products = getProductsByCategory(active);
-  const { addProduct } = useCart();
-
-  const quickAdd = (product: CatalogProduct) => {
-    const variants = getVariantsForProduct(product.id);
-    const first = variants[0];
-    if (!first) return;
-    addProduct(product.id, product.name, first.label, first.price);
-  };
 
   return (
     <section className="bg-bio-white py-10 md:py-14">
@@ -55,16 +44,12 @@ export function BiohancedCatalogGrid({ categoryParam }: { categoryParam?: string
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
-            <article key={product.id} className="flex flex-col">
-              <BiohancedProductCard productId={product.id} showPrice />
-              <button
-                type="button"
-                onClick={() => quickAdd(product)}
-                className="bio-btn-outline mt-3 w-full text-[14px]"
-              >
-                Add 1 vial to cart
-              </button>
-            </article>
+            <BiohancedProductCard
+              key={product.id}
+              productId={product.id}
+              showPrice
+              showActions
+            />
           ))}
         </div>
       </div>

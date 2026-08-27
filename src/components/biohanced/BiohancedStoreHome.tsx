@@ -77,18 +77,19 @@ function CategoryGrid() {
 function FeaturedProducts() {
   const products = getFeaturedProducts();
   return (
-    <BiohancedSection tone="cream" bordered>
+    <BiohancedSection tone="ink" className="!bg-[#2E3344]">
       <div className="bio-container">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <BiohancedSectionHeader
             eyebrow="Featured"
             title="Most requested compounds"
             description="In-stock SKUs with published COAs — ready for your bench protocol."
+            light
             className="max-w-xl"
           />
           <Link
             href={BIOHENCED_LINKS.catalog}
-            className="shrink-0 text-[15px] font-semibold text-[#2E6BFF] hover:underline"
+            className="shrink-0 text-[15px] font-semibold text-[#B6FF3A] hover:underline"
           >
             View all →
           </Link>
@@ -97,8 +98,8 @@ function FeaturedProducts() {
           productIds={products.map((p) => p.id)}
           columns={4}
           className="mt-10"
-          showPrice
-          cardSize="full"
+          showActions
+          cardSize="standard"
         />
       </div>
     </BiohancedSection>

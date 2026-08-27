@@ -58,7 +58,7 @@ export function BiohancedMedicare() {
             columns={3}
             className="mt-6"
             mobileRail={false}
-            compact
+            showActions
           />
         </div>
       </div>

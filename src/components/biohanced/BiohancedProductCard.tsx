@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   CATALOG_CATEGORIES,
@@ -5,6 +7,8 @@ import {
   getCatalogProduct,
   medicationHref,
 } from "@/lib/biohanced-catalog";
+import { getVariantsForProduct } from "@/lib/biohanced-price-tiers";
+import { useCart } from "@/lib/biohanced-cart-context";
 import { BiohancedVialStage } from "./BiohancedVialStage";
 
 type CardSize = "standard" | "compact" | "full";
@@ -14,16 +18,9 @@ type ProductCardProps = {
   className?: string;
   size?: CardSize;
   showPrice?: boolean;
+  /** View + Add to cart pill buttons (catalog-style) */
+  showActions?: boolean;
 };
-
-function CategoryBadge({ name, color }: { name: string; color: string }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-bio-neutral-200 bg-bio-neutral-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-bio-neutral-400">
-      <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: color }} aria-hidden />
-      {name}
-    </span>
-  );
-}
 
 function PurityBadge({ purity }: { purity: string }) {
   return (
@@ -33,12 +30,35 @@ function PurityBadge({ purity }: { purity: string }) {
   );
 }
 
-/** Editorial product card — standard, compact strip, or full end-to-end showcase */
+function CardActions({ productId, productName }: { productId: string; productName: string }) {
+  const { addProduct } = useCart();
+
+  const handleAdd = () => {
+    const variants = getVariantsForProduct(productId);
+    const first = variants[0];
+    if (!first) return;
+    addProduct(productId, productName, first.label, first.price);
+  };
+
+  return (
+    <div className="mt-4 grid grid-cols-2 gap-2">
+      <Link href={medicationHref(productId)} className="bio-btn-view text-center text-[12px] sm:text-[13px]">
+        View
+      </Link>
+      <button type="button" onClick={handleAdd} className="bio-btn-cart text-[12px] sm:text-[13px]">
+        Add to cart
+      </button>
+    </div>
+  );
+}
+
+/** Retail-style product card — image, brand, title, price, divider, View + Add actions */
 export function BiohancedProductCard({
   productId,
   className = "",
   size = "standard",
   showPrice = false,
+  showActions = false,
 }: ProductCardProps) {
   const product = getCatalogProduct(productId);
   if (!product) return null;
@@ -48,11 +68,8 @@ export function BiohancedProductCard({
   const isFull = size === "full";
   const stageSize = isFull ? "lg" : isCompact ? "sm" : "md";
 
-  return (
-    <Link
-      href={medicationHref(product.id)}
-      className={`group bio-product-card flex flex-col ${isFull ? "bio-product-card-full" : ""} ${className}`}
-    >
+  const body = (
+    <>
       <BiohancedVialStage
         src={catalogImage(product.id)}
         alt={product.name}
@@ -64,30 +81,31 @@ export function BiohancedProductCard({
       />
 
       <div className={`flex flex-1 flex-col ${isCompact ? "p-3" : isFull ? "p-5 sm:p-6" : "p-5"}`}>
-        <CategoryBadge name={cat.name} color={cat.dot} />
+        <p className="text-[12px] font-medium text-bio-neutral-400">
+          Biohanced Labs · {cat.name}
+        </p>
 
         <h3
-          className={`mt-3 font-[Archivo,sans-serif] font-black leading-tight tracking-[-0.02em] text-bio-ink ${
-            isCompact ? "text-[15px]" : isFull ? "text-[20px] sm:text-[24px]" : "text-[20px] md:text-[22px]"
+          className={`mt-2 font-[Archivo,sans-serif] font-black leading-snug tracking-[-0.02em] text-[#2E3A59] ${
+            isCompact
+              ? "text-[15px] line-clamp-2"
+              : isFull
+                ? "text-[20px] sm:text-[22px]"
+                : "text-[17px] sm:text-[19px] line-clamp-2"
           }`}
         >
           {product.name}
+          {product.doseLabel && !isFull ? ` · ${product.doseLabel}` : ""}
         </h3>
 
         {isFull && product.subtitle ? (
-          <p className="mt-1.5 text-[13px] font-medium leading-snug text-bio-neutral-400">
-            {product.subtitle}
-          </p>
-        ) : null}
-
-        {product.doseLabel && !isFull ? (
-          <p className="mt-1.5 text-[13px] leading-snug text-bio-neutral-400">{product.doseLabel}</p>
+          <p className="mt-1.5 text-[13px] font-medium text-bio-neutral-400">{product.subtitle}</p>
         ) : null}
 
         {isFull ? (
           <>
             <p className="mt-3 text-[14px] leading-relaxed text-bio-neutral-400">{product.blurb}</p>
-            <ul className="mt-4 space-y-2 border-t border-bio-neutral-200 pt-4 text-[13px] text-bio-neutral-400">
+            <ul className="mt-4 space-y-2 text-[13px] text-bio-neutral-400">
               <li className="flex justify-between gap-3 border-b border-bio-neutral-100 pb-2">
                 <span>Dose</span>
                 <span className="font-semibold text-bio-ink">{product.doseLabel}</span>
@@ -101,35 +119,57 @@ export function BiohancedProductCard({
                 <span className="font-semibold text-bio-ink">{product.formLabel}</span>
               </li>
             </ul>
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-bio-neutral-200 pt-4">
-              <div>
-                <p className="text-[11px] uppercase tracking-wider text-bio-neutral-400">From</p>
-                <p className="font-[Archivo,sans-serif] text-[22px] font-black text-bio-ink">
-                  ${product.priceFrom}
-                </p>
-              </div>
+          </>
+        ) : null}
+
+        {(showPrice || showActions || isFull) && (
+          <>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+              <p className="font-[Archivo,sans-serif] text-[18px] font-extrabold text-bio-ink sm:text-[20px]">
+                ${product.priceFrom}
+                <span className="ml-1 text-[12px] font-medium text-bio-neutral-400">from</span>
+              </p>
               <PurityBadge purity={product.purity} />
             </div>
-            <span className="bio-btn-outline mt-4 w-full text-center text-[14px]">
-              View compound · COA published
-            </span>
+            <hr className="mt-4 border-bio-neutral-200" />
           </>
-        ) : showPrice ? (
-          <div className="mt-4 flex items-center justify-between gap-3 border-t border-bio-neutral-200 pt-3">
-            <span className="font-[Archivo,sans-serif] text-[17px] font-extrabold text-bio-ink">
-              From ${product.priceFrom}
-            </span>
-            <PurityBadge purity={product.purity} />
-          </div>
+        )}
+
+        {showActions ? (
+          <CardActions productId={product.id} productName={product.name} />
         ) : isCompact ? (
           <div className="mt-3 flex justify-end">
             <PurityBadge purity={product.purity} />
           </div>
+        ) : !isFull ? (
+          <Link
+            href={medicationHref(product.id)}
+            className="bio-btn-view mt-4 w-full text-center text-[13px]"
+          >
+            View
+          </Link>
         ) : (
-          <span className="bio-btn-outline mt-4 w-full text-center text-[13px]">View details</span>
+          <CardActions productId={product.id} productName={product.name} />
         )}
       </div>
-    </Link>
+    </>
+  );
+
+  if (isCompact) {
+    return (
+      <Link
+        href={medicationHref(product.id)}
+        className={`group bio-product-card flex flex-col ${className}`}
+      >
+        {body}
+      </Link>
+    );
+  }
+
+  return (
+    <article className={`bio-product-card flex flex-col ${isFull ? "bio-product-card-full" : ""} ${className}`}>
+      {body}
+    </article>
   );
 }
 
@@ -139,6 +179,7 @@ export function BiohancedProductCardGrid({
   className = "",
   mobileRail = false,
   showPrice = false,
+  showActions = false,
   compact = false,
   cardSize,
 }: {
@@ -147,6 +188,7 @@ export function BiohancedProductCardGrid({
   className?: string;
   mobileRail?: boolean;
   showPrice?: boolean;
+  showActions?: boolean;
   compact?: boolean;
   cardSize?: CardSize;
 }) {
@@ -166,19 +208,23 @@ export function BiohancedProductCardGrid({
         ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
-  /* Horizontal rail only for compact marquee strips — full cards stack on mobile */
   const useRail = mobileRail && resolvedSize === "compact";
+
+  const cardProps = {
+    size: resolvedSize,
+    showPrice: showPrice || showActions,
+    showActions,
+  };
 
   if (useRail) {
     return (
       <div className={`bio-scroll-rail ${className}`}>
-        <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:gap-6 md:overflow-visible ${gridCols}">
+        <div
+          className={`flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:gap-6 md:overflow-visible ${gridCols}`}
+        >
           {productIds.map((id) => (
-            <div
-              key={id}
-              className="w-[min(260px,78vw)] shrink-0 snap-center md:w-auto md:shrink"
-            >
-              <BiohancedProductCard productId={id} size={resolvedSize} showPrice={showPrice} />
+            <div key={id} className="w-[min(260px,78vw)] shrink-0 snap-center md:w-auto md:shrink">
+              <BiohancedProductCard productId={id} {...cardProps} />
             </div>
           ))}
         </div>
@@ -189,12 +235,7 @@ export function BiohancedProductCardGrid({
   return (
     <div className={`grid gap-5 md:gap-6 ${colClass} ${className}`}>
       {productIds.map((id) => (
-        <BiohancedProductCard
-          key={id}
-          productId={id}
-          size={resolvedSize}
-          showPrice={showPrice}
-        />
+        <BiohancedProductCard key={id} productId={id} {...cardProps} />
       ))}
     </div>
   );
