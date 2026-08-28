@@ -145,6 +145,51 @@
     }
   }
 
+  .bio-motion-rail-item-wide {
+    width: min(300px, 88vw);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .bio-motion-rail-item-wide {
+      width: 340px;
+    }
+  }
+
+  .bio-scroll-nav-btn {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border border-bio-neutral-200 bg-bio-white text-[18px] font-semibold text-bio-ink shadow-[0_4px_16px_rgba(10,11,14,0.1)] transition-all;
+  }
+
+  .bio-scroll-nav-btn:hover:not(:disabled) {
+    @apply border-bio-ink bg-bio-neutral-100;
+  }
+
+  .bio-scroll-nav-btn:disabled {
+    @apply pointer-events-none opacity-35;
+  }
+
+  /* Desktop horizontal scrollbar for nav rails */
+  .bio-scroll-rail-desktop {
+    scrollbar-width: thin;
+    scrollbar-color: #c9ccd2 transparent;
+  }
+
+  .bio-scroll-rail-desktop::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+
+  .bio-scroll-rail-desktop::-webkit-scrollbar-thumb {
+    background: #c9ccd2;
+    border-radius: 999px;
+  }
+
+  .bio-scroll-rail-desktop::-webkit-scrollbar-track {
+    background: #f6f5f2;
+    border-radius: 999px;
+  }
+
   .bio-motion-rail-fade {
     -webkit-mask-image: linear-gradient(
       to right,

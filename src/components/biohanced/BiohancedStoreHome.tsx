@@ -23,6 +23,7 @@ import { BiohancedCatalogShowcase } from "./BiohancedCatalogShowcase";
 import { BiohancedHowItWorks } from "./BiohancedHowItWorks";
 import { BiohancedAddBundleButton } from "./BiohancedAddBundleButton";
 import { BiohancedMobileRail, BiohancedMobileRailItem } from "./BiohancedMobileRail";
+import { BiohancedScrollNavRail } from "./BiohancedScrollNavRail";
 
 const CATEGORY_ORDER: CatalogCategory[] = [
   "recovery",
@@ -117,17 +118,20 @@ function FeaturedProducts() {
 
 function BundleSection() {
   return (
-    <BiohancedSection tone="white">
+    <BiohancedSection tone="white" className="overflow-x-hidden">
       <div className="bio-container">
         <BiohancedSectionHeader
           eyebrow="Bundles"
           title="Pair compounds, save on research"
           description="Complementary pathways — up to 12% off when you order curated bundles."
         />
-        <BiohancedMobileRail
-          className="mt-10"
-          desktopClass="md:grid md:grid-cols-2 md:items-stretch md:gap-5 lg:grid-cols-3 md:overflow-visible"
-        >
+        <p className="mt-4 text-[13px] text-bio-neutral-400 md:hidden">
+          Swipe to browse bundles · tap Add bundle to cart
+        </p>
+        <p className="mt-4 hidden text-[13px] text-bio-neutral-400 md:block">
+          Use arrows or scroll bar to browse bundles
+        </p>
+        <BiohancedScrollNavRail className="mt-8 md:mt-10" ariaLabel="bundles">
           {BIOHENCED_BUNDLES.map((bundle) => {
             const names = bundle.productIds
               .map((id) => getCatalogProduct(id)?.name)
@@ -135,36 +139,35 @@ function BundleSection() {
               .join(" + ");
             const save = bundle.regular - bundle.price;
             return (
-              <BiohancedMobileRailItem key={bundle.id} widthClass="w-[min(300px,86vw)]">
-                <article
-                  className="flex h-full flex-col rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
-                >
-                  <p className="font-[Archivo,sans-serif] text-[18px] font-black leading-snug text-bio-ink line-clamp-2 break-words">
-                    {names}
-                  </p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400 line-clamp-3 break-words">
-                    {bundle.note}
-                  </p>
-                  <div className="mt-5 flex items-center gap-3">
-                    <span className="font-[Archivo,sans-serif] text-[24px] font-black text-bio-ink">
-                      ${bundle.price}
-                    </span>
-                    <span className="text-sm text-bio-neutral-400 line-through">${bundle.regular}</span>
-                    <span className="rounded-full bg-[#EEF7EE] px-2.5 py-0.5 text-[12px] font-semibold text-[#1F9E6B]">
-                      Save ${save}
-                    </span>
-                  </div>
-                  <BiohancedAddBundleButton
-                    bundleId={bundle.id}
-                    name={names}
-                    price={bundle.price}
-                    className="bio-btn-dark mt-5 w-full"
-                  />
-                </article>
-              </BiohancedMobileRailItem>
+              <article
+                key={bundle.id}
+                className="flex h-full flex-col rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
+              >
+                <p className="font-[Archivo,sans-serif] text-[18px] font-black leading-snug text-bio-ink line-clamp-2 break-words">
+                  {names}
+                </p>
+                <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400 line-clamp-3 break-words">
+                  {bundle.note}
+                </p>
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <span className="font-[Archivo,sans-serif] text-[24px] font-black text-bio-ink">
+                    ${bundle.price}
+                  </span>
+                  <span className="text-sm text-bio-neutral-400 line-through">${bundle.regular}</span>
+                  <span className="rounded-full bg-[#EEF7EE] px-2.5 py-0.5 text-[12px] font-semibold text-[#1F9E6B]">
+                    Save ${save}
+                  </span>
+                </div>
+                <BiohancedAddBundleButton
+                  bundleId={bundle.id}
+                  name={names}
+                  price={bundle.price}
+                  className="bio-btn-dark mt-5 w-full"
+                />
+              </article>
             );
           })}
-        </BiohancedMobileRail>
+        </BiohancedScrollNavRail>
       </div>
     </BiohancedSection>
   );
