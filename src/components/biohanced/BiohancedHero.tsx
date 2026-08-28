@@ -3,28 +3,24 @@ import { BIOHENCED_ASSETS } from "@/lib/biohanced-assets";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
 import { BiohancedImg } from "./BiohancedImg";
 
-const TRUST_ITEMS = [
-  { label: "≥99% purity, every batch", icon: BIOHENCED_ASSETS.icons.scale },
-  { label: "Third-party HPLC & MS tested", icon: BIOHENCED_ASSETS.icons.insurance },
-  { label: "COA on every product", icon: BIOHENCED_ASSETS.icons.phone },
-  { label: "Cold-chain shipping", icon: BIOHENCED_ASSETS.icons.scale },
-];
-
 export function BiohancedHero() {
   return (
     <section className="bg-bio-neutral-100 px-4 pb-4 pt-4 md:px-6 md:pb-6 lg:px-10 lg:pt-10">
-      <div
-        className="bio-hero-gradient relative mx-auto max-w-[1180px] overflow-hidden rounded-[24px] md:rounded-[26px]"
-        style={{
-          background: "linear-gradient(135deg, #0b0d12, #121a2b 60%, #15241f)",
-        }}
-      >
+      <div className="relative mx-auto max-w-[1180px] rounded-[24px] md:rounded-[26px]">
+        {/* Background layers — clipped to rounded card */}
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_18%_12%,rgba(79,123,255,0.28),transparent_58%)]"
+          className="bio-hero-gradient absolute inset-0 overflow-hidden rounded-[24px] md:rounded-[26px]"
+          style={{
+            background: "linear-gradient(135deg, #0b0d12, #121a2b 60%, #15241f)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-[24px] bg-[radial-gradient(70%_90%_at_18%_12%,rgba(79,123,255,0.28),transparent_58%)] md:rounded-[26px]"
           aria-hidden
         />
 
-        <div className="relative flex flex-col gap-6 p-6 md:gap-10 md:p-10 lg:flex-row lg:items-center lg:gap-12">
+        <div className="relative flex flex-col gap-8 p-6 pb-8 md:gap-10 md:p-10 md:pb-10 lg:flex-row lg:items-center lg:gap-14">
           <div className="max-w-[560px] lg:flex-1">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6FF3A]">
               Peptides · engineered
@@ -54,38 +50,21 @@ export function BiohancedHero() {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-[360px] items-end justify-center lg:max-w-[440px] lg:flex-1">
-            <div
-              className="pointer-events-none absolute inset-x-[-8%] bottom-0 top-[10%] rounded-[24px] bg-[radial-gradient(55%_70%_at_50%_55%,rgba(255,255,255,0.95),rgba(233,238,245,0.5)_55%,transparent_78%)]"
-              aria-hidden
-            />
-            <BiohancedImg
-              src={BIOHENCED_ASSETS.hero.threeVials}
-              alt="Biohanced Labs research vials — BPC-157, GHK-cu, Retatrutide"
-              width={440}
-              height={500}
-              loading="eager"
-              className="relative z-[1] w-full max-h-[min(280px,38vh)] object-contain object-bottom sm:max-h-[320px] md:max-h-[380px] drop-shadow-[0_28px_48px_rgba(0,0,0,0.5)]"
-            />
-          </div>
-        </div>
-
-        <div className="relative border-t border-[#1C1F27] bg-[#0A0B0E] px-4 py-5 md:px-10">
-          <BiohancedImg
-            src={BIOHENCED_ASSETS.hero.poster}
-            alt=""
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-10"
-          />
-          <div className="relative grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-8">
-            {TRUST_ITEMS.map((item) => (
+          <div className="relative mx-auto flex w-full items-center justify-center lg:flex-1 lg:justify-end">
+            <div className="relative w-full max-w-[min(100%,420px)] sm:max-w-[460px] lg:max-w-[520px]">
               <div
-                key={item.label}
-                className="flex items-start gap-2 text-[11px] leading-snug text-[#C9CCD2] sm:text-[13px]"
-              >
-                <img src={item.icon} alt="" className="mt-0.5 h-4 w-4 shrink-0 opacity-80" aria-hidden />
-                <span>{item.label}</span>
-              </div>
-            ))}
+                className="pointer-events-none absolute inset-[-12%] rounded-[32px] bg-[radial-gradient(58%_62%_at_50%_48%,rgba(255,255,255,0.92),rgba(233,238,245,0.45)_52%,transparent_72%)]"
+                aria-hidden
+              />
+              <BiohancedImg
+                src={BIOHENCED_ASSETS.hero.threeVials}
+                alt="Biohanced Labs research vials — BPC-157, GHK-Cu, Retatrutide"
+                width={520}
+                height={580}
+                loading="eager"
+                className="relative z-[1] block h-auto w-full object-contain drop-shadow-[0_28px_56px_rgba(0,0,0,0.5)]"
+              />
+            </div>
           </div>
         </div>
       </div>
