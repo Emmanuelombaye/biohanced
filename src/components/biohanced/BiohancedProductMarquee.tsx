@@ -9,7 +9,7 @@ export function BiohancedProductMarquee() {
   const items = [...BIOHENCED_CATALOG, ...BIOHENCED_CATALOG];
 
   return (
-    <BiohancedSection tone="white" bordered aria-label="Full catalog">
+    <BiohancedSection tone="white" bordered aria-label="Full catalog" className="overflow-x-hidden">
       <div className="bio-container mb-8 flex flex-wrap items-end justify-between gap-4">
         <BiohancedSectionHeader
           eyebrow="Full catalog"

@@ -193,9 +193,9 @@ export function BiohancedProductCardGrid({
 
   if (useRail) {
     return (
-      <div className={`bio-scroll-rail ${className}`}>
+      <div className={`bio-scroll-rail max-md:overflow-x-auto md:overflow-x-visible ${className}`}>
         <div
-          className={`flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:items-stretch md:gap-5 md:overflow-visible ${gridCols}`}
+          className={`bio-scroll-rail-track snap-x snap-mandatory md:grid md:items-stretch md:gap-5 md:overflow-visible ${gridCols}`}
         >
           {productIds.map((id) => (
             <div

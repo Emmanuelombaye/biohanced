@@ -14,8 +14,8 @@ export function BiohancedMobileRail({
   desktopClass = "md:grid md:grid-cols-2 md:items-stretch md:gap-5 md:overflow-visible",
 }: RailProps) {
   return (
-    <div className={`bio-scroll-rail ${className}`}>
-      <div className={`flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory ${desktopClass}`}>
+    <div className={`bio-scroll-rail max-md:overflow-x-auto md:overflow-x-visible ${className}`}>
+      <div className={`bio-scroll-rail-track snap-x snap-mandatory md:gap-5 ${desktopClass}`}>
         {children}
       </div>
     </div>

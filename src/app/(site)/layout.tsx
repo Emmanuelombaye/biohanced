@@ -13,7 +13,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <BiohancedPromoBar />
         <BiohancedNavbar />
       </header>
-      {children}
+      <main className="min-w-0 overflow-x-clip">{children}</main>
       <BiohancedFooter />
       <BiohancedCookieBanner />
     </BiohancedCartProvider>

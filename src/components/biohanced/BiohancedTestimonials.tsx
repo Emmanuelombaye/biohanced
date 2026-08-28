@@ -35,21 +35,16 @@ export function BiohancedTestimonials() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden px-3 md:px-10">
+      <div className="relative mx-auto max-w-[420px] overflow-hidden px-3 md:px-0">
         <div
-          className="flex gap-3 transition-transform duration-500 ease-out"
-          style={{
-            transform: `translateX(calc(-${index} * (min(420px, calc(100vw - 24px)) + 12px)))`,
-          }}
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {items.map((person, personIndex) => {
             const isFlipped = flipped[personIndex];
 
             return (
-              <article
-                key={person.name}
-                className="w-[calc(100vw-24px)] max-w-[420px] shrink-0"
-              >
+              <article key={person.name} className="w-full shrink-0 basis-full">
                 <div className="overflow-hidden transition-opacity duration-500">
                   {!isFlipped ? (
                     <div className="relative overflow-hidden rounded-2xl border border-[#262932] bg-[#14161A]">
