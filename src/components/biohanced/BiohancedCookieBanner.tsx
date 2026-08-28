@@ -29,7 +29,7 @@ export function BiohancedCookieBanner() {
   if (!open) return null;
 
   return (
-    <div className="fixed right-4 bottom-4 z-[80] w-[min(420px,calc(100vw-32px))] rounded-2xl bg-bio-white p-5 shadow-[0_16px_48px_rgba(25,50,49,0.18)]">
+    <div className="fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-[420px] rounded-2xl bg-bio-white p-5 shadow-[0_16px_48px_rgba(25,50,49,0.18)] sm:inset-x-auto sm:right-4">
       <p className="text-lg font-semibold text-bio-neutral-500">Your Privacy</p>
       <p className="mt-2 text-sm leading-relaxed text-bio-neutral-400">
         We use cookies to run the site and understand how it is used. See our{" "}

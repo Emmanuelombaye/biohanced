@@ -68,7 +68,7 @@ function CategoryGrid() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[15px] font-semibold leading-tight text-bio-ink">{cat.name}</p>
+                    <p className="text-[15px] font-semibold leading-snug text-bio-ink line-clamp-2 break-words">{cat.name}</p>
                     <p className="mt-1 text-[12px] text-bio-neutral-400">
                       {countByCategory(id)} compounds
                     </p>
@@ -139,8 +139,12 @@ function BundleSection() {
                 <article
                   className="flex h-full flex-col rounded-[16px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
                 >
-                  <p className="font-[Archivo,sans-serif] text-[18px] font-black text-bio-ink">{names}</p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400">{bundle.note}</p>
+                  <p className="font-[Archivo,sans-serif] text-[18px] font-black leading-snug text-bio-ink line-clamp-2 break-words">
+                    {names}
+                  </p>
+                  <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400 line-clamp-3 break-words">
+                    {bundle.note}
+                  </p>
                   <div className="mt-5 flex items-center gap-3">
                     <span className="font-[Archivo,sans-serif] text-[24px] font-black text-bio-ink">
                       ${bundle.price}

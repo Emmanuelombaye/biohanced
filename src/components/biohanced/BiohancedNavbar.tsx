@@ -167,10 +167,10 @@ export function BiohancedNavbar() {
 
       {open ? (
         <div
-          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto border-t border-[#1C1F27] bg-[#0A0B0E] lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto overscroll-y-contain border-t border-[#1C1F27] bg-[#0A0B0E] lg:hidden"
           style={{ top: "var(--site-header-height)" }}
         >
-          <div className="bio-container flex flex-col gap-1 py-5 pb-8">
+          <div className="bio-container flex flex-col gap-1 py-5 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div>
               <button
                 type="button"
@@ -178,7 +178,7 @@ export function BiohancedNavbar() {
                 onClick={() => setMobileSection((c) => (c === "catalog" ? null : "catalog"))}
               >
                 Catalog
-                <span>{mobileSection === "catalog" ? "−" : "+"}</span>
+                <span className="shrink-0 pl-3">{mobileSection === "catalog" ? "−" : "+"}</span>
               </button>
               {mobileSection === "catalog" ? (
                 <div className="flex flex-col gap-1 border-l border-[#262932] pl-4 pb-2">
@@ -186,7 +186,7 @@ export function BiohancedNavbar() {
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="py-2 text-[15px] text-[#9AA0A8]"
+                      className="break-words py-2 text-[15px] leading-snug text-[#9AA0A8]"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -199,7 +199,7 @@ export function BiohancedNavbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="py-3 text-[17px] font-medium text-white"
+                className="break-words py-3 text-[17px] font-medium leading-snug text-white"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

@@ -2,8 +2,7 @@ import {
   BiohancedCartProvider,
   BiohancedCookieBanner,
   BiohancedFooter,
-  BiohancedNavbar,
-  BiohancedPromoBar,
+  BiohancedSiteHeader,
 } from "@/components/biohanced";
 import Link from "next/link";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
@@ -11,8 +10,8 @@ import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
 export default function RootNotFound() {
   return (
     <BiohancedCartProvider>
-      <BiohancedPromoBar />
-      <BiohancedNavbar />
+      <BiohancedSiteHeader />
+      <main className="min-w-0 overflow-x-clip">
       <section className="bg-bio-neutral-100 py-24">
         <div className="bio-container max-w-2xl text-center">
           <h1 className="bio-headline text-[40px] text-bio-sage-500 md:text-[56px]">Page not found</h1>
@@ -35,6 +34,7 @@ export default function RootNotFound() {
           </div>
         </div>
       </section>
+      </main>
       <BiohancedFooter />
       <BiohancedCookieBanner />
     </BiohancedCartProvider>

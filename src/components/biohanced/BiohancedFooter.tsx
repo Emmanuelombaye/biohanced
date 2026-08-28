@@ -96,9 +96,9 @@ function FooterColumn({
 
 function LegalRow({ links }: { links: { label: string; href: string; external?: boolean }[] }) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-[12px] leading-relaxed">
+    <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 px-2 text-[12px] leading-relaxed">
       {links.map((link, index) => (
-        <span key={link.label} className="inline-flex items-center">
+        <span key={link.label} className="inline-flex max-w-full items-center break-words">
           <FooterLink href={link.href} external={link.external}>{link.label}</FooterLink>
           {index < links.length - 1 ? (
             <span className="mx-2 text-[#6C7280]" aria-hidden>·</span>
@@ -173,7 +173,7 @@ export function BiohancedFooter() {
           <p className="font-[Space_Grotesk,sans-serif] text-[13px]">
             <a
               href={BIOHENCED_LINKS.email}
-              className="inline-flex min-h-[44px] items-center rounded-full border border-[#262932] bg-[#14161A] px-5 py-2 text-[#C9CCD2] hover:text-white"
+              className="inline-flex min-h-[44px] max-w-full items-center break-all rounded-full border border-[#262932] bg-[#14161A] px-4 py-2 text-center text-[12px] text-[#C9CCD2] hover:text-white sm:break-normal sm:px-5 sm:text-[13px]"
             >
               research@biohancedlabs.com
             </a>

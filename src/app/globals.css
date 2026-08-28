@@ -233,10 +233,18 @@
 
   .bio-scroll-rail-track {
     display: flex;
+    flex-wrap: nowrap;
     min-width: 0;
     gap: 1rem;
     padding-bottom: 0.5rem;
     scroll-snap-type: x mandatory;
+  }
+
+  @media (min-width: 640px) {
+    .bio-scroll-rail-track.sm-wrap {
+      flex-wrap: wrap;
+      scroll-snap-type: none;
+    }
   }
 
   .bio-scroll-rail > .bio-scroll-rail-track > * {

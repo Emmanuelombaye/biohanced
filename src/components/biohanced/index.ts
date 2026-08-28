@@ -18,6 +18,7 @@ export { BiohancedManufacturingTimeline } from "./BiohancedManufacturingTimeline
 export { BiohancedMarketingCarousel } from "./BiohancedMarketingCarousel";
 export { BiohancedMedicare } from "./BiohancedMedicare";
 export { BiohancedMedicationDetail, BiohancedMedicationIndex } from "./BiohancedMedicationPage";
+export { BiohancedSiteHeader } from "./BiohancedSiteHeader";
 export { BiohancedNavbar } from "./BiohancedNavbar";
 export { BiohancedCtaBand, BiohancedPageHero, BiohancedPageSection } from "./BiohancedPageChrome";
 export { BiohancedPromoBar } from "./BiohancedPromoBar";

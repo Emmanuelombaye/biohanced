@@ -5,11 +5,13 @@ export function BiohancedPromoBar() {
   return (
     <Link
       href={BIOHENCED_LINKS.browseCatalog}
-      className="font-bio-greycliff-semibold flex min-h-[48px] items-center justify-center bg-[#14161A] px-4 py-2.5 text-center text-[14px] font-medium text-[#C9CCD2] transition-colors hover:bg-[#16181D] hover:text-white"
+      className="flex min-h-[44px] items-center justify-center bg-[#14161A] px-3 py-2 text-center text-[#C9CCD2] transition-colors hover:bg-[#16181D] hover:text-white sm:px-4 sm:py-2.5"
     >
-      <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#B6FF3A]" aria-hidden />
-      Research-grade peptides · COA on every batch ·{" "}
-      <span className="text-[#B6FF3A]">Browse catalog</span>
+      <span className="mr-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#B6FF3A]" aria-hidden />
+      <span className="min-w-0 text-[12px] leading-snug sm:text-[14px]">
+        <span className="hidden min-[380px]:inline">Research-grade peptides · </span>
+        COA every batch · <span className="font-semibold text-[#B6FF3A]">Browse catalog</span>
+      </span>
     </Link>
   );
 }

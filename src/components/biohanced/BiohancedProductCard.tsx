@@ -55,14 +55,14 @@ function CardActions({ productId, productName }: { productId: string; productNam
       <button
         type="button"
         onClick={handleAdd}
-        className={`bio-btn-cart w-full text-[12px] sm:text-[13px] ${added ? "brightness-95" : ""}`}
+        className={`bio-btn-cart w-full whitespace-normal text-center text-[11px] sm:text-[13px] ${added ? "brightness-95" : ""}`}
         aria-label={`Add ${productName} to cart`}
       >
         {added ? "Added ✓" : "Add to cart"}
       </button>
       <Link
         href={medicationHref(productId)}
-        className="bio-btn-view w-full text-center text-[12px] sm:text-[13px]"
+        className="bio-btn-view w-full whitespace-normal text-center text-[11px] sm:text-[13px]"
       >
         View
       </Link>
@@ -108,7 +108,9 @@ export function BiohancedProductCard({
         {titleLine}
       </h3>
 
-      <p className="mt-2 text-[13px] text-bio-neutral-400">{product.purity} HPLC · {cat.name}</p>
+      <p className="mt-2 text-[13px] leading-snug text-bio-neutral-400 line-clamp-2 break-words">
+        {product.purity} HPLC · {cat.name}
+      </p>
 
       <p className="mt-3 font-[Archivo,sans-serif] text-[17px] font-extrabold text-bio-ink sm:text-[18px]">
         ${product.priceFrom.toFixed(2)}
