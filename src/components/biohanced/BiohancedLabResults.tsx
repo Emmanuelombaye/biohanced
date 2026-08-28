@@ -10,8 +10,23 @@ import {
   type CatalogProduct,
 } from "@/lib/biohanced-catalog";
 import { BIOHENCED_LINKS, labResultPath } from "@/lib/biohanced-links";
+import { BiohancedImg } from "./BiohancedImg";
 import { BiohancedVialStage } from "./BiohancedVialStage";
 import { BiohancedMobileRail, BiohancedMobileRailItem } from "./BiohancedMobileRail";
+
+/** Client mock vial PNG — sized for table VIAL column only */
+function LabVialThumb({ product }: { product: CatalogProduct }) {
+  return (
+    <div className="bio-studio-well h-16 w-16 overflow-hidden rounded-lg border border-bio-neutral-200">
+      <BiohancedImg
+        src={catalogImage(product.id)}
+        alt={product.name}
+        loading="eager"
+        className="block h-full w-full object-contain object-bottom p-1"
+      />
+    </div>
+  );
+}
 
 function LabVialMock({ product }: { product: CatalogProduct }) {
   const accent = CATALOG_CATEGORIES[product.category].dot;
@@ -103,15 +118,7 @@ export function BiohancedLabResults() {
               {filtered.map((product) => (
                 <tr key={product.id} className="border-t border-bio-neutral-200">
                   <td className="px-3 py-2">
-                    <div className="h-16 w-16 overflow-hidden rounded-lg border border-bio-neutral-200">
-                      <BiohancedVialStage
-                        src={catalogImage(product.id)}
-                        alt={product.name}
-                        accent={CATALOG_CATEGORIES[product.category].dot}
-                        size="sm"
-                        className="h-16 !aspect-auto rounded-none"
-                      />
-                    </div>
+                    <LabVialThumb product={product} />
                   </td>
                   <td className="px-4 py-3 font-medium text-bio-ink">
                     <Link href={labResultPath(product.id)} className="hover:text-[#2E6BFF]">
