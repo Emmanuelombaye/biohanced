@@ -51,7 +51,7 @@ function CardActions({ productId, productName }: { productId: string; productNam
   };
 
   return (
-    <div className="mt-4 flex flex-col gap-2 sm:grid sm:grid-cols-2">
+    <div className="mt-4 flex flex-col gap-2 lg:grid lg:grid-cols-2">
       <button
         type="button"
         onClick={handleAdd}
@@ -97,7 +97,7 @@ export function BiohancedProductCard({
   );
 
   const content = (
-    <div className={`flex flex-1 flex-col ${isCompact ? "p-3" : "p-5"}`}>
+    <div className={`flex flex-1 flex-col ${isCompact ? "p-3" : "p-4 sm:p-5"}`}>
       <p className="text-[12px] font-medium text-bio-neutral-400">Biohanced Labs</p>
 
       <h3
@@ -145,7 +145,7 @@ export function BiohancedProductCard({
   }
 
   return (
-    <article className={`bio-product-card flex h-full min-h-[380px] flex-col ${className}`}>
+    <article className={`bio-product-card flex h-full min-h-[360px] flex-col sm:min-h-[380px] ${className}`}>
       {imageBlock}
       {content}
     </article>
