@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
-import { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";
 import { BiohancedMobileRail, BiohancedMobileRailItem } from "./BiohancedMobileRail";
+import { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";
 
 const STEPS = [
   {
@@ -26,6 +26,20 @@ const STEPS = [
   },
 ];
 
+function StepCard({ step }: { step: (typeof STEPS)[number] }) {
+  return (
+    <article className="rounded-[16px] border border-bio-neutral-200 bg-bio-white p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]">
+      <p className="font-[Archivo,sans-serif] text-[13px] font-black tracking-[0.2em] text-[#2E6BFF]">
+        {step.n}
+      </p>
+      <h3 className="mt-3 font-[Archivo,sans-serif] text-[18px] font-black leading-tight text-bio-ink">
+        {step.title}
+      </h3>
+      <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400">{step.body}</p>
+    </article>
+  );
+}
+
 export function BiohancedHowItWorks() {
   return (
     <BiohancedSection tone="cream">
@@ -36,26 +50,23 @@ export function BiohancedHowItWorks() {
           description="From catalog selection to documented delivery — the same twelve-step QC process on every compound."
           action={{ label: "Manufacturing process", href: BIOHENCED_LINKS.manufacturing }}
         />
-        <BiohancedMobileRail
-          className="mt-12"
-          desktopClass="md:grid md:grid-cols-2 md:items-stretch md:gap-6 md:overflow-visible lg:grid-cols-4"
-        >
+
+        {/* Mobile — horizontal snap rail */}
+        <BiohancedMobileRail className="mt-12 md:hidden">
           {STEPS.map((step) => (
             <BiohancedMobileRailItem key={step.n} widthClass="w-[min(260px,78vw)]">
-              <article
-                className="rounded-[16px] border border-bio-neutral-200 bg-bio-white p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(10,11,14,0.06)]"
-              >
-                <p className="font-[Archivo,sans-serif] text-[13px] font-black tracking-[0.2em] text-[#2E6BFF]">
-                  {step.n}
-                </p>
-                <h3 className="mt-3 font-[Archivo,sans-serif] text-[18px] font-black leading-tight text-bio-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-bio-neutral-400">{step.body}</p>
-              </article>
+              <StepCard step={step} />
             </BiohancedMobileRailItem>
           ))}
         </BiohancedMobileRail>
+
+        {/* Desktop — full grid, no clipped cards */}
+        <div className="mt-12 hidden min-w-0 gap-6 md:grid md:grid-cols-2 lg:grid-cols-4">
+          {STEPS.map((step) => (
+            <StepCard key={step.n} step={step} />
+          ))}
+        </div>
+
         <p className="mt-8 text-center text-[14px] text-bio-neutral-400">
           Need batch documentation before ordering?{" "}
           <Link href={BIOHENCED_LINKS.viewCoas} className="font-semibold text-[#2E6BFF] hover:underline">

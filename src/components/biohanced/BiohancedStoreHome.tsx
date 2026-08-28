@@ -190,25 +190,33 @@ function ManufacturingBrief() {
           action={{ label: "View quality standards", href: BIOHENCED_LINKS.manufacturing }}
           className="max-w-none"
         />
-        <BiohancedMobileRail
-          className="mt-8"
-          desktopClass="sm:grid sm:grid-cols-2 sm:items-stretch sm:gap-4 sm:overflow-visible"
-        >
+
+        {/* Mobile — horizontal snap rail (unchanged) */}
+        <BiohancedMobileRail className="mt-8 md:hidden">
           {stats.map((s) => (
-            <BiohancedMobileRailItem
-              key={s.label}
-              widthClass="w-[min(160px,42vw)]"
-              resetClass="sm:w-auto sm:shrink"
-            >
-              <div
-                className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center"
-              >
+            <BiohancedMobileRailItem key={s.label} widthClass="w-[min(160px,42vw)]">
+              <div className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center">
                 <p className="font-[Archivo,sans-serif] text-[32px] font-black text-bio-ink">{s.label}</p>
                 <p className="mt-1 text-sm text-bio-neutral-400">{s.sub}</p>
               </div>
             </BiohancedMobileRailItem>
           ))}
         </BiohancedMobileRail>
+
+        {/* Desktop — 2×2 grid, nothing clipped */}
+        <div className="mt-8 hidden min-w-0 md:grid md:grid-cols-2 md:gap-4 lg:mt-0">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-[14px] border border-bio-neutral-200 bg-bio-neutral-100 p-6 text-center"
+            >
+              <p className="font-[Archivo,sans-serif] text-[32px] font-black leading-none text-bio-ink">
+                {s.label}
+              </p>
+              <p className="mt-2 text-sm leading-snug text-bio-neutral-400">{s.sub}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </BiohancedSection>
   );
