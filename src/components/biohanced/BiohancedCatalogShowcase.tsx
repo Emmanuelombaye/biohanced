@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BIOHENCED_LINKS } from "@/lib/biohanced-links";
+import { BiohancedMotionRail } from "./BiohancedMotionRail";
 import { BiohancedProductCard } from "./BiohancedProductCard";
 import { BiohancedSection, BiohancedSectionHeader } from "./BiohancedSection";
 
@@ -30,10 +31,10 @@ const INFO_CARDS = [
   },
 ] as const;
 
-/** Centerpiece catalog — uniform grid from phone to desktop */
+/** Centerpiece catalog — motion rail on desktop, snap scroll on phone */
 export function BiohancedCatalogShowcase() {
   return (
-    <BiohancedSection tone="white" bordered id="catalog-showcase">
+    <BiohancedSection tone="white" bordered id="catalog-showcase" className="overflow-x-hidden">
       <div className="bio-container">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
           <BiohancedSectionHeader
@@ -50,11 +51,23 @@ export function BiohancedCatalogShowcase() {
           </Link>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 items-stretch gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        <p className="mt-4 text-[13px] text-bio-neutral-400 md:hidden">
+          Swipe to browse · tap a card to view or add to cart
+        </p>
+        <p className="mt-4 hidden text-[13px] text-bio-neutral-400 md:block">
+          Hover to pause · cards scroll automatically
+        </p>
+
+        <BiohancedMotionRail className="mt-6 sm:mt-8" loop duration={52}>
           {SHOWCASE_IDS.map((id) => (
-            <BiohancedProductCard key={id} productId={id} showActions className="h-full w-full" />
+            <BiohancedProductCard
+              key={id}
+              productId={id}
+              showActions
+              className="h-full w-full"
+            />
           ))}
-        </div>
+        </BiohancedMotionRail>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-12 lg:gap-6">
           {INFO_CARDS.map((card) => (

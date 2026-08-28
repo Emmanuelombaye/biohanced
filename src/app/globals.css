@@ -110,11 +110,95 @@
   }
 
   .bio-marquee {
-    animation: bio-marquee 16s linear infinite;
+    animation: bio-marquee var(--bio-marquee-duration, 40s) linear infinite;
   }
 
   .bio-marquee-reverse {
-    animation: bio-marquee-reverse 16s linear infinite;
+    animation: bio-marquee-reverse var(--bio-marquee-duration, 40s) linear infinite;
+  }
+
+  .bio-marquee-pause:hover .bio-marquee,
+  .bio-marquee-pause:focus-within .bio-marquee {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bio-motion-rail-touch {
+      display: block !important;
+    }
+
+    .bio-marquee-pause {
+      display: none !important;
+    }
+  }
+
+  /* Motion rail — fixed card width, snap on touch */
+  .bio-motion-rail-item {
+    width: min(280px, 85vw);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .bio-motion-rail-item {
+      width: 300px;
+    }
+  }
+
+  .bio-motion-rail-fade {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 24px,
+      #000 calc(100% - 24px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 24px,
+      #000 calc(100% - 24px),
+      transparent 100%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .bio-motion-rail-fade {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 48px,
+        #000 calc(100% - 48px),
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 48px,
+        #000 calc(100% - 48px),
+        transparent 100%
+      );
+    }
+  }
+
+  /* Thin scroll hint on touch devices */
+  .bio-scroll-rail-touch {
+    scrollbar-width: thin;
+    scrollbar-color: #d8d6d0 transparent;
+  }
+
+  .bio-scroll-rail-touch::-webkit-scrollbar {
+    display: block;
+    height: 5px;
+  }
+
+  .bio-scroll-rail-touch::-webkit-scrollbar-thumb {
+    background: #d8d6d0;
+    border-radius: 999px;
+  }
+
+  .bio-scroll-rail-touch::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   .bio-reveal {
@@ -328,6 +412,10 @@
 @media (prefers-reduced-motion: reduce) {
   .bio-marquee,
   .bio-marquee-reverse {
+    animation: none;
+  }
+
+  .bio-marquee-pause .bio-marquee {
     animation: none;
   }
 
